@@ -1,0 +1,163 @@
+---
+title: "Improving the Appearance of your Notebook"
+output:
+  html_notebook:
+    number_sections: yes
+    toc: yes
+    toc_depth: 2
+    toc_float: yes
+---
+
+These are just some specific customization and improvements you can incorporate in your `.Rmd` files. More information may be found at <https://bookdown.org/yihui/rmarkdown/html-document.html>
+
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+# Buttons/Tabs for Sub-sections {.tabset .tabset-fade .tabset-pills}
+
+Save space in your document using buttons or tabs for sub-sections. Below is the way this Section was defined
+
+```
+# Buttons/Tabs for Sub-sections {.tabset .tabset-fade .tabset-pills}
+```
+
+***
+
+## First Section
+A first section
+
+```{r}
+ggplot(data = mpg, 
+       aes(x=reorder(class, hwy), y=hwy, fill=class)) + 
+  geom_boxplot() +
+  theme(legend.position="none")
+```
+
+
+## Second Section
+content of sub-chapter #2
+
+$$
+x^2 + y^ 2 = r^2
+$$
+
+## Third Section
+content of sub-chapter #3
+
+```{r}
+set.seed(217)
+sample_n(tbl = mpg, size = 4)
+```
+
+
+
+# Automatic Numbering
+
+You can modify the YAML in your `.Rmd` to automatically the sections and sub-sections in your document. This example already does that. For example, your header would look like:
+
+```
+---
+title: "Your title"
+output: 
+  html_document:
+    number_sections: TRUE
+---
+```
+
+
+# Highlight a piece of text {#highlight}
+
+
+You can apply some `css` to a specific part of your document. For example, it may be useful to highlight conclusions at the end of your document.
+
+The code below generates a list with highlighted items:
+
+```
+<style>
+div.blue { background-color:#E6E6FA; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+- We love data
+- This was a good class
+</div>
+```
+
+<style>
+div.blue { background-color:#E6E6FA; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+- We love data
+- This was a good class
+</div>
+
+
+# Table of Contents
+
+This example has a table of contents _floating_ on the side. For this, the YAML looks like: 
+
+```
+title: "Habits"
+output:
+  html_notebook:
+    toc: true
+    toc_float: true
+    toc_depth: 2
+```
+
+# Skip a line
+
+This is done using the `<br>` command. This `.Rmd` code:
+
+```
+Rei Sanchez-Arias
+<br><br><br><br>
+Data Science and Business Analytics
+```
+
+will produce: 
+
+Rei Sanchez-Arias
+<br><br><br><br>
+Data Science and Business Analytics
+
+
+# Centering Images
+
+You could use the code below 
+
+```
+<center>
+![Site logo](https://github.com/reisanar/figs/raw/master/icon-192.png)
+</center>
+```
+
+<center>
+![Site logo](https://github.com/reisanar/figs/raw/master/icon-192.png)
+</center>
+
+<br><br>
+Another approach is to use the `knitr::includegraphics()` function, and determine the options of the chunk of code specifying `fig.align='center'` (should work well for a R Markdown file)
+
+```{r, fig.align='center'}
+# knitr::include_graphics("https://github.com/reisanar/figs/raw/master/icon-192.png")
+```
+
+
+
+
+# Internal Links
+
+You can use internal links in R Markdown using _anchors_. For example, this link will bring you to the previous chapter. To do it:
+
+1 - Put an anchor next to a title. This is how one of the previous section title looks like:
+
+```
+# Highlight a piece of text {#highlight}
+```
+
+2. Put a link to an anchor: 
+
+Check the reasons why we like this course [here](#highlight)
+

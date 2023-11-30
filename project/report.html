@@ -11,7 +11,7 @@
 
 
 
-<title>Project Proposal</title>
+<title>report.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -65,1277 +65,6 @@ h5 {font-size: 16px;}
 h6 {font-size: 12px;}
 code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
 pre:not([class]) { background-color: white }</style>
-<style type="text/css">.pagedtable {
-overflow: auto;
-padding-left: 8px;
-padding-right: 8px;
-}
-.pagedtable-wrapper {
-border: 1px solid #ccc;
-border-radius: 4px;
-margin-bottom: 10px;
-}
-.pagedtable table {
-width: 100%;
-max-width: 100%;
-margin: 0;
-}
-.pagedtable th {
-padding: 0 5px 0 5px;
-border: none;
-border-bottom: 2px solid #dddddd;
-min-width: 45px;
-}
-.pagedtable-empty th {
-display: none;
-}
-.pagedtable td {
-padding: 0 4px 0 4px;
-}
-.pagedtable .even {
-background-color: rgba(140, 140, 140, 0.1);
-}
-.pagedtable-padding-col {
-display: none;
-}
-.pagedtable a {
--webkit-touch-callout: none;
--webkit-user-select: none;
--khtml-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
-}
-.pagedtable-index-nav {
-cursor: pointer;
-padding: 0 5px 0 5px;
-float: right;
-border: 0;
-}
-.pagedtable-index-nav-disabled {
-cursor: default;
-text-decoration: none;
-color: #999;
-}
-a.pagedtable-index-nav-disabled:hover {
-text-decoration: none;
-color: #999;
-}
-.pagedtable-indexes {
-cursor: pointer;
-float: right;
-border: 0;
-}
-.pagedtable-index-current {
-cursor: default;
-text-decoration: none;
-font-weight: bold;
-color: #333;
-border: 0;
-}
-a.pagedtable-index-current:hover {
-text-decoration: none;
-font-weight: bold;
-color: #333;
-}
-.pagedtable-index {
-width: 30px;
-display: inline-block;
-text-align: center;
-border: 0;
-}
-.pagedtable-index-separator-left {
-display: inline-block;
-color: #333;
-font-size: 9px;
-padding: 0 0 0 0;
-cursor: default;
-}
-.pagedtable-index-separator-right {
-display: inline-block;
-color: #333;
-font-size: 9px;
-padding: 0 4px 0 0;
-cursor: default;
-}
-.pagedtable-footer {
-padding-top: 4px;
-padding-bottom: 5px;
-}
-.pagedtable-not-empty .pagedtable-footer {
-border-top: 2px solid #dddddd;
-}
-.pagedtable-info {
-overflow: hidden;
-color: #999;
-white-space: nowrap;
-text-overflow: ellipsis;
-}
-.pagedtable-header-name {
-overflow: hidden;
-text-overflow: ellipsis;
-}
-.pagedtable-header-type {
-color: #999;
-font-weight: 400;
-}
-.pagedtable-na-cell {
-font-style: italic;
-opacity: 0.3;
-}
-</style>
-<script>// Production steps of ECMA-262, Edition 5, 15.4.4.18
-// Reference: http://es5.github.io/#x15.4.4.18
-if (!Array.prototype.forEach) {
-
-  Array.prototype.forEach = function(callback, thisArg) {
-
-    var T, k;
-
-    if (this === null) {
-      throw new TypeError(' this is null or not defined');
-    }
-
-    // 1. Let O be the result of calling toObject() passing the
-    // |this| value as the argument.
-    var O = Object(this);
-
-    // 2. Let lenValue be the result of calling the Get() internal
-    // method of O with the argument "length".
-    // 3. Let len be toUint32(lenValue).
-    var len = O.length >>> 0;
-
-    // 4. If isCallable(callback) is false, throw a TypeError exception.
-    // See: http://es5.github.com/#x9.11
-    if (typeof callback !== "function") {
-      throw new TypeError(callback + ' is not a function');
-    }
-
-    // 5. If thisArg was supplied, let T be thisArg; else let
-    // T be undefined.
-    if (arguments.length > 1) {
-      T = thisArg;
-    }
-
-    // 6. Let k be 0
-    k = 0;
-
-    // 7. Repeat, while k < len
-    while (k < len) {
-
-      var kValue;
-
-      // a. Let Pk be ToString(k).
-      //    This is implicit for LHS operands of the in operator
-      // b. Let kPresent be the result of calling the HasProperty
-      //    internal method of O with argument Pk.
-      //    This step can be combined with c
-      // c. If kPresent is true, then
-      if (k in O) {
-
-        // i. Let kValue be the result of calling the Get internal
-        // method of O with argument Pk.
-        kValue = O[k];
-
-        // ii. Call the Call internal method of callback with T as
-        // the this value and argument list containing kValue, k, and O.
-        callback.call(T, kValue, k, O);
-      }
-      // d. Increase k by 1.
-      k++;
-    }
-    // 8. return undefined
-  };
-}
-
-// Production steps of ECMA-262, Edition 5, 15.4.4.19
-// Reference: http://es5.github.io/#x15.4.4.19
-if (!Array.prototype.map) {
-
-  Array.prototype.map = function(callback, thisArg) {
-
-    var T, A, k;
-
-    if (this == null) {
-      throw new TypeError(' this is null or not defined');
-    }
-
-    // 1. Let O be the result of calling ToObject passing the |this|
-    //    value as the argument.
-    var O = Object(this);
-
-    // 2. Let lenValue be the result of calling the Get internal
-    //    method of O with the argument "length".
-    // 3. Let len be ToUint32(lenValue).
-    var len = O.length >>> 0;
-
-    // 4. If IsCallable(callback) is false, throw a TypeError exception.
-    // See: http://es5.github.com/#x9.11
-    if (typeof callback !== 'function') {
-      throw new TypeError(callback + ' is not a function');
-    }
-
-    // 5. If thisArg was supplied, let T be thisArg; else let T be undefined.
-    if (arguments.length > 1) {
-      T = thisArg;
-    }
-
-    // 6. Let A be a new array created as if by the expression new Array(len)
-    //    where Array is the standard built-in constructor with that name and
-    //    len is the value of len.
-    A = new Array(len);
-
-    // 7. Let k be 0
-    k = 0;
-
-    // 8. Repeat, while k < len
-    while (k < len) {
-
-      var kValue, mappedValue;
-
-      // a. Let Pk be ToString(k).
-      //   This is implicit for LHS operands of the in operator
-      // b. Let kPresent be the result of calling the HasProperty internal
-      //    method of O with argument Pk.
-      //   This step can be combined with c
-      // c. If kPresent is true, then
-      if (k in O) {
-
-        // i. Let kValue be the result of calling the Get internal
-        //    method of O with argument Pk.
-        kValue = O[k];
-
-        // ii. Let mappedValue be the result of calling the Call internal
-        //     method of callback with T as the this value and argument
-        //     list containing kValue, k, and O.
-        mappedValue = callback.call(T, kValue, k, O);
-
-        // iii. Call the DefineOwnProperty internal method of A with arguments
-        // Pk, Property Descriptor
-        // { Value: mappedValue,
-        //   Writable: true,
-        //   Enumerable: true,
-        //   Configurable: true },
-        // and false.
-
-        // In browsers that support Object.defineProperty, use the following:
-        // Object.defineProperty(A, k, {
-        //   value: mappedValue,
-        //   writable: true,
-        //   enumerable: true,
-        //   configurable: true
-        // });
-
-        // For best browser support, use the following:
-        A[k] = mappedValue;
-      }
-      // d. Increase k by 1.
-      k++;
-    }
-
-    // 9. return A
-    return A;
-  };
-}
-
-var PagedTable = function (pagedTable) {
-  var me = this;
-
-  var source = function(pagedTable) {
-    var sourceElems = [].slice.call(pagedTable.children).filter(function(e) {
-      return e.hasAttribute("data-pagedtable-source");
-    });
-
-    if (sourceElems === null || sourceElems.length !== 1) {
-      throw("A single data-pagedtable-source was not found");
-    }
-
-    return JSON.parse(sourceElems[0].innerHTML);
-  }(pagedTable);
-
-  var options = function(source) {
-    var options = typeof(source.options) !== "undefined" &&
-      source.options !== null ? source.options : {};
-
-    var columns = typeof(options.columns) !== "undefined" ? options.columns : {};
-    var rows = typeof(options.rows) !== "undefined" ? options.rows : {};
-
-    var positiveIntOrNull = function(value) {
-      return parseInt(value) >= 0 ? parseInt(value) : null;
-    };
-
-    return {
-      pages: positiveIntOrNull(options.pages),
-      rows: {
-        min: positiveIntOrNull(rows.min),
-        max: positiveIntOrNull(rows.max),
-        total: positiveIntOrNull(rows.total)
-      },
-      columns: {
-        min: positiveIntOrNull(columns.min),
-        max: positiveIntOrNull(columns.max),
-        total: positiveIntOrNull(columns.total)
-      }
-    };
-  }(source);
-
-  var Measurer = function() {
-
-    // set some default initial values that will get adjusted in runtime
-    me.measures = {
-      padding: 12,
-      character: 8,
-      height: 15,
-      defaults: true
-    };
-
-    me.calculate = function(measuresCell) {
-      if (!me.measures.defaults)
-        return;
-
-      var measuresCellStyle = window.getComputedStyle(measuresCell, null);
-
-      var newPadding = parsePadding(measuresCellStyle.paddingLeft) +
-            parsePadding(measuresCellStyle.paddingRight);
-
-      var sampleString = "ABCDEFGHIJ0123456789";
-      var newCharacter = Math.ceil(measuresCell.clientWidth / sampleString.length);
-
-      if (newPadding <= 0 || newCharacter <= 0)
-        return;
-
-      me.measures.padding = newPadding;
-      me.measures.character = newCharacter;
-      me.measures.height = measuresCell.clientHeight;
-      me.measures.defaults = false;
-    };
-
-    return me;
-  };
-
-  var Page = function(data, options) {
-    var me = this;
-
-    var defaults = {
-      max: 7,
-      rows: 10
-    };
-
-    var totalPages = function() {
-      return Math.ceil(data.length / me.rows);
-    };
-
-    me.number = 0;
-    me.max = options.pages !== null ? options.pages : defaults.max;
-    me.visible = me.max;
-    me.rows = options.rows.min !== null ? options.rows.min : defaults.rows;
-    me.total = totalPages();
-
-    me.setRows = function(newRows) {
-      me.rows = newRows;
-      me.total = totalPages();
-    };
-
-    me.setPageNumber = function(newPageNumber) {
-      if (newPageNumber < 0) newPageNumber = 0;
-      if (newPageNumber >= me.total) newPageNumber = me.total - 1;
-
-      me.number = newPageNumber;
-    };
-
-    me.setVisiblePages = function(visiblePages) {
-      me.visible = Math.min(me.max, visiblePages);
-      me.setPageNumber(me.number);
-    };
-
-    me.getVisiblePageRange = function() {
-      var start = me.number - Math.max(Math.floor((me.visible - 1) / 2), 0);
-      var end = me.number + Math.floor(me.visible / 2) + 1;
-      var pageCount = me.total;
-
-      if (start < 0) {
-        var diffToStart = 0 - start;
-        start += diffToStart;
-        end += diffToStart;
-      }
-
-      if (end > pageCount) {
-        var diffToEnd = end - pageCount;
-        start -= diffToEnd;
-        end -= diffToEnd;
-      }
-
-      start = start < 0 ? 0 : start;
-      end = end >= pageCount ? pageCount : end;
-
-      var first = false;
-      var last = false;
-
-      if (start > 0 && me.visible > 1) {
-        start = start + 1;
-        first = true;
-      }
-
-      if (end < pageCount && me.visible > 2) {
-        end = end - 1;
-        last = true;
-      }
-
-      return {
-        first: first,
-        start: start,
-        end: end,
-        last: last
-      };
-    };
-
-    me.getRowStart = function() {
-      var rowStart = page.number * page.rows;
-      if (rowStart < 0)
-        rowStart = 0;
-
-      return rowStart;
-    };
-
-    me.getRowEnd = function() {
-      var rowStart = me.getRowStart();
-      return Math.min(rowStart + me.rows, data.length);
-    };
-
-    me.getPaddingRows = function() {
-      var rowStart = me.getRowStart();
-      var rowEnd = me.getRowEnd();
-      return data.length > me.rows ? me.rows - (rowEnd - rowStart) : 0;
-    };
-  };
-
-  var Columns = function(data, columns, options) {
-    var me = this;
-
-    me.defaults = {
-      min: 5
-    };
-
-    me.number = 0;
-    me.visible = 0;
-    me.total = columns.length;
-    me.subset = [];
-    me.padding = 0;
-    me.min = options.columns.min !== null ? options.columns.min : me.defaults.min;
-    me.max = options.columns.max !== null ? options.columns.max : null;
-    me.widths = {};
-
-    var widthsLookAhead = Math.max(100, options.rows.min);
-    var paddingColChars = 10;
-
-    me.emptyNames = function() {
-      columns.forEach(function(column) {
-        if (columns.label !== null && columns.label !== "")
-          return false;
-      });
-
-      return true;
-    };
-
-    var parsePadding = function(value) {
-      return parseInt(value) >= 0 ? parseInt(value) : 0;
-    };
-
-    me.calculateWidths = function(measures) {
-      columns.forEach(function(column) {
-        var maxChars = Math.max(
-          column.label.toString().length,
-          column.type.toString().length
-        );
-
-        for (var idxRow = 0; idxRow < Math.min(widthsLookAhead, data.length); idxRow++) {
-          maxChars = Math.max(maxChars, data[idxRow][column.name.toString()].length);
-        }
-
-        me.widths[column.name] = {
-          // width in characters
-          chars: maxChars,
-          // width for the inner html columns
-          inner: maxChars * measures.character,
-          // width adding outer styles like padding
-          outer: maxChars * measures.character + measures.padding
-        };
-      });
-    };
-
-    me.getWidth = function() {
-      var widthOuter = 0;
-      for (var idxCol = 0; idxCol < me.subset.length; idxCol++) {
-        var columnName = me.subset[idxCol].name;
-        widthOuter = widthOuter + me.widths[columnName].outer;
-      }
-
-      widthOuter = widthOuter + me.padding * paddingColChars * measurer.measures.character;
-
-      if (me.hasMoreLeftColumns()) {
-        widthOuter = widthOuter + columnNavigationWidthPX + measurer.measures.padding;
-      }
-
-      if (me.hasMoreRightColumns()) {
-        widthOuter = widthOuter + columnNavigationWidthPX + measurer.measures.padding;
-      }
-
-      return widthOuter;
-    };
-
-    me.updateSlice = function() {
-      if (me.number + me.visible >= me.total)
-        me.number = me.total - me.visible;
-
-      if (me.number < 0) me.number = 0;
-
-      me.subset = columns.slice(me.number, Math.min(me.number + me.visible, me.total));
-
-      me.subset = me.subset.map(function(column) {
-        Object.keys(column).forEach(function(colKey) {
-          column[colKey] = column[colKey] === null ? "" : column[colKey].toString();
-        });
-
-        column.width = null;
-        return column;
-      });
-    };
-
-    me.setVisibleColumns = function(columnNumber, newVisibleColumns, paddingCount) {
-      me.number = columnNumber;
-      me.visible = newVisibleColumns;
-      me.padding = paddingCount;
-
-      me.updateSlice();
-    };
-
-    me.incColumnNumber = function(increment) {
-      me.number = me.number + increment;
-    };
-
-    me.setColumnNumber = function(newNumber) {
-      me.number = newNumber;
-    };
-
-    me.setPaddingCount = function(newPadding) {
-      me.padding = newPadding;
-    };
-
-    me.getPaddingCount = function() {
-      return me.padding;
-    };
-
-    me.hasMoreLeftColumns = function() {
-      return me.number > 0;
-    };
-
-    me.hasMoreRightColumns = function() {
-      return me.number + me.visible < me.total;
-    };
-
-    me.updateSlice(0);
-    return me;
-  };
-
-  var data = source.data;
-  var page = new Page(data, options);
-  var measurer = new Measurer(data, options);
-  var columns = new Columns(data, source.columns, options);
-
-  var table = null;
-  var tableDiv = null;
-  var header = null;
-  var footer = null;
-  var tbody = null;
-
-  // Caches pagedTable.clientWidth, specially for webkit
-  var cachedPagedTableClientWidth = null;
-
-  var onChangeCallbacks = [];
-
-  var clearSelection = function() {
-    if(document.selection && document.selection.empty) {
-      document.selection.empty();
-    } else if(window.getSelection) {
-      var sel = window.getSelection();
-      sel.removeAllRanges();
-    }
-  };
-
-  var columnNavigationWidthPX = 5;
-
-  var renderColumnNavigation = function(increment, backwards) {
-    var arrow = document.createElement("div");
-    arrow.setAttribute("style",
-      "border-top: " + columnNavigationWidthPX + "px solid transparent;" +
-      "border-bottom: " + columnNavigationWidthPX + "px solid transparent;" +
-      "border-" + (backwards ? "right" : "left") + ": " + columnNavigationWidthPX + "px solid;");
-
-    var header = document.createElement("th");
-    header.appendChild(arrow);
-    header.setAttribute("style",
-      "cursor: pointer;" +
-      "vertical-align: middle;" +
-      "min-width: " + columnNavigationWidthPX + "px;" +
-      "width: " + columnNavigationWidthPX + "px;");
-
-    header.onclick = function() {
-      columns.incColumnNumber(backwards ? -1 : increment);
-
-      me.animateColumns(backwards);
-      renderFooter();
-
-      clearSelection();
-      triggerOnChange();
-    };
-
-    return header;
-  };
-
-  var maxColumnWidth = function(width) {
-    var padding = 80;
-    var columnMax = Math.max(cachedPagedTableClientWidth - padding, 0);
-
-    return parseInt(width) > 0 ?
-      Math.min(columnMax, parseInt(width)) + "px" :
-      columnMax + "px";
-  };
-
-  var clearHeader = function() {
-    var thead = pagedTable.querySelectorAll("thead")[0];
-    thead.innerHTML = "";
-  };
-
-  var renderHeader = function(clear) {
-    cachedPagedTableClientWidth = pagedTable.clientWidth;
-
-    var fragment = document.createDocumentFragment();
-
-    header = document.createElement("tr");
-    fragment.appendChild(header);
-
-    if (columns.number > 0)
-      header.appendChild(renderColumnNavigation(-columns.visible, true));
-
-    columns.subset = columns.subset.map(function(columnData) {
-      var column = document.createElement("th");
-      column.setAttribute("align", columnData.align);
-      column.style.textAlign = columnData.align;
-
-      column.style.maxWidth = maxColumnWidth(null);
-      if (columnData.width) {
-        column.style.minWidth =
-          column.style.maxWidth = maxColumnWidth(columnData.width);
-      }
-
-      var columnName = document.createElement("div");
-      columnName.setAttribute("class", "pagedtable-header-name");
-      if (columnData.label === "") {
-        columnName.innerHTML = "&nbsp;";
-      }
-      else {
-        columnName.appendChild(document.createTextNode(columnData.label));
-      }
-      column.appendChild(columnName);
-
-      var columnType = document.createElement("div");
-      columnType.setAttribute("class", "pagedtable-header-type");
-      if (columnData.type === "") {
-        columnType.innerHTML = "&nbsp;";
-      }
-      else {
-        columnType.appendChild(document.createTextNode("<" + columnData.type + ">"));
-      }
-      column.appendChild(columnType);
-
-      header.appendChild(column);
-
-      columnData.element = column;
-
-      return columnData;
-    });
-
-    for (var idx = 0; idx < columns.getPaddingCount(); idx++) {
-      var paddingCol = document.createElement("th");
-      paddingCol.setAttribute("class", "pagedtable-padding-col");
-      header.appendChild(paddingCol);
-    }
-
-    if (columns.number + columns.visible < columns.total)
-      header.appendChild(renderColumnNavigation(columns.visible, false));
-
-    if (typeof(clear) == "undefined" || clear) clearHeader();
-    var thead = pagedTable.querySelectorAll("thead")[0];
-    thead.appendChild(fragment);
-  };
-
-  me.animateColumns = function(backwards) {
-    var thead = pagedTable.querySelectorAll("thead")[0];
-
-    var headerOld = thead.querySelectorAll("tr")[0];
-    var tbodyOld = table.querySelectorAll("tbody")[0];
-
-    me.fitColumns(backwards);
-
-    renderHeader(false);
-
-    header.style.opacity = "0";
-    header.style.transform = backwards ? "translateX(-30px)" : "translateX(30px)";
-    header.style.transition = "transform 200ms linear, opacity 200ms";
-    header.style.transitionDelay = "0";
-
-    renderBody(false);
-
-    if (headerOld) {
-      headerOld.style.position = "absolute";
-      headerOld.style.transform = "translateX(0px)";
-      headerOld.style.opacity = "1";
-      headerOld.style.transition = "transform 100ms linear, opacity 100ms";
-      headerOld.setAttribute("class", "pagedtable-remove-head");
-      if (headerOld.style.transitionEnd) {
-        headerOld.addEventListener("transitionend", function() {
-          var headerOldByClass = thead.querySelector(".pagedtable-remove-head");
-          if (headerOldByClass) thead.removeChild(headerOldByClass);
-        });
-      }
-      else {
-        thead.removeChild(headerOld);
-      }
-    }
-
-    if (tbodyOld) table.removeChild(tbodyOld);
-
-    tbody.style.opacity = "0";
-    tbody.style.transition = "transform 200ms linear, opacity 200ms";
-    tbody.style.transitionDelay = "0ms";
-
-    // force relayout
-    window.getComputedStyle(header).opacity;
-    window.getComputedStyle(tbody).opacity;
-
-    if (headerOld) {
-      headerOld.style.transform = backwards ? "translateX(20px)" : "translateX(-30px)";
-      headerOld.style.opacity = "0";
-    }
-
-    header.style.transform = "translateX(0px)";
-    header.style.opacity = "1";
-
-    tbody.style.opacity = "1";
-  }
-
-  me.onChange = function(callback) {
-    onChangeCallbacks.push(callback);
-  };
-
-  var triggerOnChange = function() {
-    onChangeCallbacks.forEach(function(onChange) {
-      onChange();
-    });
-  };
-
-  var clearBody = function() {
-    if (tbody) {
-      table.removeChild(tbody);
-      tbody = null;
-    }
-  };
-
-  var renderBody = function(clear) {
-    cachedPagedTableClientWidth = pagedTable.clientWidth
-
-    var fragment = document.createDocumentFragment();
-
-    var pageData = data.slice(page.getRowStart(), page.getRowEnd());
-
-    pageData.forEach(function(dataRow, idxRow) {
-      var htmlRow = document.createElement("tr");
-      htmlRow.setAttribute("class", (idxRow % 2 !==0) ? "even" : "odd");
-
-      if (columns.hasMoreLeftColumns())
-        htmlRow.appendChild(document.createElement("td"));
-
-      columns.subset.forEach(function(columnData) {
-        var cellName = columnData.name;
-        var dataCell = dataRow[cellName];
-        var htmlCell = document.createElement("td");
-
-        if (dataCell === "NA") htmlCell.setAttribute("class", "pagedtable-na-cell");
-        if (dataCell === "__NA__") dataCell = "NA";
-
-        var cellText = document.createTextNode(dataCell);
-        htmlCell.appendChild(cellText);
-        if (dataCell.length > 50) {
-          htmlCell.setAttribute("title", dataCell);
-        }
-        htmlCell.setAttribute("align", columnData.align);
-        htmlCell.style.textAlign = columnData.align;
-        htmlCell.style.maxWidth = maxColumnWidth(null);
-        if (columnData.width) {
-          htmlCell.style.minWidth = htmlCell.style.maxWidth = maxColumnWidth(columnData.width);
-        }
-        htmlRow.appendChild(htmlCell);
-      });
-
-      for (var idx = 0; idx < columns.getPaddingCount(); idx++) {
-        var paddingCol = document.createElement("td");
-        paddingCol.setAttribute("class", "pagedtable-padding-col");
-        htmlRow.appendChild(paddingCol);
-      }
-
-      if (columns.hasMoreRightColumns())
-        htmlRow.appendChild(document.createElement("td"));
-
-      fragment.appendChild(htmlRow);
-    });
-
-    for (var idxPadding = 0; idxPadding < page.getPaddingRows(); idxPadding++) {
-      var paddingRow = document.createElement("tr");
-
-      var paddingCellRow = document.createElement("td");
-      paddingCellRow.innerHTML = "&nbsp;";
-      paddingCellRow.setAttribute("colspan", "100%");
-      paddingRow.appendChild(paddingCellRow);
-
-      fragment.appendChild(paddingRow);
-    }
-
-    if (typeof(clear) == "undefined" || clear) clearBody();
-    tbody = document.createElement("tbody");
-    tbody.appendChild(fragment);
-
-    table.appendChild(tbody);
-  };
-
-  var getLabelInfo = function() {
-    var pageStart = page.getRowStart();
-    var pageEnd = page.getRowEnd();
-    var totalRows = data.length;
-
-    var totalRowsLabel = options.rows.total ? options.rows.total : totalRows;
-    var totalRowsLabelFormat = totalRowsLabel.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
-
-    var infoText = (pageStart + 1) + "-" + pageEnd + " of " + totalRowsLabelFormat + " rows";
-    if (totalRows < page.rows) {
-      infoText = totalRowsLabel + " row" + (totalRows != 1 ? "s" : "");
-    }
-    if (columns.total > columns.visible) {
-      var totalColumnsLabel = options.columns.total ? options.columns.total : columns.total;
-
-      infoText = infoText + " | " + (columns.number + 1) + "-" +
-        (Math.min(columns.number + columns.visible, columns.total)) +
-        " of " + totalColumnsLabel + " columns";
-    }
-
-    return infoText;
-  };
-
-  var clearFooter = function() {
-    footer = pagedTable.querySelectorAll("div.pagedtable-footer")[0];
-    footer.innerHTML = "";
-
-    return footer;
-  };
-
-  var createPageLink = function(idxPage) {
-    var pageLink = document.createElement("a");
-    pageLinkClass = idxPage === page.number ? "pagedtable-index pagedtable-index-current" : "pagedtable-index";
-    pageLink.setAttribute("class", pageLinkClass);
-    pageLink.setAttribute("data-page-index", idxPage);
-    pageLink.onclick = function() {
-      page.setPageNumber(parseInt(this.getAttribute("data-page-index")));
-      renderBody();
-      renderFooter();
-
-      triggerOnChange();
-    };
-
-    pageLink.appendChild(document.createTextNode(idxPage + 1));
-
-    return pageLink;
-  }
-
-  var renderFooter = function() {
-    footer = clearFooter();
-
-    var next = document.createElement("a");
-    next.appendChild(document.createTextNode("Next"));
-    next.onclick = function() {
-      page.setPageNumber(page.number + 1);
-      renderBody();
-      renderFooter();
-
-      triggerOnChange();
-    };
-    if (data.length > page.rows) footer.appendChild(next);
-
-    var pageNumbers = document.createElement("div");
-    pageNumbers.setAttribute("class", "pagedtable-indexes");
-
-    var pageRange = page.getVisiblePageRange();
-
-    if (pageRange.first) {
-      var pageLink = createPageLink(0);
-      pageNumbers.appendChild(pageLink);
-
-      var pageSeparator = document.createElement("div");
-      pageSeparator.setAttribute("class", "pagedtable-index-separator-left");
-      pageSeparator.appendChild(document.createTextNode("..."))
-      pageNumbers.appendChild(pageSeparator);
-    }
-
-    for (var idxPage = pageRange.start; idxPage < pageRange.end; idxPage++) {
-      var pageLink = createPageLink(idxPage);
-
-      pageNumbers.appendChild(pageLink);
-    }
-
-    if (pageRange.last) {
-      var pageSeparator = document.createElement("div");
-      pageSeparator.setAttribute("class", "pagedtable-index-separator-right");
-      pageSeparator.appendChild(document.createTextNode("..."))
-      pageNumbers.appendChild(pageSeparator);
-
-      var pageLink = createPageLink(page.total - 1);
-      pageNumbers.appendChild(pageLink);
-    }
-
-    if (data.length > page.rows) footer.appendChild(pageNumbers);
-
-    var previous = document.createElement("a");
-    previous.appendChild(document.createTextNode("Previous"));
-    previous.onclick = function() {
-      page.setPageNumber(page.number - 1);
-      renderBody();
-      renderFooter();
-
-      triggerOnChange();
-    };
-    if (data.length > page.rows) footer.appendChild(previous);
-
-    var infoLabel = document.createElement("div");
-    infoLabel.setAttribute("class", "pagedtable-info");
-    infoLabel.setAttribute("title", getLabelInfo());
-    infoLabel.appendChild(document.createTextNode(getLabelInfo()));
-    footer.appendChild(infoLabel);
-
-    var enabledClass = "pagedtable-index-nav";
-    var disabledClass = "pagedtable-index-nav pagedtable-index-nav-disabled";
-    previous.setAttribute("class", page.number <= 0 ? disabledClass : enabledClass);
-    next.setAttribute("class", (page.number + 1) * page.rows >= data.length ? disabledClass : enabledClass);
-  };
-
-  var measuresCell = null;
-
-  var renderMeasures = function() {
-    var measuresTable = document.createElement("table");
-    measuresTable.style.visibility = "hidden";
-    measuresTable.style.position = "absolute";
-    measuresTable.style.whiteSpace = "nowrap";
-    measuresTable.style.height = "auto";
-    measuresTable.style.width = "auto";
-
-    var measuresRow = document.createElement("tr");
-    measuresTable.appendChild(measuresRow);
-
-    measuresCell = document.createElement("td");
-    var sampleString = "ABCDEFGHIJ0123456789";
-    measuresCell.appendChild(document.createTextNode(sampleString));
-
-    measuresRow.appendChild(measuresCell);
-
-    tableDiv.appendChild(measuresTable);
-  }
-
-  me.init = function() {
-    tableDiv = document.createElement("div");
-    pagedTable.appendChild(tableDiv);
-    var pagedTableClass = data.length > 0 ?
-      "pagedtable pagedtable-not-empty" :
-      "pagedtable pagedtable-empty";
-
-    if (columns.total == 0 || (columns.emptyNames() && data.length == 0)) {
-      pagedTableClass = pagedTableClass + " pagedtable-empty-columns";
-    }
-
-    tableDiv.setAttribute("class", pagedTableClass);
-
-    renderMeasures();
-    measurer.calculate(measuresCell);
-    columns.calculateWidths(measurer.measures);
-
-    table = document.createElement("table");
-    table.setAttribute("cellspacing", "0");
-    table.setAttribute("class", "table table-condensed");
-    tableDiv.appendChild(table);
-
-    table.appendChild(document.createElement("thead"));
-
-    var footerDiv = document.createElement("div");
-    footerDiv.setAttribute("class", "pagedtable-footer");
-    tableDiv.appendChild(footerDiv);
-
-    // if the host has not yet provided horizontal space, render hidden
-    if (tableDiv.clientWidth <= 0) {
-      tableDiv.style.opacity = "0";
-    }
-
-    me.render();
-
-    // retry seizing columns later if the host has not provided space
-    function retryFit() {
-      if (tableDiv.clientWidth <= 0) {
-        setTimeout(retryFit, 100);
-      } else {
-        me.render();
-        triggerOnChange();
-      }
-    }
-    if (tableDiv.clientWidth <= 0) {
-      retryFit();
-    }
-  };
-
-  var registerWidths = function() {
-    columns.subset = columns.subset.map(function(column) {
-      column.width = columns.widths[column.name].inner;
-      return column;
-    });
-  };
-
-  var parsePadding = function(value) {
-    return parseInt(value) >= 0 ? parseInt(value) : 0;
-  };
-
-  me.fixedHeight = function() {
-    return options.rows.max != null;
-  }
-
-  me.fitRows = function() {
-    if (me.fixedHeight())
-      return;
-
-    measurer.calculate(measuresCell);
-
-    var rows = options.rows.min !== null ? options.rows.min : 0;
-    var headerHeight = header !== null && header.offsetHeight > 0 ? header.offsetHeight : 0;
-    var footerHeight = footer !== null && footer.offsetHeight > 0 ? footer.offsetHeight : 0;
-
-    if (pagedTable.offsetHeight > 0) {
-      var availableHeight = pagedTable.offsetHeight - headerHeight - footerHeight;
-      rows = Math.floor((availableHeight) / measurer.measures.height);
-    }
-
-    rows = options.rows.min !== null ? Math.max(options.rows.min, rows) : rows;
-
-    page.setRows(rows);
-  }
-
-  // The goal of this function is to add as many columns as possible
-  // starting from left-to-right, when the right most limit is reached
-  // it tries to add columns from the left as well.
-  //
-  // When startBackwards is true columns are added from right-to-left
-  me.fitColumns = function(startBackwards) {
-    measurer.calculate(measuresCell);
-    columns.calculateWidths(measurer.measures);
-
-    if (tableDiv.clientWidth > 0) {
-      tableDiv.style.opacity = 1;
-    }
-
-    var visibleColumns = tableDiv.clientWidth <= 0 ? Math.max(columns.min, 1) : 1;
-    var columnNumber = columns.number;
-    var paddingCount = 0;
-
-    // track a list of added columns as we build the visible ones to allow us
-    // to remove columns when they don't fit anymore.
-    var columnHistory = [];
-
-    var lastTableHeight = 0;
-    var backwards = startBackwards;
-
-    var tableDivStyle = window.getComputedStyle(tableDiv, null);
-    var tableDivPadding = parsePadding(tableDivStyle.paddingLeft) +
-      parsePadding(tableDivStyle.paddingRight);
-
-    var addPaddingCol = false;
-    var currentWidth = 0;
-
-    while (true) {
-      columns.setVisibleColumns(columnNumber, visibleColumns, paddingCount);
-      currentWidth = columns.getWidth();
-
-      if (tableDiv.clientWidth - tableDivPadding < currentWidth) {
-        break;
-      }
-
-      columnHistory.push({
-        columnNumber: columnNumber,
-        visibleColumns: visibleColumns,
-        paddingCount: paddingCount
-      });
-
-      if (columnHistory.length > 100) {
-        console.error("More than 100 tries to fit columns, aborting");
-        break;
-      }
-
-      if (columns.max !== null &&
-        columns.visible + columns.getPaddingCount() >= columns.max) {
-        break;
-      }
-
-      // if we run out of right-columns
-      if (!backwards && columnNumber + columns.visible >= columns.total) {
-        // if we started adding right-columns, try adding left-columns
-        if (!startBackwards && columnNumber > 0) {
-          backwards = true;
-        }
-        else if (columns.min === null || visibleColumns + columns.getPaddingCount() >= columns.min) {
-          break;
-        }
-        else {
-          paddingCount = paddingCount + 1;
-        }
-      }
-
-      // if we run out of left-columns
-      if (backwards && columnNumber == 0) {
-        // if we started adding left-columns, try adding right-columns
-        if (startBackwards && columnNumber + columns.visible < columns.total) {
-          backwards = false;
-        }
-        else if (columns.min === null || visibleColumns + columns.getPaddingCount() >= columns.min) {
-          break;
-        }
-        else {
-          paddingCount = paddingCount + 1;
-        }
-      }
-
-      // when moving backwards try fitting left columns first
-      if (backwards && columnNumber > 0) {
-        columnNumber = columnNumber - 1;
-      }
-
-      if (columnNumber + visibleColumns < columns.total) {
-        visibleColumns = visibleColumns + 1;
-      }
-    }
-
-    var lastRenderableColumn = {
-        columnNumber: columnNumber,
-        visibleColumns: visibleColumns,
-        paddingCount: paddingCount
-    };
-
-    if (columnHistory.length > 0) {
-      lastRenderableColumn = columnHistory[columnHistory.length - 1];
-    }
-
-    columns.setVisibleColumns(
-      lastRenderableColumn.columnNumber,
-      lastRenderableColumn.visibleColumns,
-      lastRenderableColumn.paddingCount);
-
-    if (pagedTable.offsetWidth > 0) {
-      page.setVisiblePages(Math.max(Math.ceil(1.0 * (pagedTable.offsetWidth - 250) / 40), 2));
-    }
-
-    registerWidths();
-  };
-
-  me.fit = function(startBackwards) {
-    me.fitRows();
-    me.fitColumns(startBackwards);
-  }
-
-  me.render = function() {
-    me.fitColumns(false);
-
-    // render header/footer to measure height accurately
-    renderHeader();
-    renderFooter();
-
-    me.fitRows();
-    renderBody();
-
-    // re-render footer to match new rows
-    renderFooter();
-  }
-
-  var resizeLastWidth = -1;
-  var resizeLastHeight = -1;
-  var resizeNewWidth = -1;
-  var resizeNewHeight = -1;
-  var resizePending = false;
-
-  me.resize = function(newWidth, newHeight) {
-
-    function resizeDelayed() {
-      resizePending = false;
-
-      if (
-        (resizeNewWidth !== resizeLastWidth) ||
-        (!me.fixedHeight() && resizeNewHeight !== resizeLastHeight)
-      ) {
-        resizeLastWidth = resizeNewWidth;
-        resizeLastHeight = resizeNewHeight;
-
-        setTimeout(resizeDelayed, 200);
-        resizePending = true;
-      } else {
-        me.render();
-        triggerOnChange();
-
-        resizeLastWidth = -1;
-        resizeLastHeight = -1;
-      }
-    }
-
-    resizeNewWidth = newWidth;
-    resizeNewHeight = newHeight;
-
-    if (!resizePending) resizeDelayed();
-  };
-};
-
-var PagedTableDoc;
-(function (PagedTableDoc) {
-  var allPagedTables = [];
-
-  PagedTableDoc.initAll = function() {
-    allPagedTables = [];
-
-    var pagedTables = [].slice.call(document.querySelectorAll('[data-pagedtable="false"],[data-pagedtable=""]'));
-    pagedTables.forEach(function(pagedTable, idx) {
-      pagedTable.setAttribute("data-pagedtable", "true");
-      pagedTable.setAttribute("pagedtable-page", 0);
-      pagedTable.setAttribute("class", "pagedtable-wrapper");
-
-      var pagedTableInstance = new PagedTable(pagedTable);
-      pagedTableInstance.init();
-
-      allPagedTables.push(pagedTableInstance);
-    });
-  };
-
-  PagedTableDoc.resizeAll = function() {
-    allPagedTables.forEach(function(pagedTable) {
-      pagedTable.render();
-    });
-  };
-
-  window.addEventListener("resize", PagedTableDoc.resizeAll);
-
-  return PagedTableDoc;
-})(PagedTableDoc || (PagedTableDoc = {}));
-
-window.onload = function() {
-  PagedTableDoc.initAll();
-};
-</script>
 <script>
 
 /**
@@ -1478,110 +207,22 @@ window.buildTabsets = function(tocID) {
 };
 
 </script>
-<script>
-window.initializeCodeFolding = function(show) {
-
-  // handlers for show-all and hide all
-  $("#rmd-show-all-code").click(function() {
-    $('div.r-code-collapse').each(function() {
-      $(this).collapse('show');
-    });
-  });
-  $("#rmd-hide-all-code").click(function() {
-    $('div.r-code-collapse').each(function() {
-      $(this).collapse('hide');
-    });
-  });
-
-  // index for unique code element ids
-  var currentIndex = 1;
-
-  // select all R code blocks
-  var rCodeBlocks = $('pre.r, pre.python, pre.bash, pre.sql, pre.cpp, pre.stan, pre.julia, pre.foldable');
-  rCodeBlocks.each(function() {
-    // skip if the block has fold-none class
-    if ($(this).hasClass('fold-none')) return;
-
-    // create a collapsable div to wrap the code in
-    var div = $('<div class="collapse r-code-collapse"></div>');
-    var showThis = (show || $(this).hasClass('fold-show')) && !$(this).hasClass('fold-hide');
-    var id = 'rcode-643E0F36' + currentIndex++;
-    div.attr('id', id);
-    $(this).before(div);
-    $(this).detach().appendTo(div);
-
-    // add a show code button right above
-    var showCodeText = $('<span>' + (showThis ? 'Hide' : 'Show') + '</span>');
-    var showCodeButton = $('<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm code-folding-btn pull-right float-right"></button>');
-    showCodeButton.append(showCodeText);
-    showCodeButton
-        .attr('data-toggle', 'collapse')
-        .attr('data-bs-toggle', 'collapse') // BS5
-        .attr('data-target', '#' + id)
-        .attr('data-bs-target', '#' + id)   // BS5
-        .attr('aria-expanded', showThis)
-        .attr('aria-controls', id);
-
-    var buttonRow = $('<div class="row"></div>');
-    var buttonCol = $('<div class="col-md-12"></div>');
-
-    buttonCol.append(showCodeButton);
-    buttonRow.append(buttonCol);
-
-    div.before(buttonRow);
-
-    // show the div if necessary
-    if (showThis) div.collapse('show');
-
-    // update state of button on show/hide
-    //   * Change text
-    //   * add a class for intermediate states styling
-    div.on('hide.bs.collapse', function () {
-      showCodeText.text('Show');
-      showCodeButton.addClass('btn-collapsing');
-    });
-    div.on('hidden.bs.collapse', function () {
-      showCodeButton.removeClass('btn-collapsing');
-    });
-    div.on('show.bs.collapse', function () {
-      showCodeText.text('Hide');
-      showCodeButton.addClass('btn-expanding');
-    });
-    div.on('shown.bs.collapse', function () {
-      showCodeButton.removeClass('btn-expanding');
-    });
-
-  });
-
-}
-</script>
-<script>
-window.initializeSourceEmbed = function(filename) {
-  $("#rmd-download-source").click(function() {
-    var src = $("#rmd-source-code").html();
-    var a = document.createElement('a');
-    a.href = "data:text/x-r-markdown;base64," + src;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  });
-};
-</script>
 <style type="text/css">.hljs-literal {
-color: rgb(88, 72, 246);
+color: #990073;
 }
 .hljs-number {
-color: rgb(0, 0, 205);
+color: #099;
 }
 .hljs-comment {
-color: rgb(76, 136, 107);
+color: #998;
+font-style: italic;
 }
 .hljs-keyword {
-color: rgb(0, 0, 255);
+color: #900;
+font-weight: bold;
 }
 .hljs-string {
-color: rgb(3, 106, 7);
+color: #d14;
 }
 </style>
 <script src="data:application/javascript;base64,LyohIGhpZ2hsaWdodC5qcyB2OS4xMi4wIHwgQlNEMyBMaWNlbnNlIHwgZ2l0LmlvL2hsanNsaWNlbnNlICovCiFmdW5jdGlvbihlKXt2YXIgbj0ib2JqZWN0Ij09dHlwZW9mIHdpbmRvdyYmd2luZG93fHwib2JqZWN0Ij09dHlwZW9mIHNlbGYmJnNlbGY7InVuZGVmaW5lZCIhPXR5cGVvZiBleHBvcnRzP2UoZXhwb3J0cyk6biYmKG4uaGxqcz1lKHt9KSwiZnVuY3Rpb24iPT10eXBlb2YgZGVmaW5lJiZkZWZpbmUuYW1kJiZkZWZpbmUoW10sZnVuY3Rpb24oKXtyZXR1cm4gbi5obGpzfSkpfShmdW5jdGlvbihlKXtmdW5jdGlvbiBuKGUpe3JldHVybiBlLnJlcGxhY2UoLyYvZywiJmFtcDsiKS5yZXBsYWNlKC88L2csIiZsdDsiKS5yZXBsYWNlKC8+L2csIiZndDsiKX1mdW5jdGlvbiB0KGUpe3JldHVybiBlLm5vZGVOYW1lLnRvTG93ZXJDYXNlKCl9ZnVuY3Rpb24gcihlLG4pe3ZhciB0PWUmJmUuZXhlYyhuKTtyZXR1cm4gdCYmMD09PXQuaW5kZXh9ZnVuY3Rpb24gYShlKXtyZXR1cm4gay50ZXN0KGUpfWZ1bmN0aW9uIGkoZSl7dmFyIG4sdCxyLGksbz1lLmNsYXNzTmFtZSsiICI7aWYobys9ZS5wYXJlbnROb2RlP2UucGFyZW50Tm9kZS5jbGFzc05hbWU6IiIsdD1CLmV4ZWMobykpcmV0dXJuIHcodFsxXSk/dFsxXToibm8taGlnaGxpZ2h0Ijtmb3Iobz1vLnNwbGl0KC9ccysvKSxuPTAscj1vLmxlbmd0aDtyPm47bisrKWlmKGk9b1tuXSxhKGkpfHx3KGkpKXJldHVybiBpfWZ1bmN0aW9uIG8oZSl7dmFyIG4sdD17fSxyPUFycmF5LnByb3RvdHlwZS5zbGljZS5jYWxsKGFyZ3VtZW50cywxKTtmb3IobiBpbiBlKXRbbl09ZVtuXTtyZXR1cm4gci5mb3JFYWNoKGZ1bmN0aW9uKGUpe2ZvcihuIGluIGUpdFtuXT1lW25dfSksdH1mdW5jdGlvbiB1KGUpe3ZhciBuPVtdO3JldHVybiBmdW5jdGlvbiByKGUsYSl7Zm9yKHZhciBpPWUuZmlyc3RDaGlsZDtpO2k9aS5uZXh0U2libGluZykzPT09aS5ub2RlVHlwZT9hKz1pLm5vZGVWYWx1ZS5sZW5ndGg6MT09PWkubm9kZVR5cGUmJihuLnB1c2goe2V2ZW50OiJzdGFydCIsb2Zmc2V0OmEsbm9kZTppfSksYT1yKGksYSksdChpKS5tYXRjaCgvYnJ8aHJ8aW1nfGlucHV0Lyl8fG4ucHVzaCh7ZXZlbnQ6InN0b3AiLG9mZnNldDphLG5vZGU6aX0pKTtyZXR1cm4gYX0oZSwwKSxufWZ1bmN0aW9uIGMoZSxyLGEpe2Z1bmN0aW9uIGkoKXtyZXR1cm4gZS5sZW5ndGgmJnIubGVuZ3RoP2VbMF0ub2Zmc2V0IT09clswXS5vZmZzZXQ/ZVswXS5vZmZzZXQ8clswXS5vZmZzZXQ/ZTpyOiJzdGFydCI9PT1yWzBdLmV2ZW50P2U6cjplLmxlbmd0aD9lOnJ9ZnVuY3Rpb24gbyhlKXtmdW5jdGlvbiByKGUpe3JldHVybiIgIitlLm5vZGVOYW1lKyc9IicrbihlLnZhbHVlKS5yZXBsYWNlKCciJywiJnF1b3Q7IikrJyInfXMrPSI8Iit0KGUpK0UubWFwLmNhbGwoZS5hdHRyaWJ1dGVzLHIpLmpvaW4oIiIpKyI+In1mdW5jdGlvbiB1KGUpe3MrPSI8LyIrdChlKSsiPiJ9ZnVuY3Rpb24gYyhlKXsoInN0YXJ0Ij09PWUuZXZlbnQ/bzp1KShlLm5vZGUpfWZvcih2YXIgbD0wLHM9IiIsZj1bXTtlLmxlbmd0aHx8ci5sZW5ndGg7KXt2YXIgZz1pKCk7aWYocys9bihhLnN1YnN0cmluZyhsLGdbMF0ub2Zmc2V0KSksbD1nWzBdLm9mZnNldCxnPT09ZSl7Zi5yZXZlcnNlKCkuZm9yRWFjaCh1KTtkbyBjKGcuc3BsaWNlKDAsMSlbMF0pLGc9aSgpO3doaWxlKGc9PT1lJiZnLmxlbmd0aCYmZ1swXS5vZmZzZXQ9PT1sKTtmLnJldmVyc2UoKS5mb3JFYWNoKG8pfWVsc2Uic3RhcnQiPT09Z1swXS5ldmVudD9mLnB1c2goZ1swXS5ub2RlKTpmLnBvcCgpLGMoZy5zcGxpY2UoMCwxKVswXSl9cmV0dXJuIHMrbihhLnN1YnN0cihsKSl9ZnVuY3Rpb24gbChlKXtyZXR1cm4gZS52JiYhZS5jYWNoZWRfdmFyaWFudHMmJihlLmNhY2hlZF92YXJpYW50cz1lLnYubWFwKGZ1bmN0aW9uKG4pe3JldHVybiBvKGUse3Y6bnVsbH0sbil9KSksZS5jYWNoZWRfdmFyaWFudHN8fGUuZVcmJltvKGUpXXx8W2VdfWZ1bmN0aW9uIHMoZSl7ZnVuY3Rpb24gbihlKXtyZXR1cm4gZSYmZS5zb3VyY2V8fGV9ZnVuY3Rpb24gdCh0LHIpe3JldHVybiBuZXcgUmVnRXhwKG4odCksIm0iKyhlLmNJPyJpIjoiIikrKHI/ImciOiIiKSl9ZnVuY3Rpb24gcihhLGkpe2lmKCFhLmNvbXBpbGVkKXtpZihhLmNvbXBpbGVkPSEwLGEuaz1hLmt8fGEuYkssYS5rKXt2YXIgbz17fSx1PWZ1bmN0aW9uKG4sdCl7ZS5jSSYmKHQ9dC50b0xvd2VyQ2FzZSgpKSx0LnNwbGl0KCIgIikuZm9yRWFjaChmdW5jdGlvbihlKXt2YXIgdD1lLnNwbGl0KCJ8Iik7b1t0WzBdXT1bbix0WzFdP051bWJlcih0WzFdKToxXX0pfTsic3RyaW5nIj09dHlwZW9mIGEuaz91KCJrZXl3b3JkIixhLmspOngoYS5rKS5mb3JFYWNoKGZ1bmN0aW9uKGUpe3UoZSxhLmtbZV0pfSksYS5rPW99YS5sUj10KGEubHx8L1x3Ky8sITApLGkmJihhLmJLJiYoYS5iPSJcXGIoIithLmJLLnNwbGl0KCIgIikuam9pbigifCIpKyIpXFxiIiksYS5ifHwoYS5iPS9cQnxcYi8pLGEuYlI9dChhLmIpLGEuZXx8YS5lV3x8KGEuZT0vXEJ8XGIvKSxhLmUmJihhLmVSPXQoYS5lKSksYS50RT1uKGEuZSl8fCIiLGEuZVcmJmkudEUmJihhLnRFKz0oYS5lPyJ8IjoiIikraS50RSkpLGEuaSYmKGEuaVI9dChhLmkpKSxudWxsPT1hLnImJihhLnI9MSksYS5jfHwoYS5jPVtdKSxhLmM9QXJyYXkucHJvdG90eXBlLmNvbmNhdC5hcHBseShbXSxhLmMubWFwKGZ1bmN0aW9uKGUpe3JldHVybiBsKCJzZWxmIj09PWU/YTplKX0pKSxhLmMuZm9yRWFjaChmdW5jdGlvbihlKXtyKGUsYSl9KSxhLnN0YXJ0cyYmcihhLnN0YXJ0cyxpKTt2YXIgYz1hLmMubWFwKGZ1bmN0aW9uKGUpe3JldHVybiBlLmJLPyJcXC4/KCIrZS5iKyIpXFwuPyI6ZS5ifSkuY29uY2F0KFthLnRFLGEuaV0pLm1hcChuKS5maWx0ZXIoQm9vbGVhbik7YS50PWMubGVuZ3RoP3QoYy5qb2luKCJ8IiksITApOntleGVjOmZ1bmN0aW9uKCl7cmV0dXJuIG51bGx9fX19cihlKX1mdW5jdGlvbiBmKGUsdCxhLGkpe2Z1bmN0aW9uIG8oZSxuKXt2YXIgdCxhO2Zvcih0PTAsYT1uLmMubGVuZ3RoO2E+dDt0KyspaWYocihuLmNbdF0uYlIsZSkpcmV0dXJuIG4uY1t0XX1mdW5jdGlvbiB1KGUsbil7aWYocihlLmVSLG4pKXtmb3IoO2UuZW5kc1BhcmVudCYmZS5wYXJlbnQ7KWU9ZS5wYXJlbnQ7cmV0dXJuIGV9cmV0dXJuIGUuZVc/dShlLnBhcmVudCxuKTp2b2lkIDB9ZnVuY3Rpb24gYyhlLG4pe3JldHVybiFhJiZyKG4uaVIsZSl9ZnVuY3Rpb24gbChlLG4pe3ZhciB0PU4uY0k/blswXS50b0xvd2VyQ2FzZSgpOm5bMF07cmV0dXJuIGUuay5oYXNPd25Qcm9wZXJ0eSh0KSYmZS5rW3RdfWZ1bmN0aW9uIHAoZSxuLHQscil7dmFyIGE9cj8iIjpJLmNsYXNzUHJlZml4LGk9JzxzcGFuIGNsYXNzPSInK2Esbz10PyIiOkM7cmV0dXJuIGkrPWUrJyI+JyxpK24rb31mdW5jdGlvbiBoKCl7dmFyIGUsdCxyLGE7aWYoIUUuaylyZXR1cm4gbihrKTtmb3IoYT0iIix0PTAsRS5sUi5sYXN0SW5kZXg9MCxyPUUubFIuZXhlYyhrKTtyOylhKz1uKGsuc3Vic3RyaW5nKHQsci5pbmRleCkpLGU9bChFLHIpLGU/KEIrPWVbMV0sYSs9cChlWzBdLG4oclswXSkpKTphKz1uKHJbMF0pLHQ9RS5sUi5sYXN0SW5kZXgscj1FLmxSLmV4ZWMoayk7cmV0dXJuIGErbihrLnN1YnN0cih0KSl9ZnVuY3Rpb24gZCgpe3ZhciBlPSJzdHJpbmciPT10eXBlb2YgRS5zTDtpZihlJiYheVtFLnNMXSlyZXR1cm4gbihrKTt2YXIgdD1lP2YoRS5zTCxrLCEwLHhbRS5zTF0pOmcoayxFLnNMLmxlbmd0aD9FLnNMOnZvaWQgMCk7cmV0dXJuIEUucj4wJiYoQis9dC5yKSxlJiYoeFtFLnNMXT10LnRvcCkscCh0Lmxhbmd1YWdlLHQudmFsdWUsITEsITApfWZ1bmN0aW9uIGIoKXtMKz1udWxsIT1FLnNMP2QoKTpoKCksaz0iIn1mdW5jdGlvbiB2KGUpe0wrPWUuY04/cChlLmNOLCIiLCEwKToiIixFPU9iamVjdC5jcmVhdGUoZSx7cGFyZW50Ont2YWx1ZTpFfX0pfWZ1bmN0aW9uIG0oZSxuKXtpZihrKz1lLG51bGw9PW4pcmV0dXJuIGIoKSwwO3ZhciB0PW8obixFKTtpZih0KXJldHVybiB0LnNraXA/ays9bjoodC5lQiYmKGsrPW4pLGIoKSx0LnJCfHx0LmVCfHwoaz1uKSksdih0LG4pLHQuckI/MDpuLmxlbmd0aDt2YXIgcj11KEUsbik7aWYocil7dmFyIGE9RTthLnNraXA/ays9bjooYS5yRXx8YS5lRXx8KGsrPW4pLGIoKSxhLmVFJiYoaz1uKSk7ZG8gRS5jTiYmKEwrPUMpLEUuc2tpcHx8KEIrPUUuciksRT1FLnBhcmVudDt3aGlsZShFIT09ci5wYXJlbnQpO3JldHVybiByLnN0YXJ0cyYmdihyLnN0YXJ0cywiIiksYS5yRT8wOm4ubGVuZ3RofWlmKGMobixFKSl0aHJvdyBuZXcgRXJyb3IoJ0lsbGVnYWwgbGV4ZW1lICInK24rJyIgZm9yIG1vZGUgIicrKEUuY058fCI8dW5uYW1lZD4iKSsnIicpO3JldHVybiBrKz1uLG4ubGVuZ3RofHwxfXZhciBOPXcoZSk7aWYoIU4pdGhyb3cgbmV3IEVycm9yKCdVbmtub3duIGxhbmd1YWdlOiAiJytlKyciJyk7cyhOKTt2YXIgUixFPWl8fE4seD17fSxMPSIiO2ZvcihSPUU7UiE9PU47Uj1SLnBhcmVudClSLmNOJiYoTD1wKFIuY04sIiIsITApK0wpO3ZhciBrPSIiLEI9MDt0cnl7Zm9yKHZhciBNLGosTz0wOzspe2lmKEUudC5sYXN0SW5kZXg9TyxNPUUudC5leGVjKHQpLCFNKWJyZWFrO2o9bSh0LnN1YnN0cmluZyhPLE0uaW5kZXgpLE1bMF0pLE89TS5pbmRleCtqfWZvcihtKHQuc3Vic3RyKE8pKSxSPUU7Ui5wYXJlbnQ7Uj1SLnBhcmVudClSLmNOJiYoTCs9Qyk7cmV0dXJue3I6Qix2YWx1ZTpMLGxhbmd1YWdlOmUsdG9wOkV9fWNhdGNoKFQpe2lmKFQubWVzc2FnZSYmLTEhPT1ULm1lc3NhZ2UuaW5kZXhPZigiSWxsZWdhbCIpKXJldHVybntyOjAsdmFsdWU6bih0KX07dGhyb3cgVH19ZnVuY3Rpb24gZyhlLHQpe3Q9dHx8SS5sYW5ndWFnZXN8fHgoeSk7dmFyIHI9e3I6MCx2YWx1ZTpuKGUpfSxhPXI7cmV0dXJuIHQuZmlsdGVyKHcpLmZvckVhY2goZnVuY3Rpb24obil7dmFyIHQ9ZihuLGUsITEpO3QubGFuZ3VhZ2U9bix0LnI+YS5yJiYoYT10KSx0LnI+ci5yJiYoYT1yLHI9dCl9KSxhLmxhbmd1YWdlJiYoci5zZWNvbmRfYmVzdD1hKSxyfWZ1bmN0aW9uIHAoZSl7cmV0dXJuIEkudGFiUmVwbGFjZXx8SS51c2VCUj9lLnJlcGxhY2UoTSxmdW5jdGlvbihlLG4pe3JldHVybiBJLnVzZUJSJiYiXG4iPT09ZT8iPGJyPiI6SS50YWJSZXBsYWNlP24ucmVwbGFjZSgvXHQvZyxJLnRhYlJlcGxhY2UpOiIifSk6ZX1mdW5jdGlvbiBoKGUsbix0KXt2YXIgcj1uP0xbbl06dCxhPVtlLnRyaW0oKV07cmV0dXJuIGUubWF0Y2goL1xiaGxqc1xiLyl8fGEucHVzaCgiaGxqcyIpLC0xPT09ZS5pbmRleE9mKHIpJiZhLnB1c2gociksYS5qb2luKCIgIikudHJpbSgpfWZ1bmN0aW9uIGQoZSl7dmFyIG4sdCxyLG8sbCxzPWkoZSk7YShzKXx8KEkudXNlQlI/KG49ZG9jdW1lbnQuY3JlYXRlRWxlbWVudE5TKCJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hodG1sIiwiZGl2Iiksbi5pbm5lckhUTUw9ZS5pbm5lckhUTUwucmVwbGFjZSgvXG4vZywiIikucmVwbGFjZSgvPGJyWyBcL10qPi9nLCJcbiIpKTpuPWUsbD1uLnRleHRDb250ZW50LHI9cz9mKHMsbCwhMCk6ZyhsKSx0PXUobiksdC5sZW5ndGgmJihvPWRvY3VtZW50LmNyZWF0ZUVsZW1lbnROUygiaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCIsImRpdiIpLG8uaW5uZXJIVE1MPXIudmFsdWUsci52YWx1ZT1jKHQsdShvKSxsKSksci52YWx1ZT1wKHIudmFsdWUpLGUuaW5uZXJIVE1MPXIudmFsdWUsZS5jbGFzc05hbWU9aChlLmNsYXNzTmFtZSxzLHIubGFuZ3VhZ2UpLGUucmVzdWx0PXtsYW5ndWFnZTpyLmxhbmd1YWdlLHJlOnIucn0sci5zZWNvbmRfYmVzdCYmKGUuc2Vjb25kX2Jlc3Q9e2xhbmd1YWdlOnIuc2Vjb25kX2Jlc3QubGFuZ3VhZ2UscmU6ci5zZWNvbmRfYmVzdC5yfSkpfWZ1bmN0aW9uIGIoZSl7ST1vKEksZSl9ZnVuY3Rpb24gdigpe2lmKCF2LmNhbGxlZCl7di5jYWxsZWQ9ITA7dmFyIGU9ZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgicHJlIGNvZGUiKTtFLmZvckVhY2guY2FsbChlLGQpfX1mdW5jdGlvbiBtKCl7YWRkRXZlbnRMaXN0ZW5lcigiRE9NQ29udGVudExvYWRlZCIsdiwhMSksYWRkRXZlbnRMaXN0ZW5lcigibG9hZCIsdiwhMSl9ZnVuY3Rpb24gTihuLHQpe3ZhciByPXlbbl09dChlKTtyLmFsaWFzZXMmJnIuYWxpYXNlcy5mb3JFYWNoKGZ1bmN0aW9uKGUpe0xbZV09bn0pfWZ1bmN0aW9uIFIoKXtyZXR1cm4geCh5KX1mdW5jdGlvbiB3KGUpe3JldHVybiBlPShlfHwiIikudG9Mb3dlckNhc2UoKSx5W2VdfHx5W0xbZV1dfXZhciBFPVtdLHg9T2JqZWN0LmtleXMseT17fSxMPXt9LGs9L14obm8tP2hpZ2hsaWdodHxwbGFpbnx0ZXh0KSQvaSxCPS9cYmxhbmcoPzp1YWdlKT8tKFtcdy1dKylcYi9pLE09LygoXig8W14+XSs+fFx0fCkrfCg/OlxuKSkpL2dtLEM9Ijwvc3Bhbj4iLEk9e2NsYXNzUHJlZml4OiJobGpzLSIsdGFiUmVwbGFjZTpudWxsLHVzZUJSOiExLGxhbmd1YWdlczp2b2lkIDB9O3JldHVybiBlLmhpZ2hsaWdodD1mLGUuaGlnaGxpZ2h0QXV0bz1nLGUuZml4TWFya3VwPXAsZS5oaWdobGlnaHRCbG9jaz1kLGUuY29uZmlndXJlPWIsZS5pbml0SGlnaGxpZ2h0aW5nPXYsZS5pbml0SGlnaGxpZ2h0aW5nT25Mb2FkPW0sZS5yZWdpc3Rlckxhbmd1YWdlPU4sZS5saXN0TGFuZ3VhZ2VzPVIsZS5nZXRMYW5ndWFnZT13LGUuaW5oZXJpdD1vLGUuSVI9IlthLXpBLVpdXFx3KiIsZS5VSVI9IlthLXpBLVpfXVxcdyoiLGUuTlI9IlxcYlxcZCsoXFwuXFxkKyk/IixlLkNOUj0iKC0/KShcXGIwW3hYXVthLWZBLUYwLTldK3woXFxiXFxkKyhcXC5cXGQqKT98XFwuXFxkKykoW2VFXVstK10/XFxkKyk/KSIsZS5CTlI9IlxcYigwYlswMV0rKSIsZS5SU1I9IiF8IT18IT09fCV8JT18JnwmJnwmPXxcXCp8XFwqPXxcXCt8XFwrPXwsfC18LT18Lz18L3w6fDt8PDx8PDw9fDw9fDx8PT09fD09fD18Pj4+PXw+Pj18Pj18Pj4+fD4+fD58XFw/fFxcW3xcXHt8XFwofFxcXnxcXF49fFxcfHxcXHw9fFxcfFxcfHx+IixlLkJFPXtiOiJcXFxcW1xcc1xcU10iLHI6MH0sZS5BU009e2NOOiJzdHJpbmciLGI6IiciLGU6IiciLGk6IlxcbiIsYzpbZS5CRV19LGUuUVNNPXtjTjoic3RyaW5nIixiOiciJyxlOiciJyxpOiJcXG4iLGM6W2UuQkVdfSxlLlBXTT17YjovXGIoYXxhbnx0aGV8YXJlfEknbXxpc24ndHxkb24ndHxkb2Vzbid0fHdvbid0fGJ1dHxqdXN0fHNob3VsZHxwcmV0dHl8c2ltcGx5fGVub3VnaHxnb25uYXxnb2luZ3x3dGZ8c298c3VjaHx3aWxsfHlvdXx5b3VyfHRoZXl8bGlrZXxtb3JlKVxiL30sZS5DPWZ1bmN0aW9uKG4sdCxyKXt2YXIgYT1lLmluaGVyaXQoe2NOOiJjb21tZW50IixiOm4sZTp0LGM6W119LHJ8fHt9KTtyZXR1cm4gYS5jLnB1c2goZS5QV00pLGEuYy5wdXNoKHtjTjoiZG9jdGFnIixiOiIoPzpUT0RPfEZJWE1FfE5PVEV8QlVHfFhYWCk6IixyOjB9KSxhfSxlLkNMQ009ZS5DKCIvLyIsIiQiKSxlLkNCQ009ZS5DKCIvXFwqIiwiXFwqLyIpLGUuSENNPWUuQygiIyIsIiQiKSxlLk5NPXtjTjoibnVtYmVyIixiOmUuTlIscjowfSxlLkNOTT17Y046Im51bWJlciIsYjplLkNOUixyOjB9LGUuQk5NPXtjTjoibnVtYmVyIixiOmUuQk5SLHI6MH0sZS5DU1NOTT17Y046Im51bWJlciIsYjplLk5SKyIoJXxlbXxleHxjaHxyZW18dnd8dmh8dm1pbnx2bWF4fGNtfG1tfGlufHB0fHBjfHB4fGRlZ3xncmFkfHJhZHx0dXJufHN8bXN8SHp8a0h6fGRwaXxkcGNtfGRwcHgpPyIscjowfSxlLlJNPXtjTjoicmVnZXhwIixiOi9cLy8sZTovXC9bZ2ltdXldKi8saTovXG4vLGM6W2UuQkUse2I6L1xbLyxlOi9cXS8scjowLGM6W2UuQkVdfV19LGUuVE09e2NOOiJ0aXRsZSIsYjplLklSLHI6MH0sZS5VVE09e2NOOiJ0aXRsZSIsYjplLlVJUixyOjB9LGUuTUVUSE9EX0dVQVJEPXtiOiJcXC5cXHMqIitlLlVJUixyOjB9LGV9KTtobGpzLnJlZ2lzdGVyTGFuZ3VhZ2UoInNxbCIsZnVuY3Rpb24oZSl7dmFyIHQ9ZS5DKCItLSIsIiQiKTtyZXR1cm57Y0k6ITAsaTovWzw+e30qI10vLGM6W3tiSzoiYmVnaW4gZW5kIHN0YXJ0IGNvbW1pdCByb2xsYmFjayBzYXZlcG9pbnQgbG9jayBhbHRlciBjcmVhdGUgZHJvcCByZW5hbWUgY2FsbCBkZWxldGUgZG8gaGFuZGxlciBpbnNlcnQgbG9hZCByZXBsYWNlIHNlbGVjdCB0cnVuY2F0ZSB1cGRhdGUgc2V0IHNob3cgcHJhZ21hIGdyYW50IG1lcmdlIGRlc2NyaWJlIHVzZSBleHBsYWluIGhlbHAgZGVjbGFyZSBwcmVwYXJlIGV4ZWN1dGUgZGVhbGxvY2F0ZSByZWxlYXNlIHVubG9jayBwdXJnZSByZXNldCBjaGFuZ2Ugc3RvcCBhbmFseXplIGNhY2hlIGZsdXNoIG9wdGltaXplIHJlcGFpciBraWxsIGluc3RhbGwgdW5pbnN0YWxsIGNoZWNrc3VtIHJlc3RvcmUgY2hlY2sgYmFja3VwIHJldm9rZSBjb21tZW50IixlOi87LyxlVzohMCxsOi9bXHdcLl0rLyxrOntrZXl3b3JkOiJhYm9ydCBhYnMgYWJzb2x1dGUgYWNjIGFjY2UgYWNjZXAgYWNjZXB0IGFjY2VzcyBhY2Nlc3NlZCBhY2Nlc3NpYmxlIGFjY291bnQgYWNvcyBhY3Rpb24gYWN0aXZhdGUgYWRkIGFkZHRpbWUgYWRtaW4gYWRtaW5pc3RlciBhZHZhbmNlZCBhZHZpc2UgYWVzX2RlY3J5cHQgYWVzX2VuY3J5cHQgYWZ0ZXIgYWdlbnQgYWdncmVnYXRlIGFsaSBhbGlhIGFsaWFzIGFsbG9jYXRlIGFsbG93IGFsdGVyIGFsd2F5cyBhbmFseXplIGFuY2lsbGFyeSBhbmQgYW55IGFueWRhdGEgYW55ZGF0YXNldCBhbnlzY2hlbWEgYW55dHlwZSBhcHBseSBhcmNoaXZlIGFyY2hpdmVkIGFyY2hpdmVsb2cgYXJlIGFzIGFzYyBhc2NpaSBhc2luIGFzc2VtYmx5IGFzc2VydGlvbiBhc3NvY2lhdGUgYXN5bmNocm9ub3VzIGF0IGF0YW4gYXRuMiBhdHRyIGF0dHJpIGF0dHJpYiBhdHRyaWJ1IGF0dHJpYnV0IGF0dHJpYnV0ZSBhdHRyaWJ1dGVzIGF1ZGl0IGF1dGhlbnRpY2F0ZWQgYXV0aGVudGljYXRpb24gYXV0aGlkIGF1dGhvcnMgYXV0byBhdXRvYWxsb2NhdGUgYXV0b2RibGluayBhdXRvZXh0ZW5kIGF1dG9tYXRpYyBhdmFpbGFiaWxpdHkgYXZnIGJhY2t1cCBiYWRmaWxlIGJhc2ljZmlsZSBiZWZvcmUgYmVnaW4gYmVnaW5uaW5nIGJlbmNobWFyayBiZXR3ZWVuIGJmaWxlIGJmaWxlX2Jhc2UgYmlnIGJpZ2ZpbGUgYmluIGJpbmFyeV9kb3VibGUgYmluYXJ5X2Zsb2F0IGJpbmxvZyBiaXRfYW5kIGJpdF9jb3VudCBiaXRfbGVuZ3RoIGJpdF9vciBiaXRfeG9yIGJpdG1hcCBibG9iX2Jhc2UgYmxvY2sgYmxvY2tzaXplIGJvZHkgYm90aCBib3VuZCBidWZmZXJfY2FjaGUgYnVmZmVyX3Bvb2wgYnVpbGQgYnVsayBieSBieXRlIGJ5dGVvcmRlcm1hcmsgYnl0ZXMgY2FjaGUgY2FjaGluZyBjYWxsIGNhbGxpbmcgY2FuY2VsIGNhcGFjaXR5IGNhc2NhZGUgY2FzY2FkZWQgY2FzZSBjYXN0IGNhdGFsb2cgY2F0ZWdvcnkgY2VpbCBjZWlsaW5nIGNoYWluIGNoYW5nZSBjaGFuZ2VkIGNoYXJfYmFzZSBjaGFyX2xlbmd0aCBjaGFyYWN0ZXJfbGVuZ3RoIGNoYXJhY3RlcnMgY2hhcmFjdGVyc2V0IGNoYXJpbmRleCBjaGFyc2V0IGNoYXJzZXRmb3JtIGNoYXJzZXRpZCBjaGVjayBjaGVja3N1bSBjaGVja3N1bV9hZ2cgY2hpbGQgY2hvb3NlIGNociBjaHVuayBjbGFzcyBjbGVhbnVwIGNsZWFyIGNsaWVudCBjbG9iIGNsb2JfYmFzZSBjbG9uZSBjbG9zZSBjbHVzdGVyX2lkIGNsdXN0ZXJfcHJvYmFiaWxpdHkgY2x1c3Rlcl9zZXQgY2x1c3RlcmluZyBjb2FsZXNjZSBjb2VyY2liaWxpdHkgY29sIGNvbGxhdGUgY29sbGF0aW9uIGNvbGxlY3QgY29sdSBjb2x1bSBjb2x1bW4gY29sdW1uX3ZhbHVlIGNvbHVtbnMgY29sdW1uc191cGRhdGVkIGNvbW1lbnQgY29tbWl0IGNvbXBhY3QgY29tcGF0aWJpbGl0eSBjb21waWxlZCBjb21wbGV0ZSBjb21wb3NpdGVfbGltaXQgY29tcG91bmQgY29tcHJlc3MgY29tcHV0ZSBjb25jYXQgY29uY2F0X3dzIGNvbmN1cnJlbnQgY29uZmlybSBjb25uIGNvbm5lYyBjb25uZWN0IGNvbm5lY3RfYnlfaXNjeWNsZSBjb25uZWN0X2J5X2lzbGVhZiBjb25uZWN0X2J5X3Jvb3QgY29ubmVjdF90aW1lIGNvbm5lY3Rpb24gY29uc2lkZXIgY29uc2lzdGVudCBjb25zdGFudCBjb25zdHJhaW50IGNvbnN0cmFpbnRzIGNvbnN0cnVjdG9yIGNvbnRhaW5lciBjb250ZW50IGNvbnRlbnRzIGNvbnRleHQgY29udHJpYnV0b3JzIGNvbnRyb2xmaWxlIGNvbnYgY29udmVydCBjb252ZXJ0X3R6IGNvcnIgY29ycl9rIGNvcnJfcyBjb3JyZXNwb25kaW5nIGNvcnJ1cHRpb24gY29zIGNvc3QgY291bnQgY291bnRfYmlnIGNvdW50ZWQgY292YXJfcG9wIGNvdmFyX3NhbXAgY3B1X3Blcl9jYWxsIGNwdV9wZXJfc2Vzc2lvbiBjcmMzMiBjcmVhdGUgY3JlYXRpb24gY3JpdGljYWwgY3Jvc3MgY3ViZSBjdW1lX2Rpc3QgY3VyZGF0ZSBjdXJyZW50IGN1cnJlbnRfZGF0ZSBjdXJyZW50X3RpbWUgY3VycmVudF90aW1lc3RhbXAgY3VycmVudF91c2VyIGN1cnNvciBjdXJ0aW1lIGN1c3RvbWRhdHVtIGN5Y2xlIGRhdGEgZGF0YWJhc2UgZGF0YWJhc2VzIGRhdGFmaWxlIGRhdGFmaWxlcyBkYXRhbGVuZ3RoIGRhdGVfYWRkIGRhdGVfY2FjaGUgZGF0ZV9mb3JtYXQgZGF0ZV9zdWIgZGF0ZWFkZCBkYXRlZGlmZiBkYXRlZnJvbXBhcnRzIGRhdGVuYW1lIGRhdGVwYXJ0IGRhdGV0aW1lMmZyb21wYXJ0cyBkYXkgZGF5X3RvX3NlY29uZCBkYXluYW1lIGRheW9mbW9udGggZGF5b2Z3ZWVrIGRheW9meWVhciBkYXlzIGRiX3JvbGVfY2hhbmdlIGRidGltZXpvbmUgZGRsIGRlYWxsb2NhdGUgZGVjbGFyZSBkZWNvZGUgZGVjb21wb3NlIGRlY3JlbWVudCBkZWNyeXB0IGRlZHVwbGljYXRlIGRlZiBkZWZhIGRlZmF1IGRlZmF1bCBkZWZhdWx0IGRlZmF1bHRzIGRlZmVycmVkIGRlZmkgZGVmaW4gZGVmaW5lIGRlZ3JlZXMgZGVsYXllZCBkZWxlZ2F0ZSBkZWxldGUgZGVsZXRlX2FsbCBkZWxpbWl0ZWQgZGVtYW5kIGRlbnNlX3JhbmsgZGVwdGggZGVxdWV1ZSBkZXNfZGVjcnlwdCBkZXNfZW5jcnlwdCBkZXNfa2V5X2ZpbGUgZGVzYyBkZXNjciBkZXNjcmkgZGVzY3JpYiBkZXNjcmliZSBkZXNjcmlwdG9yIGRldGVybWluaXN0aWMgZGlhZ25vc3RpY3MgZGlmZmVyZW5jZSBkaW1lbnNpb24gZGlyZWN0X2xvYWQgZGlyZWN0b3J5IGRpc2FibGUgZGlzYWJsZV9hbGwgZGlzYWxsb3cgZGlzYXNzb2NpYXRlIGRpc2NhcmRmaWxlIGRpc2Nvbm5lY3QgZGlza2dyb3VwIGRpc3RpbmN0IGRpc3RpbmN0cm93IGRpc3RyaWJ1dGUgZGlzdHJpYnV0ZWQgZGl2IGRvIGRvY3VtZW50IGRvbWFpbiBkb3RuZXQgZG91YmxlIGRvd25ncmFkZSBkcm9wIGR1bXBmaWxlIGR1cGxpY2F0ZSBkdXJhdGlvbiBlYWNoIGVkaXRpb24gZWRpdGlvbmFibGUgZWRpdGlvbnMgZWxlbWVudCBlbGxpcHNpcyBlbHNlIGVsc2lmIGVsdCBlbXB0eSBlbmFibGUgZW5hYmxlX2FsbCBlbmNsb3NlZCBlbmNvZGUgZW5jb2RpbmcgZW5jcnlwdCBlbmQgZW5kLWV4ZWMgZW5kaWFuIGVuZm9yY2VkIGVuZ2luZSBlbmdpbmVzIGVucXVldWUgZW50ZXJwcmlzZSBlbnRpdHllc2NhcGluZyBlb21vbnRoIGVycm9yIGVycm9ycyBlc2NhcGVkIGV2YWxuYW1lIGV2YWx1YXRlIGV2ZW50IGV2ZW50ZGF0YSBldmVudHMgZXhjZXB0IGV4Y2VwdGlvbiBleGNlcHRpb25zIGV4Y2hhbmdlIGV4Y2x1ZGUgZXhjbHVkaW5nIGV4ZWN1IGV4ZWN1dCBleGVjdXRlIGV4ZW1wdCBleGlzdHMgZXhpdCBleHAgZXhwaXJlIGV4cGxhaW4gZXhwb3J0IGV4cG9ydF9zZXQgZXh0ZW5kZWQgZXh0ZW50IGV4dGVybmFsIGV4dGVybmFsXzEgZXh0ZXJuYWxfMiBleHRlcm5hbGx5IGV4dHJhY3QgZmFpbGVkIGZhaWxlZF9sb2dpbl9hdHRlbXB0cyBmYWlsb3ZlciBmYWlsdXJlIGZhciBmYXN0IGZlYXR1cmVfc2V0IGZlYXR1cmVfdmFsdWUgZmV0Y2ggZmllbGQgZmllbGRzIGZpbGUgZmlsZV9uYW1lX2NvbnZlcnQgZmlsZXN5c3RlbV9saWtlX2xvZ2dpbmcgZmluYWwgZmluaXNoIGZpcnN0IGZpcnN0X3ZhbHVlIGZpeGVkIGZsYXNoX2NhY2hlIGZsYXNoYmFjayBmbG9vciBmbHVzaCBmb2xsb3dpbmcgZm9sbG93cyBmb3IgZm9yYWxsIGZvcmNlIGZvcm0gZm9ybWEgZm9ybWF0IGZvdW5kIGZvdW5kX3Jvd3MgZnJlZWxpc3QgZnJlZWxpc3RzIGZyZWVwb29scyBmcmVzaCBmcm9tIGZyb21fYmFzZTY0IGZyb21fZGF5cyBmdHAgZnVsbCBmdW5jdGlvbiBnZW5lcmFsIGdlbmVyYXRlZCBnZXQgZ2V0X2Zvcm1hdCBnZXRfbG9jayBnZXRkYXRlIGdldHV0Y2RhdGUgZ2xvYmFsIGdsb2JhbF9uYW1lIGdsb2JhbGx5IGdvIGdvdG8gZ3JhbnQgZ3JhbnRzIGdyZWF0ZXN0IGdyb3VwIGdyb3VwX2NvbmNhdCBncm91cF9pZCBncm91cGluZyBncm91cGluZ19pZCBncm91cHMgZ3RpZF9zdWJ0cmFjdCBndWFyYW50ZWUgZ3VhcmQgaGFuZGxlciBoYXNoIGhhc2hrZXlzIGhhdmluZyBoZWEgaGVhZCBoZWFkaSBoZWFkaW4gaGVhZGluZyBoZWFwIGhlbHAgaGV4IGhpZXJhcmNoeSBoaWdoIGhpZ2hfcHJpb3JpdHkgaG9zdHMgaG91ciBodHRwIGlkIGlkZW50X2N1cnJlbnQgaWRlbnRfaW5jciBpZGVudF9zZWVkIGlkZW50aWZpZWQgaWRlbnRpdHkgaWRsZV90aW1lIGlmIGlmbnVsbCBpZ25vcmUgaWlmIGlsaWtlIGlsbSBpbW1lZGlhdGUgaW1wb3J0IGluIGluY2x1ZGUgaW5jbHVkaW5nIGluY3JlbWVudCBpbmRleCBpbmRleGVzIGluZGV4aW5nIGluZGV4dHlwZSBpbmRpY2F0b3IgaW5kaWNlcyBpbmV0Nl9hdG9uIGluZXQ2X250b2EgaW5ldF9hdG9uIGluZXRfbnRvYSBpbmZpbGUgaW5pdGlhbCBpbml0aWFsaXplZCBpbml0aWFsbHkgaW5pdHJhbnMgaW5tZW1vcnkgaW5uZXIgaW5ub2RiIGlucHV0IGluc2VydCBpbnN0YWxsIGluc3RhbmNlIGluc3RhbnRpYWJsZSBpbnN0ciBpbnRlcmZhY2UgaW50ZXJsZWF2ZWQgaW50ZXJzZWN0IGludG8gaW52YWxpZGF0ZSBpbnZpc2libGUgaXMgaXNfZnJlZV9sb2NrIGlzX2lwdjQgaXNfaXB2NF9jb21wYXQgaXNfbm90IGlzX25vdF9udWxsIGlzX3VzZWRfbG9jayBpc2RhdGUgaXNudWxsIGlzb2xhdGlvbiBpdGVyYXRlIGphdmEgam9pbiBqc29uIGpzb25fZXhpc3RzIGtlZXAga2VlcF9kdXBsaWNhdGVzIGtleSBrZXlzIGtpbGwgbGFuZ3VhZ2UgbGFyZ2UgbGFzdCBsYXN0X2RheSBsYXN0X2luc2VydF9pZCBsYXN0X3ZhbHVlIGxheCBsY2FzZSBsZWFkIGxlYWRpbmcgbGVhc3QgbGVhdmVzIGxlZnQgbGVuIGxlbmdodCBsZW5ndGggbGVzcyBsZXZlbCBsZXZlbHMgbGlicmFyeSBsaWtlIGxpa2UyIGxpa2U0IGxpa2VjIGxpbWl0IGxpbmVzIGxpbmsgbGlzdCBsaXN0YWdnIGxpdHRsZSBsbiBsb2FkIGxvYWRfZmlsZSBsb2IgbG9icyBsb2NhbCBsb2NhbHRpbWUgbG9jYWx0aW1lc3RhbXAgbG9jYXRlIGxvY2F0b3IgbG9jayBsb2NrZWQgbG9nIGxvZzEwIGxvZzIgbG9nZmlsZSBsb2dmaWxlcyBsb2dnaW5nIGxvZ2ljYWwgbG9naWNhbF9yZWFkc19wZXJfY2FsbCBsb2dvZmYgbG9nb24gbG9ncyBsb25nIGxvb3AgbG93IGxvd19wcmlvcml0eSBsb3dlciBscGFkIGxydHJpbSBsdHJpbSBtYWluIG1ha2Vfc2V0IG1ha2VkYXRlIG1ha2V0aW1lIG1hbmFnZWQgbWFuYWdlbWVudCBtYW51YWwgbWFwIG1hcHBpbmcgbWFzayBtYXN0ZXIgbWFzdGVyX3Bvc193YWl0IG1hdGNoIG1hdGNoZWQgbWF0ZXJpYWxpemVkIG1heCBtYXhleHRlbnRzIG1heGltaXplIG1heGluc3RhbmNlcyBtYXhsZW4gbWF4bG9nZmlsZXMgbWF4bG9naGlzdG9yeSBtYXhsb2dtZW1iZXJzIG1heHNpemUgbWF4dHJhbnMgbWQ1IG1lYXN1cmVzIG1lZGlhbiBtZWRpdW0gbWVtYmVyIG1lbWNvbXByZXNzIG1lbW9yeSBtZXJnZSBtaWNyb3NlY29uZCBtaWQgbWlncmF0aW9uIG1pbiBtaW5leHRlbnRzIG1pbmltdW0gbWluaW5nIG1pbnVzIG1pbnV0ZSBtaW52YWx1ZSBtaXNzaW5nIG1vZCBtb2RlIG1vZGVsIG1vZGlmaWNhdGlvbiBtb2RpZnkgbW9kdWxlIG1vbml0b3JpbmcgbW9udGggbW9udGhzIG1vdW50IG1vdmUgbW92ZW1lbnQgbXVsdGlzZXQgbXV0ZXggbmFtZSBuYW1lX2NvbnN0IG5hbWVzIG5hbiBuYXRpb25hbCBuYXRpdmUgbmF0dXJhbCBuYXYgbmNoYXIgbmNsb2IgbmVzdGVkIG5ldmVyIG5ldyBuZXdsaW5lIG5leHQgbmV4dHZhbCBubyBub193cml0ZV90b19iaW5sb2cgbm9hcmNoaXZlbG9nIG5vYXVkaXQgbm9iYWRmaWxlIG5vY2hlY2sgbm9jb21wcmVzcyBub2NvcHkgbm9jeWNsZSBub2RlbGF5IG5vZGlzY2FyZGZpbGUgbm9lbnRpdHllc2NhcGluZyBub2d1YXJhbnRlZSBub2tlZXAgbm9sb2dmaWxlIG5vbWFwcGluZyBub21heHZhbHVlIG5vbWluaW1pemUgbm9taW52YWx1ZSBub21vbml0b3Jpbmcgbm9uZSBub25lZGl0aW9uYWJsZSBub25zY2hlbWEgbm9vcmRlciBub3ByIG5vcHJvIG5vcHJvbSBub3Byb21wIG5vcHJvbXB0IG5vcmVseSBub3Jlc2V0bG9ncyBub3JldmVyc2Ugbm9ybWFsIG5vcm93ZGVwZW5kZW5jaWVzIG5vc2NoZW1hY2hlY2sgbm9zd2l0Y2ggbm90IG5vdGhpbmcgbm90aWNlIG5vdHJpbSBub3ZhbGlkYXRlIG5vdyBub3dhaXQgbnRoX3ZhbHVlIG51bGxpZiBudWxscyBudW0gbnVtYiBudW1iZSBudmFyY2hhciBudmFyY2hhcjIgb2JqZWN0IG9jaWNvbGwgb2NpZGF0ZSBvY2lkYXRldGltZSBvY2lkdXJhdGlvbiBvY2lpbnRlcnZhbCBvY2lsb2Jsb2NhdG9yIG9jaW51bWJlciBvY2lyZWYgb2NpcmVmY3Vyc29yIG9jaXJvd2lkIG9jaXN0cmluZyBvY2l0eXBlIG9jdCBvY3RldF9sZW5ndGggb2Ygb2ZmIG9mZmxpbmUgb2Zmc2V0IG9pZCBvaWRpbmRleCBvbGQgb24gb25saW5lIG9ubHkgb3BhcXVlIG9wZW4gb3BlcmF0aW9ucyBvcGVyYXRvciBvcHRpbWFsIG9wdGltaXplIG9wdGlvbiBvcHRpb25hbGx5IG9yIG9yYWNsZSBvcmFjbGVfZGF0ZSBvcmFkYXRhIG9yZCBvcmRhdWRpbyBvcmRkaWNvbSBvcmRkb2Mgb3JkZXIgb3JkaW1hZ2Ugb3JkaW5hbGl0eSBvcmR2aWRlbyBvcmdhbml6YXRpb24gb3JsYW55IG9ybHZhcnkgb3V0IG91dGVyIG91dGZpbGUgb3V0bGluZSBvdXRwdXQgb3ZlciBvdmVyZmxvdyBvdmVycmlkaW5nIHBhY2thZ2UgcGFkIHBhcmFsbGVsIHBhcmFsbGVsX2VuYWJsZSBwYXJhbWV0ZXJzIHBhcmVudCBwYXJzZSBwYXJ0aWFsIHBhcnRpdGlvbiBwYXJ0aXRpb25zIHBhc2NhbCBwYXNzaW5nIHBhc3N3b3JkIHBhc3N3b3JkX2dyYWNlX3RpbWUgcGFzc3dvcmRfbG9ja190aW1lIHBhc3N3b3JkX3JldXNlX21heCBwYXNzd29yZF9yZXVzZV90aW1lIHBhc3N3b3JkX3ZlcmlmeV9mdW5jdGlvbiBwYXRjaCBwYXRoIHBhdGluZGV4IHBjdGluY3JlYXNlIHBjdHRocmVzaG9sZCBwY3R1c2VkIHBjdHZlcnNpb24gcGVyY2VudCBwZXJjZW50X3JhbmsgcGVyY2VudGlsZV9jb250IHBlcmNlbnRpbGVfZGlzYyBwZXJmb3JtYW5jZSBwZXJpb2QgcGVyaW9kX2FkZCBwZXJpb2RfZGlmZiBwZXJtYW5lbnQgcGh5c2ljYWwgcGkgcGlwZSBwaXBlbGluZWQgcGl2b3QgcGx1Z2dhYmxlIHBsdWdpbiBwb2xpY3kgcG9zaXRpb24gcG9zdF90cmFuc2FjdGlvbiBwb3cgcG93ZXIgcHJhZ21hIHByZWJ1aWx0IHByZWNlZGVzIHByZWNlZGluZyBwcmVjaXNpb24gcHJlZGljdGlvbiBwcmVkaWN0aW9uX2Nvc3QgcHJlZGljdGlvbl9kZXRhaWxzIHByZWRpY3Rpb25fcHJvYmFiaWxpdHkgcHJlZGljdGlvbl9zZXQgcHJlcGFyZSBwcmVzZW50IHByZXNlcnZlIHByaW9yIHByaW9yaXR5IHByaXZhdGUgcHJpdmF0ZV9zZ2EgcHJpdmlsZWdlcyBwcm9jZWR1cmFsIHByb2NlZHVyZSBwcm9jZWR1cmVfYW5hbHl6ZSBwcm9jZXNzbGlzdCBwcm9maWxlcyBwcm9qZWN0IHByb21wdCBwcm90ZWN0aW9uIHB1YmxpYyBwdWJsaXNoaW5nc2VydmVybmFtZSBwdXJnZSBxdWFydGVyIHF1ZXJ5IHF1aWNrIHF1aWVzY2UgcXVvdGEgcXVvdGVuYW1lIHJhZGlhbnMgcmFpc2UgcmFuZCByYW5nZSByYW5rIHJhdyByZWFkIHJlYWRzIHJlYWRzaXplIHJlYnVpbGQgcmVjb3JkIHJlY29yZHMgcmVjb3ZlciByZWNvdmVyeSByZWN1cnNpdmUgcmVjeWNsZSByZWRvIHJlZHVjZWQgcmVmIHJlZmVyZW5jZSByZWZlcmVuY2VkIHJlZmVyZW5jZXMgcmVmZXJlbmNpbmcgcmVmcmVzaCByZWdleHBfbGlrZSByZWdpc3RlciByZWdyX2F2Z3ggcmVncl9hdmd5IHJlZ3JfY291bnQgcmVncl9pbnRlcmNlcHQgcmVncl9yMiByZWdyX3Nsb3BlIHJlZ3Jfc3h4IHJlZ3Jfc3h5IHJlamVjdCByZWtleSByZWxhdGlvbmFsIHJlbGF0aXZlIHJlbGF5bG9nIHJlbGVhc2UgcmVsZWFzZV9sb2NrIHJlbGllc19vbiByZWxvY2F0ZSByZWx5IHJlbSByZW1haW5kZXIgcmVuYW1lIHJlcGFpciByZXBlYXQgcmVwbGFjZSByZXBsaWNhdGUgcmVwbGljYXRpb24gcmVxdWlyZWQgcmVzZXQgcmVzZXRsb2dzIHJlc2l6ZSByZXNvdXJjZSByZXNwZWN0IHJlc3RvcmUgcmVzdHJpY3RlZCByZXN1bHQgcmVzdWx0X2NhY2hlIHJlc3VtYWJsZSByZXN1bWUgcmV0ZW50aW9uIHJldHVybiByZXR1cm5pbmcgcmV0dXJucyByZXVzZSByZXZlcnNlIHJldm9rZSByaWdodCBybGlrZSByb2xlIHJvbGVzIHJvbGxiYWNrIHJvbGxpbmcgcm9sbHVwIHJvdW5kIHJvdyByb3dfY291bnQgcm93ZGVwZW5kZW5jaWVzIHJvd2lkIHJvd251bSByb3dzIHJ0cmltIHJ1bGVzIHNhZmUgc2FsdCBzYW1wbGUgc2F2ZSBzYXZlcG9pbnQgc2IxIHNiMiBzYjQgc2NhbiBzY2hlbWEgc2NoZW1hY2hlY2sgc2NuIHNjb3BlIHNjcm9sbCBzZG9fZ2VvcmFzdGVyIHNkb190b3BvX2dlb21ldHJ5IHNlYXJjaCBzZWNfdG9fdGltZSBzZWNvbmQgc2VjdGlvbiBzZWN1cmVmaWxlIHNlY3VyaXR5IHNlZWQgc2VnbWVudCBzZWxlY3Qgc2VsZiBzZXF1ZW5jZSBzZXF1ZW50aWFsIHNlcmlhbGl6YWJsZSBzZXJ2ZXIgc2VydmVyZXJyb3Igc2Vzc2lvbiBzZXNzaW9uX3VzZXIgc2Vzc2lvbnNfcGVyX3VzZXIgc2V0IHNldHMgc2V0dGluZ3Mgc2hhIHNoYTEgc2hhMiBzaGFyZSBzaGFyZWQgc2hhcmVkX3Bvb2wgc2hvcnQgc2hvdyBzaHJpbmsgc2h1dGRvd24gc2lfYXZlcmFnZWNvbG9yIHNpX2NvbG9yaGlzdG9ncmFtIHNpX2ZlYXR1cmVsaXN0IHNpX3Bvc2l0aW9uYWxjb2xvciBzaV9zdGlsbGltYWdlIHNpX3RleHR1cmUgc2libGluZ3Mgc2lkIHNpZ24gc2luIHNpemUgc2l6ZV90IHNpemVzIHNraXAgc2xhdmUgc2xlZXAgc21hbGxkYXRldGltZWZyb21wYXJ0cyBzbWFsbGZpbGUgc25hcHNob3Qgc29tZSBzb25hbWUgc29ydCBzb3VuZGV4IHNvdXJjZSBzcGFjZSBzcGFyc2Ugc3BmaWxlIHNwbGl0IHNxbCBzcWxfYmlnX3Jlc3VsdCBzcWxfYnVmZmVyX3Jlc3VsdCBzcWxfY2FjaGUgc3FsX2NhbGNfZm91bmRfcm93cyBzcWxfc21hbGxfcmVzdWx0IHNxbF92YXJpYW50X3Byb3BlcnR5IHNxbGNvZGUgc3FsZGF0YSBzcWxlcnJvciBzcWxuYW1lIHNxbHN0YXRlIHNxcnQgc3F1YXJlIHN0YW5kYWxvbmUgc3RhbmRieSBzdGFydCBzdGFydGluZyBzdGFydHVwIHN0YXRlbWVudCBzdGF0aWMgc3RhdGlzdGljcyBzdGF0c19iaW5vbWlhbF90ZXN0IHN0YXRzX2Nyb3NzdGFiIHN0YXRzX2tzX3Rlc3Qgc3RhdHNfbW9kZSBzdGF0c19td190ZXN0IHN0YXRzX29uZV93YXlfYW5vdmEgc3RhdHNfdF90ZXN0XyBzdGF0c190X3Rlc3RfaW5kZXAgc3RhdHNfdF90ZXN0X29uZSBzdGF0c190X3Rlc3RfcGFpcmVkIHN0YXRzX3dzcl90ZXN0IHN0YXR1cyBzdGQgc3RkZGV2IHN0ZGRldl9wb3Agc3RkZGV2X3NhbXAgc3RkZXYgc3RvcCBzdG9yYWdlIHN0b3JlIHN0b3JlZCBzdHIgc3RyX3RvX2RhdGUgc3RyYWlnaHRfam9pbiBzdHJjbXAgc3RyaWN0IHN0cmluZyBzdHJ1Y3Qgc3R1ZmYgc3R5bGUgc3ViZGF0ZSBzdWJwYXJ0aXRpb24gc3VicGFydGl0aW9ucyBzdWJzdGl0dXRhYmxlIHN1YnN0ciBzdWJzdHJpbmcgc3VidGltZSBzdWJ0cmluZ19pbmRleCBzdWJ0eXBlIHN1Y2Nlc3Mgc3VtIHN1c3BlbmQgc3dpdGNoIHN3aXRjaG9mZnNldCBzd2l0Y2hvdmVyIHN5bmMgc3luY2hyb25vdXMgc3lub255bSBzeXMgc3lzX3htbGFnZyBzeXNhc20gc3lzYXV4IHN5c2RhdGUgc3lzZGF0ZXRpbWVvZmZzZXQgc3lzZGJhIHN5c29wZXIgc3lzdGVtIHN5c3RlbV91c2VyIHN5c3V0Y2RhdGV0aW1lIHRhYmxlIHRhYmxlcyB0YWJsZXNwYWNlIHRhbiB0ZG8gdGVtcGxhdGUgdGVtcG9yYXJ5IHRlcm1pbmF0ZWQgdGVydGlhcnlfd2VpZ2h0cyB0ZXN0IHRoYW4gdGhlbiB0aHJlYWQgdGhyb3VnaCB0aWVyIHRpZXMgdGltZSB0aW1lX2Zvcm1hdCB0aW1lX3pvbmUgdGltZWRpZmYgdGltZWZyb21wYXJ0cyB0aW1lb3V0IHRpbWVzdGFtcCB0aW1lc3RhbXBhZGQgdGltZXN0YW1wZGlmZiB0aW1lem9uZV9hYmJyIHRpbWV6b25lX21pbnV0ZSB0aW1lem9uZV9yZWdpb24gdG8gdG9fYmFzZTY0IHRvX2RhdGUgdG9fZGF5cyB0b19zZWNvbmRzIHRvZGF0ZXRpbWVvZmZzZXQgdHJhY2UgdHJhY2tpbmcgdHJhbnNhY3Rpb24gdHJhbnNhY3Rpb25hbCB0cmFuc2xhdGUgdHJhbnNsYXRpb24gdHJlYXQgdHJpZ2dlciB0cmlnZ2VyX25lc3RsZXZlbCB0cmlnZ2VycyB0cmltIHRydW5jYXRlIHRyeV9jYXN0IHRyeV9jb252ZXJ0IHRyeV9wYXJzZSB0eXBlIHViMSB1YjIgdWI0IHVjYXNlIHVuYXJjaGl2ZWQgdW5ib3VuZGVkIHVuY29tcHJlc3MgdW5kZXIgdW5kbyB1bmhleCB1bmljb2RlIHVuaWZvcm0gdW5pbnN0YWxsIHVuaW9uIHVuaXF1ZSB1bml4X3RpbWVzdGFtcCB1bmtub3duIHVubGltaXRlZCB1bmxvY2sgdW5waXZvdCB1bnJlY292ZXJhYmxlIHVuc2FmZSB1bnNpZ25lZCB1bnRpbCB1bnRydXN0ZWQgdW51c2FibGUgdW51c2VkIHVwZGF0ZSB1cGRhdGVkIHVwZ3JhZGUgdXBwZWQgdXBwZXIgdXBzZXJ0IHVybCB1cm93aWQgdXNhYmxlIHVzYWdlIHVzZSB1c2Vfc3RvcmVkX291dGxpbmVzIHVzZXIgdXNlcl9kYXRhIHVzZXJfcmVzb3VyY2VzIHVzZXJzIHVzaW5nIHV0Y19kYXRlIHV0Y190aW1lc3RhbXAgdXVpZCB1dWlkX3Nob3J0IHZhbGlkYXRlIHZhbGlkYXRlX3Bhc3N3b3JkX3N0cmVuZ3RoIHZhbGlkYXRpb24gdmFsaXN0IHZhbHVlIHZhbHVlcyB2YXIgdmFyX3NhbXAgdmFyY2hhcmMgdmFyaSB2YXJpYSB2YXJpYWIgdmFyaWFibCB2YXJpYWJsZSB2YXJpYWJsZXMgdmFyaWFuY2UgdmFycCB2YXJyYXcgdmFycmF3YyB2YXJyYXkgdmVyaWZ5IHZlcnNpb24gdmVyc2lvbnMgdmlldyB2aXJ0dWFsIHZpc2libGUgdm9pZCB3YWl0IHdhbGxldCB3YXJuaW5nIHdhcm5pbmdzIHdlZWsgd2Vla2RheSB3ZWVrb2Z5ZWFyIHdlbGxmb3JtZWQgd2hlbiB3aGVuZSB3aGVuZXYgd2hlbmV2ZSB3aGVuZXZlciB3aGVyZSB3aGlsZSB3aGl0ZXNwYWNlIHdpdGggd2l0aGluIHdpdGhvdXQgd29yayB3cmFwcGVkIHhkYiB4bWwgeG1sYWdnIHhtbGF0dHJpYnV0ZXMgeG1sY2FzdCB4bWxjb2xhdHR2YWwgeG1sZWxlbWVudCB4bWxleGlzdHMgeG1sZm9yZXN0IHhtbGluZGV4IHhtbG5hbWVzcGFjZXMgeG1scGkgeG1scXVlcnkgeG1scm9vdCB4bWxzY2hlbWEgeG1sc2VyaWFsaXplIHhtbHRhYmxlIHhtbHR5cGUgeG9yIHllYXIgeWVhcl90b19tb250aCB5ZWFycyB5ZWFyd2VlayIsbGl0ZXJhbDoidHJ1ZSBmYWxzZSBudWxsIixidWlsdF9pbjoiYXJyYXkgYmlnaW50IGJpbmFyeSBiaXQgYmxvYiBib29sZWFuIGNoYXIgY2hhcmFjdGVyIGRhdGUgZGVjIGRlY2ltYWwgZmxvYXQgaW50IGludDggaW50ZWdlciBpbnRlcnZhbCBudW1iZXIgbnVtZXJpYyByZWFsIHJlY29yZCBzZXJpYWwgc2VyaWFsOCBzbWFsbGludCB0ZXh0IHZhcmNoYXIgdmFyeWluZyB2b2lkIn0sYzpbe2NOOiJzdHJpbmciLGI6IiciLGU6IiciLGM6W2UuQkUse2I6IicnIn1dfSx7Y046InN0cmluZyIsYjonIicsZTonIicsYzpbZS5CRSx7YjonIiInfV19LHtjTjoic3RyaW5nIixiOiJgIixlOiJgIixjOltlLkJFXX0sZS5DTk0sZS5DQkNNLHRdfSxlLkNCQ00sdF19fSk7aGxqcy5yZWdpc3Rlckxhbmd1YWdlKCJyIixmdW5jdGlvbihlKXt2YXIgcj0iKFthLXpBLVpdfFxcLlthLXpBLVouXSlbYS16QS1aMC05Ll9dKiI7cmV0dXJue2M6W2UuSENNLHtiOnIsbDpyLGs6e2tleXdvcmQ6ImZ1bmN0aW9uIGlmIGluIGJyZWFrIG5leHQgcmVwZWF0IGVsc2UgZm9yIHJldHVybiBzd2l0Y2ggd2hpbGUgdHJ5IHRyeUNhdGNoIHN0b3Agd2FybmluZyByZXF1aXJlIGxpYnJhcnkgYXR0YWNoIGRldGFjaCBzb3VyY2Ugc2V0TWV0aG9kIHNldEdlbmVyaWMgc2V0R3JvdXBHZW5lcmljIHNldENsYXNzIC4uLiIsbGl0ZXJhbDoiTlVMTCBOQSBUUlVFIEZBTFNFIFQgRiBJbmYgTmFOIE5BX2ludGVnZXJffDEwIE5BX3JlYWxffDEwIE5BX2NoYXJhY3Rlcl98MTAgTkFfY29tcGxleF98MTAifSxyOjB9LHtjTjoibnVtYmVyIixiOiIwW3hYXVswLTlhLWZBLUZdK1tMaV0/XFxiIixyOjB9LHtjTjoibnVtYmVyIixiOiJcXGQrKD86W2VFXVsrXFwtXT9cXGQqKT9MXFxiIixyOjB9LHtjTjoibnVtYmVyIixiOiJcXGQrXFwuKD8hXFxkKSg/OmlcXGIpPyIscjowfSx7Y046Im51bWJlciIsYjoiXFxkKyg/OlxcLlxcZCopPyg/OltlRV1bK1xcLV0/XFxkKik/aT9cXGIiLHI6MH0se2NOOiJudW1iZXIiLGI6IlxcLlxcZCsoPzpbZUVdWytcXC1dP1xcZCopP2k/XFxiIixyOjB9LHtiOiJgIixlOiJgIixyOjB9LHtjTjoic3RyaW5nIixjOltlLkJFXSx2Olt7YjonIicsZTonIid9LHtiOiInIixlOiInIn1dfV19fSk7aGxqcy5yZWdpc3Rlckxhbmd1YWdlKCJwZXJsIixmdW5jdGlvbihlKXt2YXIgdD0iZ2V0cHdlbnQgZ2V0c2VydmVudCBxdW90ZW1ldGEgbXNncmN2IHNjYWxhciBraWxsIGRibWNsb3NlIHVuZGVmIGxjIG1hIHN5c3dyaXRlIHRyIHNlbmQgdW1hc2sgc3lzb3BlbiBzaG13cml0ZSB2ZWMgcXggdXRpbWUgbG9jYWwgb2N0IHNlbWN0bCBsb2NhbHRpbWUgcmVhZHBpcGUgZG8gcmV0dXJuIGZvcm1hdCByZWFkIHNwcmludGYgZGJtb3BlbiBwb3AgZ2V0cGdycCBub3QgZ2V0cHduYW0gcmV3aW5kZGlyIHFxZmlsZW5vIHF3IGVuZHByb3RvZW50IHdhaXQgc2V0aG9zdGVudCBibGVzcyBzfDAgb3BlbmRpciBjb250aW51ZSBlYWNoIHNsZWVwIGVuZGdyZW50IHNodXRkb3duIGR1bXAgY2hvbXAgY29ubmVjdCBnZXRzb2NrbmFtZSBkaWUgc29ja2V0cGFpciBjbG9zZSBmbG9jayBleGlzdHMgaW5kZXggc2htZ2V0c3ViIGZvciBlbmRwd2VudCByZWRvIGxzdGF0IG1zZ2N0bCBzZXRwZ3JwIGFicyBleGl0IHNlbGVjdCBwcmludCByZWYgZ2V0aG9zdGJ5YWRkciB1bnNoaWZ0IGZjbnRsIHN5c2NhbGwgZ290byBnZXRuZXRieWFkZHIgam9pbiBnbXRpbWUgc3ltbGluayBzZW1nZXQgc3BsaWNlIHh8MCBnZXRwZWVybmFtZSByZWN2IGxvZyBzZXRzb2Nrb3B0IGNvcyBsYXN0IHJldmVyc2UgZ2V0aG9zdGJ5bmFtZSBnZXRncm5hbSBzdHVkeSBmb3JtbGluZSBlbmRob3N0ZW50IHRpbWVzIGNob3AgbGVuZ3RoIGdldGhvc3RlbnQgZ2V0bmV0ZW50IHBhY2sgZ2V0cHJvdG9lbnQgZ2V0c2VydmJ5bmFtZSByYW5kIG1rZGlyIHBvcyBjaG1vZCB5fDAgc3Vic3RyIGVuZG5ldGVudCBwcmludGYgbmV4dCBvcGVuIG1zZ3NuZCByZWFkZGlyIHVzZSB1bmxpbmsgZ2V0c29ja29wdCBnZXRwcmlvcml0eSByaW5kZXggd2FudGFycmF5IGhleCBzeXN0ZW0gZ2V0c2VydmJ5cG9ydCBlbmRzZXJ2ZW50IGludCBjaHIgdW50aWUgcm1kaXIgcHJvdG90eXBlIHRlbGwgbGlzdGVuIGZvcmsgc2htcmVhZCB1Y2ZpcnN0IHNldHByb3RvZW50IGVsc2Ugc3lzc2VlayBsaW5rIGdldGdyZ2lkIHNobWN0bCB3YWl0cGlkIHVucGFjayBnZXRuZXRieW5hbWUgcmVzZXQgY2hkaXIgZ3JlcCBzcGxpdCByZXF1aXJlIGNhbGxlciBsY2ZpcnN0IHVudGlsIHdhcm4gd2hpbGUgdmFsdWVzIHNoaWZ0IHRlbGxkaXIgZ2V0cHd1aWQgbXkgZ2V0cHJvdG9ieW51bWJlciBkZWxldGUgYW5kIHNvcnQgdWMgZGVmaW5lZCBzcmFuZCBhY2NlcHQgcGFja2FnZSBzZWVrZGlyIGdldHByb3RvYnluYW1lIHNlbW9wIG91ciByZW5hbWUgc2VlayBpZiBxfDAgY2hyb290IHN5c3JlYWQgc2V0cHdlbnQgbm8gY3J5cHQgZ2V0YyBjaG93biBzcXJ0IHdyaXRlIHNldG5ldGVudCBzZXRwcmlvcml0eSBmb3JlYWNoIHRpZSBzaW4gbXNnZ2V0IG1hcCBzdGF0IGdldGxvZ2luIHVubGVzcyBlbHNpZiB0cnVuY2F0ZSBleGVjIGtleXMgZ2xvYiB0aWVkIGNsb3NlZGlyaW9jdGwgc29ja2V0IHJlYWRsaW5rIGV2YWwgeG9yIHJlYWRsaW5lIGJpbm1vZGUgc2V0c2VydmVudCBlb2Ygb3JkIGJpbmQgYWxhcm0gcGlwZSBhdGFuMiBnZXRncmVudCBleHAgdGltZSBwdXNoIHNldGdyZW50IGd0IGx0IG9yIG5lIG18MCBicmVhayBnaXZlbiBzYXkgc3RhdGUgd2hlbiIscj17Y046InN1YnN0IixiOiJbJEBdXFx7IixlOiJcXH0iLGs6dH0scz17YjoiLT57IixlOiJ9In0sbj17djpbe2I6L1wkXGQvfSx7YjovW1wkJUBdKFxeXHdcYnwjXHcrKDo6XHcrKSp8e1x3K318XHcrKDo6XHcqKSopL30se2I6L1tcJCVAXVteXHNcd3tdLyxyOjB9XX0saT1bZS5CRSxyLG5dLG89W24sZS5IQ00sZS5DKCJeXFw9XFx3IiwiXFw9Y3V0Iix7ZVc6ITB9KSxzLHtjTjoic3RyaW5nIixjOmksdjpbe2I6InFbcXd4cl0/XFxzKlxcKCIsZToiXFwpIixyOjV9LHtiOiJxW3F3eHJdP1xccypcXFsiLGU6IlxcXSIscjo1fSx7YjoicVtxd3hyXT9cXHMqXFx7IixlOiJcXH0iLHI6NX0se2I6InFbcXd4cl0/XFxzKlxcfCIsZToiXFx8IixyOjV9LHtiOiJxW3F3eHJdP1xccypcXDwiLGU6IlxcPiIscjo1fSx7YjoicXdcXHMrcSIsZToicSIscjo1fSx7YjoiJyIsZToiJyIsYzpbZS5CRV19LHtiOiciJyxlOiciJ30se2I6ImAiLGU6ImAiLGM6W2UuQkVdfSx7Yjoie1xcdyt9IixjOltdLHI6MH0se2I6Ii0/XFx3K1xccypcXD1cXD4iLGM6W10scjowfV19LHtjTjoibnVtYmVyIixiOiIoXFxiMFswLTdfXSspfChcXGIweFswLTlhLWZBLUZfXSspfChcXGJbMS05XVswLTlfXSooXFwuWzAtOV9dKyk/KXxbMF9dXFxiIixyOjB9LHtiOiIoXFwvXFwvfCIrZS5SU1IrInxcXGIoc3BsaXR8cmV0dXJufHByaW50fHJldmVyc2V8Z3JlcClcXGIpXFxzKiIsazoic3BsaXQgcmV0dXJuIHByaW50IHJldmVyc2UgZ3JlcCIscjowLGM6W2UuSENNLHtjTjoicmVnZXhwIixiOiIoc3x0cnx5KS8oXFxcXC58W14vXSkqLyhcXFxcLnxbXi9dKSovW2Etel0qIixyOjEwfSx7Y046InJlZ2V4cCIsYjoiKG18cXIpPy8iLGU6Ii9bYS16XSoiLGM6W2UuQkVdLHI6MH1dfSx7Y046ImZ1bmN0aW9uIixiSzoic3ViIixlOiIoXFxzKlxcKC4qP1xcKSk/Wzt7XSIsZUU6ITAscjo1LGM6W2UuVE1dfSx7YjoiLVxcd1xcYiIscjowfSx7YjoiXl9fREFUQV9fJCIsZToiXl9fRU5EX18kIixzTDoibW9qb2xpY2lvdXMiLGM6W3tiOiJeQEAuKiIsZToiJCIsY046ImNvbW1lbnQifV19XTtyZXR1cm4gci5jPW8scy5jPW8se2FsaWFzZXM6WyJwbCIsInBtIl0sbDovW1x3XC5dKy8sazp0LGM6b319KTtobGpzLnJlZ2lzdGVyTGFuZ3VhZ2UoImluaSIsZnVuY3Rpb24oZSl7dmFyIGI9e2NOOiJzdHJpbmciLGM6W2UuQkVdLHY6W3tiOiInJyciLGU6IicnJyIscjoxMH0se2I6JyIiIicsZTonIiIiJyxyOjEwfSx7YjonIicsZTonIid9LHtiOiInIixlOiInIn1dfTtyZXR1cm57YWxpYXNlczpbInRvbWwiXSxjSTohMCxpOi9cUy8sYzpbZS5DKCI7IiwiJCIpLGUuSENNLHtjTjoic2VjdGlvbiIsYjovXlxzKlxbKy8sZTovXF0rL30se2I6L15bYS16MC05XFtcXV8tXStccyo9XHMqLyxlOiIkIixyQjohMCxjOlt7Y046ImF0dHIiLGI6L1thLXowLTlcW1xdXy1dKy99LHtiOi89LyxlVzohMCxyOjAsYzpbe2NOOiJsaXRlcmFsIixiOi9cYm9ufG9mZnx0cnVlfGZhbHNlfHllc3xub1xiL30se2NOOiJ2YXJpYWJsZSIsdjpbe2I6L1wkW1x3XGQiXVtcd1xkX10qL30se2I6L1wkXHsoLio/KX0vfV19LGIse2NOOiJudW1iZXIiLGI6LyhbXCtcLV0rKT9bXGRdK19bXGRfXSsvfSxlLk5NXX1dfV19fSk7aGxqcy5yZWdpc3Rlckxhbmd1YWdlKCJkaWZmIixmdW5jdGlvbihlKXtyZXR1cm57YWxpYXNlczpbInBhdGNoIl0sYzpbe2NOOiJtZXRhIixyOjEwLHY6W3tiOi9eQEAgK1wtXGQrLFxkKyArXCtcZCssXGQrICtAQCQvfSx7YjovXlwqXCpcKiArXGQrLFxkKyArXCpcKlwqXCokL30se2I6L15cLVwtXC0gK1xkKyxcZCsgK1wtXC1cLVwtJC99XX0se2NOOiJjb21tZW50Iix2Olt7YjovSW5kZXg6IC8sZTovJC99LHtiOi89ezMsfS8sZTovJC99LHtiOi9eXC17M30vLGU6LyQvfSx7YjovXlwqezN9IC8sZTovJC99LHtiOi9eXCt7M30vLGU6LyQvfSx7YjovXCp7NX0vLGU6L1wqezV9JC99XX0se2NOOiJhZGRpdGlvbiIsYjoiXlxcKyIsZToiJCJ9LHtjTjoiZGVsZXRpb24iLGI6Il5cXC0iLGU6IiQifSx7Y046ImFkZGl0aW9uIixiOiJeXFwhIixlOiIkIn1dfX0pO2hsanMucmVnaXN0ZXJMYW5ndWFnZSgiZ28iLGZ1bmN0aW9uKGUpe3ZhciB0PXtrZXl3b3JkOiJicmVhayBkZWZhdWx0IGZ1bmMgaW50ZXJmYWNlIHNlbGVjdCBjYXNlIG1hcCBzdHJ1Y3QgY2hhbiBlbHNlIGdvdG8gcGFja2FnZSBzd2l0Y2ggY29uc3QgZmFsbHRocm91Z2ggaWYgcmFuZ2UgdHlwZSBjb250aW51ZSBmb3IgaW1wb3J0IHJldHVybiB2YXIgZ28gZGVmZXIgYm9vbCBieXRlIGNvbXBsZXg2NCBjb21wbGV4MTI4IGZsb2F0MzIgZmxvYXQ2NCBpbnQ4IGludDE2IGludDMyIGludDY0IHN0cmluZyB1aW50OCB1aW50MTYgdWludDMyIHVpbnQ2NCBpbnQgdWludCB1aW50cHRyIHJ1bmUiLGxpdGVyYWw6InRydWUgZmFsc2UgaW90YSBuaWwiLGJ1aWx0X2luOiJhcHBlbmQgY2FwIGNsb3NlIGNvbXBsZXggY29weSBpbWFnIGxlbiBtYWtlIG5ldyBwYW5pYyBwcmludCBwcmludGxuIHJlYWwgcmVjb3ZlciBkZWxldGUifTtyZXR1cm57YWxpYXNlczpbImdvbGFuZyJdLGs6dCxpOiI8LyIsYzpbZS5DTENNLGUuQ0JDTSx7Y046InN0cmluZyIsdjpbZS5RU00se2I6IiciLGU6IlteXFxcXF0nIn0se2I6ImAiLGU6ImAifV19LHtjTjoibnVtYmVyIix2Olt7YjplLkNOUisiW2RmbHNpXSIscjoxfSxlLkNOTV19LHtiOi86PS99LHtjTjoiZnVuY3Rpb24iLGJLOiJmdW5jIixlOi9ccypcey8sZUU6ITAsYzpbZS5UTSx7Y046InBhcmFtcyIsYjovXCgvLGU6L1wpLyxrOnQsaTovWyInXS99XX1dfX0pO2hsanMucmVnaXN0ZXJMYW5ndWFnZSgiYmFzaCIsZnVuY3Rpb24oZSl7dmFyIHQ9e2NOOiJ2YXJpYWJsZSIsdjpbe2I6L1wkW1x3XGQjQF1bXHdcZF9dKi99LHtiOi9cJFx7KC4qPyl9L31dfSxzPXtjTjoic3RyaW5nIixiOi8iLyxlOi8iLyxjOltlLkJFLHQse2NOOiJ2YXJpYWJsZSIsYjovXCRcKC8sZTovXCkvLGM6W2UuQkVdfV19LGE9e2NOOiJzdHJpbmciLGI6LycvLGU6LycvfTtyZXR1cm57YWxpYXNlczpbInNoIiwienNoIl0sbDovXGItP1thLXpcLl9dK1xiLyxrOntrZXl3b3JkOiJpZiB0aGVuIGVsc2UgZWxpZiBmaSBmb3Igd2hpbGUgaW4gZG8gZG9uZSBjYXNlIGVzYWMgZnVuY3Rpb24iLGxpdGVyYWw6InRydWUgZmFsc2UiLGJ1aWx0X2luOiJicmVhayBjZCBjb250aW51ZSBldmFsIGV4ZWMgZXhpdCBleHBvcnQgZ2V0b3B0cyBoYXNoIHB3ZCByZWFkb25seSByZXR1cm4gc2hpZnQgdGVzdCB0aW1lcyB0cmFwIHVtYXNrIHVuc2V0IGFsaWFzIGJpbmQgYnVpbHRpbiBjYWxsZXIgY29tbWFuZCBkZWNsYXJlIGVjaG8gZW5hYmxlIGhlbHAgbGV0IGxvY2FsIGxvZ291dCBtYXBmaWxlIHByaW50ZiByZWFkIHJlYWRhcnJheSBzb3VyY2UgdHlwZSB0eXBlc2V0IHVsaW1pdCB1bmFsaWFzIHNldCBzaG9wdCBhdXRvbG9hZCBiZyBiaW5ka2V5IGJ5ZSBjYXAgY2hkaXIgY2xvbmUgY29tcGFyZ3VtZW50cyBjb21wY2FsbCBjb21wY3RsIGNvbXBkZXNjcmliZSBjb21wZmlsZXMgY29tcGdyb3VwcyBjb21wcXVvdGUgY29tcHRhZ3MgY29tcHRyeSBjb21wdmFsdWVzIGRpcnMgZGlzYWJsZSBkaXNvd24gZWNob3RjIGVjaG90aSBlbXVsYXRlIGZjIGZnIGZsb2F0IGZ1bmN0aW9ucyBnZXRjYXAgZ2V0bG4gaGlzdG9yeSBpbnRlZ2VyIGpvYnMga2lsbCBsaW1pdCBsb2cgbm9nbG9iIHBvcGQgcHJpbnQgcHVzaGQgcHVzaGxuIHJlaGFzaCBzY2hlZCBzZXRjYXAgc2V0b3B0IHN0YXQgc3VzcGVuZCB0dHljdGwgdW5mdW5jdGlvbiB1bmhhc2ggdW5saW1pdCB1bnNldG9wdCB2YXJlZCB3YWl0IHdoZW5jZSB3aGVyZSB3aGljaCB6Y29tcGlsZSB6Zm9ybWF0IHpmdHAgemxlIHptb2Rsb2FkIHpwYXJzZW9wdHMgenByb2YgenB0eSB6cmVnZXhwYXJzZSB6c29ja2V0IHpzdHlsZSB6dGNwIixfOiItbmUgLWVxIC1sdCAtZ3QgLWYgLWQgLWUgLXMgLWwgLWEifSxjOlt7Y046Im1ldGEiLGI6L14jIVteXG5dK3NoXHMqJC8scjoxMH0se2NOOiJmdW5jdGlvbiIsYjovXHdbXHdcZF9dKlxzKlwoXHMqXClccypcey8sckI6ITAsYzpbZS5pbmhlcml0KGUuVE0se2I6L1x3W1x3XGRfXSovfSldLHI6MH0sZS5IQ00scyxhLHRdfX0pO2hsanMucmVnaXN0ZXJMYW5ndWFnZSgicHl0aG9uIixmdW5jdGlvbihlKXt2YXIgcj17a2V5d29yZDoiYW5kIGVsaWYgaXMgZ2xvYmFsIGFzIGluIGlmIGZyb20gcmFpc2UgZm9yIGV4Y2VwdCBmaW5hbGx5IHByaW50IGltcG9ydCBwYXNzIHJldHVybiBleGVjIGVsc2UgYnJlYWsgbm90IHdpdGggY2xhc3MgYXNzZXJ0IHlpZWxkIHRyeSB3aGlsZSBjb250aW51ZSBkZWwgb3IgZGVmIGxhbWJkYSBhc3luYyBhd2FpdCBub25sb2NhbHwxMCBOb25lIFRydWUgRmFsc2UiLGJ1aWx0X2luOiJFbGxpcHNpcyBOb3RJbXBsZW1lbnRlZCJ9LGI9e2NOOiJtZXRhIixiOi9eKD4+PnxcLlwuXC4pIC99LGM9e2NOOiJzdWJzdCIsYjovXHsvLGU6L1x9LyxrOnIsaTovIy99LGE9e2NOOiJzdHJpbmciLGM6W2UuQkVdLHY6W3tiOi8odXxiKT9yPycnJy8sZTovJycnLyxjOltiXSxyOjEwfSx7YjovKHV8Yik/cj8iIiIvLGU6LyIiIi8sYzpbYl0scjoxMH0se2I6LyhmcnxyZnxmKScnJy8sZTovJycnLyxjOltiLGNdfSx7YjovKGZyfHJmfGYpIiIiLyxlOi8iIiIvLGM6W2IsY119LHtiOi8odXxyfHVyKScvLGU6LycvLHI6MTB9LHtiOi8odXxyfHVyKSIvLGU6LyIvLHI6MTB9LHtiOi8oYnxiciknLyxlOi8nL30se2I6LyhifGJyKSIvLGU6LyIvfSx7YjovKGZyfHJmfGYpJy8sZTovJy8sYzpbY119LHtiOi8oZnJ8cmZ8ZikiLyxlOi8iLyxjOltjXX0sZS5BU00sZS5RU01dfSxzPXtjTjoibnVtYmVyIixyOjAsdjpbe2I6ZS5CTlIrIltsTGpKXT8ifSx7YjoiXFxiKDBvWzAtN10rKVtsTGpKXT8ifSx7YjplLkNOUisiW2xMakpdPyJ9XX0saT17Y046InBhcmFtcyIsYjovXCgvLGU6L1wpLyxjOlsic2VsZiIsYixzLGFdfTtyZXR1cm4gYy5jPVthLHMsYl0se2FsaWFzZXM6WyJweSIsImd5cCJdLGs6cixpOi8oPFwvfC0+fFw/KXw9Pi8sYzpbYixzLGEsZS5IQ00se3Y6W3tjTjoiZnVuY3Rpb24iLGJLOiJkZWYifSx7Y046ImNsYXNzIixiSzoiY2xhc3MifV0sZTovOi8saTovWyR7PTtcbixdLyxjOltlLlVUTSxpLHtiOi8tPi8sZVc6ITAsazoiTm9uZSJ9XX0se2NOOiJtZXRhIixiOi9eW1x0IF0qQC8sZTovJC99LHtiOi9cYihwcmludHxleGVjKVwoL31dfX0pO2hsanMucmVnaXN0ZXJMYW5ndWFnZSgianVsaWEiLGZ1bmN0aW9uKGUpe3ZhciByPXtrZXl3b3JkOiJpbiBpc2Egd2hlcmUgYmFyZW1vZHVsZSBiZWdpbiBicmVhayBjYXRjaCBjY2FsbCBjb25zdCBjb250aW51ZSBkbyBlbHNlIGVsc2VpZiBlbmQgZXhwb3J0IGZhbHNlIGZpbmFsbHkgZm9yIGZ1bmN0aW9uIGdsb2JhbCBpZiBpbXBvcnQgaW1wb3J0YWxsIGxldCBsb2NhbCBtYWNybyBtb2R1bGUgcXVvdGUgcmV0dXJuIHRydWUgdHJ5IHVzaW5nIHdoaWxlIHR5cGUgaW1tdXRhYmxlIGFic3RyYWN0IGJpdHN0eXBlIHR5cGVhbGlhcyAiLGxpdGVyYWw6InRydWUgZmFsc2UgQVJHUyBDX05VTEwgRGV2TnVsbCBFTkRJQU5fQk9NIEVOViBJIEluZiBJbmYxNiBJbmYzMiBJbmY2NCBJbnNlcnRpb25Tb3J0IEpVTElBX0hPTUUgTE9BRF9QQVRIIE1lcmdlU29ydCBOYU4gTmFOMTYgTmFOMzIgTmFONjQgUFJPR1JBTV9GSUxFIFF1aWNrU29ydCBSb3VuZERvd24gUm91bmRGcm9tWmVybyBSb3VuZE5lYXJlc3QgUm91bmROZWFyZXN0VGllc0F3YXkgUm91bmROZWFyZXN0VGllc1VwIFJvdW5kVG9aZXJvIFJvdW5kVXAgU1RERVJSIFNURElOIFNURE9VVCBWRVJTSU9OIGNhdGFsYW4gZXwwIGV1fDAgZXVsZXJnYW1tYSBnb2xkZW4gaW0gbm90aGluZyBwaSDOsyDPgCDPhiAiLGJ1aWx0X2luOiJBTlkgQWJzdHJhY3RBcnJheSBBYnN0cmFjdENoYW5uZWwgQWJzdHJhY3RGbG9hdCBBYnN0cmFjdE1hdHJpeCBBYnN0cmFjdFJORyBBYnN0cmFjdFNlcmlhbGl6ZXIgQWJzdHJhY3RTZXQgQWJzdHJhY3RTcGFyc2VBcnJheSBBYnN0cmFjdFNwYXJzZU1hdHJpeCBBYnN0cmFjdFNwYXJzZVZlY3RvciBBYnN0cmFjdFN0cmluZyBBYnN0cmFjdFVuaXRSYW5nZSBBYnN0cmFjdFZlY09yTWF0IEFic3RyYWN0VmVjdG9yIEFueSBBcmd1bWVudEVycm9yIEFycmF5IEFzc2VydGlvbkVycm9yIEFzc29jaWF0aXZlIEJhc2U2NERlY29kZVBpcGUgQmFzZTY0RW5jb2RlUGlwZSBCaWRpYWdvbmFsIEJpZ0Zsb2F0IEJpZ0ludCBCaXRBcnJheSBCaXRNYXRyaXggQml0VmVjdG9yIEJvb2wgQm91bmRzRXJyb3IgQnVmZmVyU3RyZWFtIENhY2hpbmdQb29sIENhcHR1cmVkRXhjZXB0aW9uIENhcnRlc2lhbkluZGV4IENhcnRlc2lhblJhbmdlIENjaGFyIENkb3VibGUgQ2Zsb2F0IENoYW5uZWwgQ2hhciBDaW50IENpbnRtYXhfdCBDbG9uZyBDbG9uZ2xvbmcgQ2x1c3Rlck1hbmFnZXIgQ21kIENvZGVJbmZvIENvbG9uIENvbXBsZXggQ29tcGxleDEyOCBDb21wbGV4MzIgQ29tcGxleDY0IENvbXBvc2l0ZUV4Y2VwdGlvbiBDb25kaXRpb24gQ29uakFycmF5IENvbmpNYXRyaXggQ29ualZlY3RvciBDcHRyZGlmZl90IENzaG9ydCBDc2l6ZV90IENzc2l6ZV90IENzdHJpbmcgQ3VjaGFyIEN1aW50IEN1aW50bWF4X3QgQ3Vsb25nIEN1bG9uZ2xvbmcgQ3VzaG9ydCBDd2NoYXJfdCBDd3N0cmluZyBEYXRhVHlwZSBEYXRlIERhdGVGb3JtYXQgRGF0ZVRpbWUgRGVuc2VBcnJheSBEZW5zZU1hdHJpeCBEZW5zZVZlY09yTWF0IERlbnNlVmVjdG9yIERpYWdvbmFsIERpY3QgRGltZW5zaW9uTWlzbWF0Y2ggRGltcyBEaXJlY3RJbmRleFN0cmluZyBEaXNwbGF5IERpdmlkZUVycm9yIERvbWFpbkVycm9yIEVPRkVycm9yIEVhY2hMaW5lIEVudW0gRW51bWVyYXRlIEVycm9yRXhjZXB0aW9uIEV4Y2VwdGlvbiBFeHBvbmVudGlhbEJhY2tPZmYgRXhwciBGYWN0b3JpemF0aW9uIEZpbGVNb25pdG9yIEZsb2F0MTYgRmxvYXQzMiBGbG9hdDY0IEZ1bmN0aW9uIEZ1dHVyZSBHbG9iYWxSZWYgR290b05vZGUgSFRNTCBIZXJtaXRpYW4gSU8gSU9CdWZmZXIgSU9Db250ZXh0IElPU3RyZWFtIElQQWRkciBJUHY0IElQdjYgSW5kZXhDYXJ0ZXNpYW4gSW5kZXhMaW5lYXIgSW5kZXhTdHlsZSBJbmV4YWN0RXJyb3IgSW5pdEVycm9yIEludCBJbnQxMjggSW50MTYgSW50MzIgSW50NjQgSW50OCBJbnRTZXQgSW50ZWdlciBJbnRlcnJ1cHRFeGNlcHRpb24gSW52YWxpZFN0YXRlRXhjZXB0aW9uIElycmF0aW9uYWwgS2V5RXJyb3IgTGFiZWxOb2RlIExpblNwYWNlIExpbmVOdW1iZXJOb2RlIExvYWRFcnJvciBMb3dlclRyaWFuZ3VsYXIgTUlNRSBNYXRyaXggTWVyc2VubmVUd2lzdGVyIE1ldGhvZCBNZXRob2RFcnJvciBNZXRob2RUYWJsZSBNb2R1bGUgTlR1cGxlIE5ld3Zhck5vZGUgTnVsbEV4Y2VwdGlvbiBOdWxsYWJsZSBOdW1iZXIgT2JqZWN0SWREaWN0IE9yZGluYWxSYW5nZSBPdXRPZk1lbW9yeUVycm9yIE92ZXJmbG93RXJyb3IgUGFpciBQYXJzZUVycm9yIFBhcnRpYWxRdWlja1NvcnQgUGVybXV0ZWREaW1zQXJyYXkgUGlwZSBQb2xsaW5nRmlsZVdhdGNoZXIgUHJvY2Vzc0V4aXRlZEV4Y2VwdGlvbiBQdHIgUXVvdGVOb2RlIFJhbmRvbURldmljZSBSYW5nZSBSYW5nZUluZGV4IFJhdGlvbmFsIFJhd0ZEIFJlYWRPbmx5TWVtb3J5RXJyb3IgUmVhbCBSZWVudHJhbnRMb2NrIFJlZiBSZWdleCBSZWdleE1hdGNoIFJlbW90ZUNoYW5uZWwgUmVtb3RlRXhjZXB0aW9uIFJldlN0cmluZyBSb3VuZGluZ01vZGUgUm93VmVjdG9yIFNTQVZhbHVlIFNlZ21lbnRhdGlvbkZhdWx0IFNlcmlhbGl6YXRpb25TdGF0ZSBTZXQgU2hhcmVkQXJyYXkgU2hhcmVkTWF0cml4IFNoYXJlZFZlY3RvciBTaWduZWQgU2ltcGxlVmVjdG9yIFNsb3QgU2xvdE51bWJlciBTcGFyc2VNYXRyaXhDU0MgU3BhcnNlVmVjdG9yIFN0YWNrRnJhbWUgU3RhY2tPdmVyZmxvd0Vycm9yIFN0YWNrVHJhY2UgU3RlcFJhbmdlIFN0ZXBSYW5nZUxlbiBTdHJpZGVkQXJyYXkgU3RyaWRlZE1hdHJpeCBTdHJpZGVkVmVjT3JNYXQgU3RyaWRlZFZlY3RvciBTdHJpbmcgU3ViQXJyYXkgU3ViU3RyaW5nIFN5bVRyaWRpYWdvbmFsIFN5bWJvbCBTeW1tZXRyaWMgU3lzdGVtRXJyb3IgVENQU29ja2V0IFRhc2sgVGV4dCBUZXh0RGlzcGxheSBUaW1lciBUcmlkaWFnb25hbCBUdXBsZSBUeXBlIFR5cGVFcnJvciBUeXBlTWFwRW50cnkgVHlwZU1hcExldmVsIFR5cGVOYW1lIFR5cGVWYXIgVHlwZWRTbG90IFVEUFNvY2tldCBVSW50IFVJbnQxMjggVUludDE2IFVJbnQzMiBVSW50NjQgVUludDggVW5kZWZSZWZFcnJvciBVbmRlZlZhckVycm9yIFVuaWNvZGVFcnJvciBVbmlmb3JtU2NhbGluZyBVbmlvbiBVbmlvbkFsbCBVbml0UmFuZ2UgVW5zaWduZWQgVXBwZXJUcmlhbmd1bGFyIFZhbCBWYXJhcmcgVmVjRWxlbWVudCBWZWNPck1hdCBWZWN0b3IgVmVyc2lvbk51bWJlciBWb2lkIFdlYWtLZXlEaWN0IFdlYWtSZWYgV29ya2VyQ29uZmlnIFdvcmtlclBvb2wgIn0sdD0iW0EtWmEtel9cXHUwMEExLVxcdUZGRkZdW0EtWmEtel8wLTlcXHUwMEExLVxcdUZGRkZdKiIsYT17bDp0LGs6cixpOi88XC8vfSxuPXtjTjoibnVtYmVyIixiOi8oXGIweFtcZF9dKihcLltcZF9dKik/fDB4XC5cZFtcZF9dKilwWy0rXT9cZCt8XGIwW2JveF1bYS1mQS1GMC05XVthLWZBLUYwLTlfXSp8KFxiXGRbXGRfXSooXC5bXGRfXSopP3xcLlxkW1xkX10qKShbZUVmRl1bLStdP1xkKyk/LyxyOjB9LG89e2NOOiJzdHJpbmciLGI6LycoLnxcXFt4WHVVXVthLXpBLVowLTldKyknL30saT17Y046InN1YnN0IixiOi9cJFwoLyxlOi9cKS8sazpyfSxsPXtjTjoidmFyaWFibGUiLGI6IlxcJCIrdH0sYz17Y046InN0cmluZyIsYzpbZS5CRSxpLGxdLHY6W3tiOi9cdyoiIiIvLGU6LyIiIlx3Ki8scjoxMH0se2I6L1x3KiIvLGU6LyJcdyovfV19LHM9e2NOOiJzdHJpbmciLGM6W2UuQkUsaSxsXSxiOiJgIixlOiJgIn0sZD17Y046Im1ldGEiLGI6IkAiK3R9LHU9e2NOOiJjb21tZW50Iix2Olt7YjoiIz0iLGU6Ij0jIixyOjEwfSx7YjoiIyIsZToiJCJ9XX07cmV0dXJuIGEuYz1bbixvLGMscyxkLHUsZS5IQ00se2NOOiJrZXl3b3JkIixiOiJcXGIoKChhYnN0cmFjdHxwcmltaXRpdmUpXFxzKyl0eXBlfChtdXRhYmxlXFxzKyk/c3RydWN0KVxcYiJ9LHtiOi88Oi99XSxpLmM9YS5jLGF9KTtobGpzLnJlZ2lzdGVyTGFuZ3VhZ2UoImNvZmZlZXNjcmlwdCIsZnVuY3Rpb24oZSl7dmFyIGM9e2tleXdvcmQ6ImluIGlmIGZvciB3aGlsZSBmaW5hbGx5IG5ldyBkbyByZXR1cm4gZWxzZSBicmVhayBjYXRjaCBpbnN0YW5jZW9mIHRocm93IHRyeSB0aGlzIHN3aXRjaCBjb250aW51ZSB0eXBlb2YgZGVsZXRlIGRlYnVnZ2VyIHN1cGVyIHlpZWxkIGltcG9ydCBleHBvcnQgZnJvbSBhcyBkZWZhdWx0IGF3YWl0IHRoZW4gdW5sZXNzIHVudGlsIGxvb3Agb2YgYnkgd2hlbiBhbmQgb3IgaXMgaXNudCBub3QiLGxpdGVyYWw6InRydWUgZmFsc2UgbnVsbCB1bmRlZmluZWQgeWVzIG5vIG9uIG9mZiIsYnVpbHRfaW46Im5wbSByZXF1aXJlIGNvbnNvbGUgcHJpbnQgbW9kdWxlIGdsb2JhbCB3aW5kb3cgZG9jdW1lbnQifSxuPSJbQS1aYS16JF9dWzAtOUEtWmEteiRfXSoiLHI9e2NOOiJzdWJzdCIsYjovI1x7LyxlOi99LyxrOmN9LGk9W2UuQk5NLGUuaW5oZXJpdChlLkNOTSx7c3RhcnRzOntlOiIoXFxzKi8pPyIscjowfX0pLHtjTjoic3RyaW5nIix2Olt7YjovJycnLyxlOi8nJycvLGM6W2UuQkVdfSx7YjovJy8sZTovJy8sYzpbZS5CRV19LHtiOi8iIiIvLGU6LyIiIi8sYzpbZS5CRSxyXX0se2I6LyIvLGU6LyIvLGM6W2UuQkUscl19XX0se2NOOiJyZWdleHAiLHY6W3tiOiIvLy8iLGU6Ii8vLyIsYzpbcixlLkhDTV19LHtiOiIvL1tnaW1dKiIscjowfSx7YjovXC8oPyFbICpdKShcXFwvfC4pKj9cL1tnaW1dKig/PVxXfCQpL31dfSx7YjoiQCIrbn0se3NMOiJqYXZhc2NyaXB0IixlQjohMCxlRTohMCx2Olt7YjoiYGBgIixlOiJgYGAifSx7YjoiYCIsZToiYCJ9XX1dO3IuYz1pO3ZhciBzPWUuaW5oZXJpdChlLlRNLHtiOm59KSx0PSIoXFwoLipcXCkpP1xccypcXEJbLT1dPiIsbz17Y046InBhcmFtcyIsYjoiXFwoW15cXChdIixyQjohMCxjOlt7YjovXCgvLGU6L1wpLyxrOmMsYzpbInNlbGYiXS5jb25jYXQoaSl9XX07cmV0dXJue2FsaWFzZXM6WyJjb2ZmZWUiLCJjc29uIiwiaWNlZCJdLGs6YyxpOi9cL1wqLyxjOmkuY29uY2F0KFtlLkMoIiMjIyIsIiMjIyIpLGUuSENNLHtjTjoiZnVuY3Rpb24iLGI6Il5cXHMqIituKyJcXHMqPVxccyoiK3QsZToiWy09XT4iLHJCOiEwLGM6W3Msb119LHtiOi9bOlwoLD1dXHMqLyxyOjAsYzpbe2NOOiJmdW5jdGlvbiIsYjp0LGU6IlstPV0+IixyQjohMCxjOltvXX1dfSx7Y046ImNsYXNzIixiSzoiY2xhc3MiLGU6IiQiLGk6L1s6PSJcW1xdXS8sYzpbe2JLOiJleHRlbmRzIixlVzohMCxpOi9bOj0iXFtcXV0vLGM6W3NdfSxzXX0se2I6bisiOiIsZToiOiIsckI6ITAsckU6ITAscjowfV0pfX0pO2hsanMucmVnaXN0ZXJMYW5ndWFnZSgiY3BwIixmdW5jdGlvbih0KXt2YXIgZT17Y046ImtleXdvcmQiLGI6IlxcYlthLXpcXGRfXSpfdFxcYiJ9LHI9e2NOOiJzdHJpbmciLHY6W3tiOicodTg/fFUpP0w/IicsZTonIicsaToiXFxuIixjOlt0LkJFXX0se2I6Jyh1OD98VSk/UiInLGU6JyInLGM6W3QuQkVdfSx7YjoiJ1xcXFw/LiIsZToiJyIsaToiLiJ9XX0scz17Y046Im51bWJlciIsdjpbe2I6IlxcYigwYlswMSddKykifSx7YjoiKC0/KVxcYihbXFxkJ10rKFxcLltcXGQnXSopP3xcXC5bXFxkJ10rKSh1fFV8bHxMfHVsfFVMfGZ8RnxifEIpIn0se2I6IigtPykoXFxiMFt4WF1bYS1mQS1GMC05J10rfChcXGJbXFxkJ10rKFxcLltcXGQnXSopP3xcXC5bXFxkJ10rKShbZUVdWy0rXT9bXFxkJ10rKT8pIn1dLHI6MH0saT17Y046Im1ldGEiLGI6LyNccypbYS16XStcYi8sZTovJC8sazp7Im1ldGEta2V5d29yZCI6ImlmIGVsc2UgZWxpZiBlbmRpZiBkZWZpbmUgdW5kZWYgd2FybmluZyBlcnJvciBsaW5lIHByYWdtYSBpZmRlZiBpZm5kZWYgaW5jbHVkZSJ9LGM6W3tiOi9cXFxuLyxyOjB9LHQuaW5oZXJpdChyLHtjTjoibWV0YS1zdHJpbmcifSkse2NOOiJtZXRhLXN0cmluZyIsYjovPFteXG4+XSo+LyxlOi8kLyxpOiJcXG4ifSx0LkNMQ00sdC5DQkNNXX0sYT10LklSKyJcXHMqXFwoIixjPXtrZXl3b3JkOiJpbnQgZmxvYXQgd2hpbGUgcHJpdmF0ZSBjaGFyIGNhdGNoIGltcG9ydCBtb2R1bGUgZXhwb3J0IHZpcnR1YWwgb3BlcmF0b3Igc2l6ZW9mIGR5bmFtaWNfY2FzdHwxMCB0eXBlZGVmIGNvbnN0X2Nhc3R8MTAgY29uc3QgZm9yIHN0YXRpY19jYXN0fDEwIHVuaW9uIG5hbWVzcGFjZSB1bnNpZ25lZCBsb25nIHZvbGF0aWxlIHN0YXRpYyBwcm90ZWN0ZWQgYm9vbCB0ZW1wbGF0ZSBtdXRhYmxlIGlmIHB1YmxpYyBmcmllbmQgZG8gZ290byBhdXRvIHZvaWQgZW51bSBlbHNlIGJyZWFrIGV4dGVybiB1c2luZyBhc20gY2FzZSB0eXBlaWQgc2hvcnQgcmVpbnRlcnByZXRfY2FzdHwxMCBkZWZhdWx0IGRvdWJsZSByZWdpc3RlciBleHBsaWNpdCBzaWduZWQgdHlwZW5hbWUgdHJ5IHRoaXMgc3dpdGNoIGNvbnRpbnVlIGlubGluZSBkZWxldGUgYWxpZ25vZiBjb25zdGV4cHIgZGVjbHR5cGUgbm9leGNlcHQgc3RhdGljX2Fzc2VydCB0aHJlYWRfbG9jYWwgcmVzdHJpY3QgX0Jvb2wgY29tcGxleCBfQ29tcGxleCBfSW1hZ2luYXJ5IGF0b21pY19ib29sIGF0b21pY19jaGFyIGF0b21pY19zY2hhciBhdG9taWNfdWNoYXIgYXRvbWljX3Nob3J0IGF0b21pY191c2hvcnQgYXRvbWljX2ludCBhdG9taWNfdWludCBhdG9taWNfbG9uZyBhdG9taWNfdWxvbmcgYXRvbWljX2xsb25nIGF0b21pY191bGxvbmcgbmV3IHRocm93IHJldHVybiBhbmQgb3Igbm90IixidWlsdF9pbjoic3RkIHN0cmluZyBjaW4gY291dCBjZXJyIGNsb2cgc3RkaW4gc3Rkb3V0IHN0ZGVyciBzdHJpbmdzdHJlYW0gaXN0cmluZ3N0cmVhbSBvc3RyaW5nc3RyZWFtIGF1dG9fcHRyIGRlcXVlIGxpc3QgcXVldWUgc3RhY2sgdmVjdG9yIG1hcCBzZXQgYml0c2V0IG11bHRpc2V0IG11bHRpbWFwIHVub3JkZXJlZF9zZXQgdW5vcmRlcmVkX21hcCB1bm9yZGVyZWRfbXVsdGlzZXQgdW5vcmRlcmVkX211bHRpbWFwIGFycmF5IHNoYXJlZF9wdHIgYWJvcnQgYWJzIGFjb3MgYXNpbiBhdGFuMiBhdGFuIGNhbGxvYyBjZWlsIGNvc2ggY29zIGV4aXQgZXhwIGZhYnMgZmxvb3IgZm1vZCBmcHJpbnRmIGZwdXRzIGZyZWUgZnJleHAgZnNjYW5mIGlzYWxudW0gaXNhbHBoYSBpc2NudHJsIGlzZGlnaXQgaXNncmFwaCBpc2xvd2VyIGlzcHJpbnQgaXNwdW5jdCBpc3NwYWNlIGlzdXBwZXIgaXN4ZGlnaXQgdG9sb3dlciB0b3VwcGVyIGxhYnMgbGRleHAgbG9nMTAgbG9nIG1hbGxvYyByZWFsbG9jIG1lbWNociBtZW1jbXAgbWVtY3B5IG1lbXNldCBtb2RmIHBvdyBwcmludGYgcHV0Y2hhciBwdXRzIHNjYW5mIHNpbmggc2luIHNucHJpbnRmIHNwcmludGYgc3FydCBzc2NhbmYgc3RyY2F0IHN0cmNociBzdHJjbXAgc3RyY3B5IHN0cmNzcG4gc3RybGVuIHN0cm5jYXQgc3RybmNtcCBzdHJuY3B5IHN0cnBicmsgc3RycmNociBzdHJzcG4gc3Ryc3RyIHRhbmggdGFuIHZmcHJpbnRmIHZwcmludGYgdnNwcmludGYgZW5kbCBpbml0aWFsaXplcl9saXN0IHVuaXF1ZV9wdHIiLGxpdGVyYWw6InRydWUgZmFsc2UgbnVsbHB0ciBOVUxMIn0sbj1bZSx0LkNMQ00sdC5DQkNNLHMscl07cmV0dXJue2FsaWFzZXM6WyJjIiwiY2MiLCJoIiwiYysrIiwiaCsrIiwiaHBwIl0sazpjLGk6IjwvIixjOm4uY29uY2F0KFtpLHtiOiJcXGIoZGVxdWV8bGlzdHxxdWV1ZXxzdGFja3x2ZWN0b3J8bWFwfHNldHxiaXRzZXR8bXVsdGlzZXR8bXVsdGltYXB8dW5vcmRlcmVkX21hcHx1bm9yZGVyZWRfc2V0fHVub3JkZXJlZF9tdWx0aXNldHx1bm9yZGVyZWRfbXVsdGltYXB8YXJyYXkpXFxzKjwiLGU6Ij4iLGs6YyxjOlsic2VsZiIsZV19LHtiOnQuSVIrIjo6IixrOmN9LHt2Olt7YjovPS8sZTovOy99LHtiOi9cKC8sZTovXCkvfSx7Yks6Im5ldyB0aHJvdyByZXR1cm4gZWxzZSIsZTovOy99XSxrOmMsYzpuLmNvbmNhdChbe2I6L1woLyxlOi9cKS8sazpjLGM6bi5jb25jYXQoWyJzZWxmIl0pLHI6MH1dKSxyOjB9LHtjTjoiZnVuY3Rpb24iLGI6IigiK3QuSVIrIltcXComXFxzXSspKyIrYSxyQjohMCxlOi9bezs9XS8sZUU6ITAsazpjLGk6L1teXHdcc1wqJl0vLGM6W3tiOmEsckI6ITAsYzpbdC5UTV0scjowfSx7Y046InBhcmFtcyIsYjovXCgvLGU6L1wpLyxrOmMscjowLGM6W3QuQ0xDTSx0LkNCQ00scixzLGVdfSx0LkNMQ00sdC5DQkNNLGldfSx7Y046ImNsYXNzIixiSzoiY2xhc3Mgc3RydWN0IixlOi9bezs6XS8sYzpbe2I6LzwvLGU6Lz4vLGM6WyJzZWxmIl19LHQuVE1dfV0pLGV4cG9ydHM6e3ByZXByb2Nlc3NvcjppLHN0cmluZ3M6cixrOmN9fX0pO2hsanMucmVnaXN0ZXJMYW5ndWFnZSgicnVieSIsZnVuY3Rpb24oZSl7dmFyIGI9IlthLXpBLVpfXVxcdypbIT89XT98Wy0rfl1cXEB8PDx8Pj58PX58PT09P3w8PT58Wzw+XT0/fFxcKlxcKnxbLS8rJV4mKn5gfF18XFxbXFxdPT8iLHI9e2tleXdvcmQ6ImFuZCB0aGVuIGRlZmluZWQgbW9kdWxlIGluIHJldHVybiByZWRvIGlmIEJFR0lOIHJldHJ5IGVuZCBmb3Igc2VsZiB3aGVuIG5leHQgdW50aWwgZG8gYmVnaW4gdW5sZXNzIEVORCByZXNjdWUgZWxzZSBicmVhayB1bmRlZiBub3Qgc3VwZXIgY2xhc3MgY2FzZSByZXF1aXJlIHlpZWxkIGFsaWFzIHdoaWxlIGVuc3VyZSBlbHNpZiBvciBpbmNsdWRlIGF0dHJfcmVhZGVyIGF0dHJfd3JpdGVyIGF0dHJfYWNjZXNzb3IiLGxpdGVyYWw6InRydWUgZmFsc2UgbmlsIn0sYz17Y046ImRvY3RhZyIsYjoiQFtBLVphLXpdKyJ9LGE9e2I6IiM8IixlOiI+In0scz1bZS5DKCIjIiwiJCIse2M6W2NdfSksZS5DKCJeXFw9YmVnaW4iLCJeXFw9ZW5kIix7YzpbY10scjoxMH0pLGUuQygiXl9fRU5EX18iLCJcXG4kIildLG49e2NOOiJzdWJzdCIsYjoiI1xceyIsZToifSIsazpyfSx0PXtjTjoic3RyaW5nIixjOltlLkJFLG5dLHY6W3tiOi8nLyxlOi8nL30se2I6LyIvLGU6LyIvfSx7YjovYC8sZTovYC99LHtiOiIlW3FRd1d4XT9cXCgiLGU6IlxcKSJ9LHtiOiIlW3FRd1d4XT9cXFsiLGU6IlxcXSJ9LHtiOiIlW3FRd1d4XT97IixlOiJ9In0se2I6IiVbcVF3V3hdPzwiLGU6Ij4ifSx7YjoiJVtxUXdXeF0/LyIsZToiLyJ9LHtiOiIlW3FRd1d4XT8lIixlOiIlIn0se2I6IiVbcVF3V3hdPy0iLGU6Ii0ifSx7YjoiJVtxUXdXeF0/XFx8IixlOiJcXHwifSx7YjovXEJcPyhcXFxkezEsM318XFx4W0EtRmEtZjAtOV17MSwyfXxcXHVbQS1GYS1mMC05XXs0fXxcXD9cUylcYi99LHtiOi88PCgtPylcdyskLyxlOi9eXHMqXHcrJC99XX0saT17Y046InBhcmFtcyIsYjoiXFwoIixlOiJcXCkiLGVuZHNQYXJlbnQ6ITAsazpyfSxkPVt0LGEse2NOOiJjbGFzcyIsYks6ImNsYXNzIG1vZHVsZSIsZToiJHw7IixpOi89LyxjOltlLmluaGVyaXQoZS5UTSx7YjoiW0EtWmEtel9dXFx3Kig6OlxcdyspKihcXD98XFwhKT8ifSkse2I6IjxcXHMqIixjOlt7YjoiKCIrZS5JUisiOjopPyIrZS5JUn1dfV0uY29uY2F0KHMpfSx7Y046ImZ1bmN0aW9uIixiSzoiZGVmIixlOiIkfDsiLGM6W2UuaW5oZXJpdChlLlRNLHtiOmJ9KSxpXS5jb25jYXQocyl9LHtiOmUuSVIrIjo6In0se2NOOiJzeW1ib2wiLGI6ZS5VSVIrIihcXCF8XFw/KT86IixyOjB9LHtjTjoic3ltYm9sIixiOiI6KD8hXFxzKSIsYzpbdCx7YjpifV0scjowfSx7Y046Im51bWJlciIsYjoiKFxcYjBbMC03X10rKXwoXFxiMHhbMC05YS1mQS1GX10rKXwoXFxiWzEtOV1bMC05X10qKFxcLlswLTlfXSspPyl8WzBfXVxcYiIscjowfSx7YjoiKFxcJFxcVyl8KChcXCR8XFxAXFxAPykoXFx3KykpIn0se2NOOiJwYXJhbXMiLGI6L1x8LyxlOi9cfC8sazpyfSx7YjoiKCIrZS5SU1IrInx1bmxlc3MpXFxzKiIsazoidW5sZXNzIixjOlthLHtjTjoicmVnZXhwIixjOltlLkJFLG5dLGk6L1xuLyx2Olt7YjoiLyIsZToiL1thLXpdKiJ9LHtiOiIlcnsiLGU6In1bYS16XSoifSx7YjoiJXJcXCgiLGU6IlxcKVthLXpdKiJ9LHtiOiIlciEiLGU6IiFbYS16XSoifSx7YjoiJXJcXFsiLGU6IlxcXVthLXpdKiJ9XX1dLmNvbmNhdChzKSxyOjB9XS5jb25jYXQocyk7bi5jPWQsaS5jPWQ7dmFyIGw9Ils+P10+IixvPSJbXFx3I10rXFwoXFx3K1xcKTpcXGQrOlxcZCs+Iix1PSIoXFx3Ky0pP1xcZCtcXC5cXGQrXFwuXFxkKHBcXGQrKT9bXj5dKz4iLHc9W3tiOi9eXHMqPT4vLHN0YXJ0czp7ZToiJCIsYzpkfX0se2NOOiJtZXRhIixiOiJeKCIrbCsifCIrbysifCIrdSsiKSIsc3RhcnRzOntlOiIkIixjOmR9fV07cmV0dXJue2FsaWFzZXM6WyJyYiIsImdlbXNwZWMiLCJwb2RzcGVjIiwidGhvciIsImlyYiJdLGs6cixpOi9cL1wqLyxjOnMuY29uY2F0KHcpLmNvbmNhdChkKX19KTtobGpzLnJlZ2lzdGVyTGFuZ3VhZ2UoInlhbWwiLGZ1bmN0aW9uKGUpe3ZhciBiPSJ0cnVlIGZhbHNlIHllcyBubyBudWxsIixhPSJeWyBcXC1dKiIscj0iW2EtekEtWl9dW1xcd1xcLV0qIix0PXtjTjoiYXR0ciIsdjpbe2I6YStyKyI6In0se2I6YSsnIicrcisnIjonfSx7YjphKyInIityKyInOiJ9XX0sYz17Y046InRlbXBsYXRlLXZhcmlhYmxlIix2Olt7Yjoie3siLGU6In19In0se2I6IiV7IixlOiJ9In1dfSxsPXtjTjoic3RyaW5nIixyOjAsdjpbe2I6LycvLGU6LycvfSx7YjovIi8sZTovIi99LHtiOi9cUysvfV0sYzpbZS5CRSxjXX07cmV0dXJue2NJOiEwLGFsaWFzZXM6WyJ5bWwiLCJZQU1MIiwieWFtbCJdLGM6W3Qse2NOOiJtZXRhIixiOiJeLS0tcyokIixyOjEwfSx7Y046InN0cmluZyIsYjoiW1xcfD5dICokIixyRTohMCxjOmwuYyxlOnQudlswXS5ifSx7YjoiPCVbJT0tXT8iLGU6IlslLV0/JT4iLHNMOiJydWJ5IixlQjohMCxlRTohMCxyOjB9LHtjTjoidHlwZSIsYjoiISEiK2UuVUlSfSx7Y046Im1ldGEiLGI6IiYiK2UuVUlSKyIkIn0se2NOOiJtZXRhIixiOiJcXCoiK2UuVUlSKyIkIn0se2NOOiJidWxsZXQiLGI6Il4gKi0iLHI6MH0sZS5IQ00se2JLOmIsazp7bGl0ZXJhbDpifX0sZS5DTk0sbF19fSk7aGxqcy5yZWdpc3Rlckxhbmd1YWdlKCJjc3MiLGZ1bmN0aW9uKGUpe3ZhciBjPSJbYS16QS1aLV1bYS16QS1aMC05Xy1dKiIsdD17YjovW0EtWlxfXC5cLV0rXHMqOi8sckI6ITAsZToiOyIsZVc6ITAsYzpbe2NOOiJhdHRyaWJ1dGUiLGI6L1xTLyxlOiI6IixlRTohMCxzdGFydHM6e2VXOiEwLGVFOiEwLGM6W3tiOi9bXHctXStcKC8sckI6ITAsYzpbe2NOOiJidWlsdF9pbiIsYjovW1x3LV0rL30se2I6L1woLyxlOi9cKS8sYzpbZS5BU00sZS5RU01dfV19LGUuQ1NTTk0sZS5RU00sZS5BU00sZS5DQkNNLHtjTjoibnVtYmVyIixiOiIjWzAtOUEtRmEtZl0rIn0se2NOOiJtZXRhIixiOiIhaW1wb3J0YW50In1dfX1dfTtyZXR1cm57Y0k6ITAsaTovWz1cL3wnXCRdLyxjOltlLkNCQ00se2NOOiJzZWxlY3Rvci1pZCIsYjovI1tBLVphLXowLTlfLV0rL30se2NOOiJzZWxlY3Rvci1jbGFzcyIsYjovXC5bQS1aYS16MC05Xy1dKy99LHtjTjoic2VsZWN0b3ItYXR0ciIsYjovXFsvLGU6L1xdLyxpOiIkIn0se2NOOiJzZWxlY3Rvci1wc2V1ZG8iLGI6LzooOik/W2EtekEtWjAtOVxfXC1cK1woXCkiJy5dKy99LHtiOiJAKGZvbnQtZmFjZXxwYWdlKSIsbDoiW2Etei1dKyIsazoiZm9udC1mYWNlIHBhZ2UifSx7YjoiQCIsZToiW3s7XSIsaTovOi8sYzpbe2NOOiJrZXl3b3JkIixiOi9cdysvfSx7YjovXHMvLGVXOiEwLGVFOiEwLHI6MCxjOltlLkFTTSxlLlFTTSxlLkNTU05NXX1dfSx7Y046InNlbGVjdG9yLXRhZyIsYjpjLHI6MH0se2I6InsiLGU6In0iLGk6L1xTLyxjOltlLkNCQ00sdF19XX19KTtobGpzLnJlZ2lzdGVyTGFuZ3VhZ2UoImZvcnRyYW4iLGZ1bmN0aW9uKGUpe3ZhciB0PXtjTjoicGFyYW1zIixiOiJcXCgiLGU6IlxcKSJ9LG49e2xpdGVyYWw6Ii5GYWxzZS4gLlRydWUuIixrZXl3b3JkOiJraW5kIGRvIHdoaWxlIHByaXZhdGUgY2FsbCBpbnRyaW5zaWMgd2hlcmUgZWxzZXdoZXJlIHR5cGUgZW5kdHlwZSBlbmRtb2R1bGUgZW5kc2VsZWN0IGVuZGludGVyZmFjZSBlbmQgZW5kZG8gZW5kaWYgaWYgZm9yYWxsIGVuZGZvcmFsbCBvbmx5IGNvbnRhaW5zIGRlZmF1bHQgcmV0dXJuIHN0b3AgdGhlbiBwdWJsaWMgc3Vicm91dGluZXwxMCBmdW5jdGlvbiBwcm9ncmFtIC5hbmQuIC5vci4gLm5vdC4gLmxlLiAuZXEuIC5nZS4gLmd0LiAubHQuIGdvdG8gc2F2ZSBlbHNlIHVzZSBtb2R1bGUgc2VsZWN0IGNhc2UgYWNjZXNzIGJsYW5rIGRpcmVjdCBleGlzdCBmaWxlIGZtdCBmb3JtIGZvcm1hdHRlZCBpb3N0YXQgbmFtZSBuYW1lZCBuZXh0cmVjIG51bWJlciBvcGVuZWQgcmVjIHJlY2wgc2VxdWVudGlhbCBzdGF0dXMgdW5mb3JtYXR0ZWQgdW5pdCBjb250aW51ZSBmb3JtYXQgcGF1c2UgY3ljbGUgZXhpdCBjX251bGxfY2hhciBjX2FsZXJ0IGNfYmFja3NwYWNlIGNfZm9ybV9mZWVkIGZsdXNoIHdhaXQgZGVjaW1hbCByb3VuZCBpb21zZyBzeW5jaHJvbm91cyBub3Bhc3Mgbm9uX292ZXJyaWRhYmxlIHBhc3MgcHJvdGVjdGVkIHZvbGF0aWxlIGFic3RyYWN0IGV4dGVuZHMgaW1wb3J0IG5vbl9pbnRyaW5zaWMgdmFsdWUgZGVmZXJyZWQgZ2VuZXJpYyBmaW5hbCBlbnVtZXJhdG9yIGNsYXNzIGFzc29jaWF0ZSBiaW5kIGVudW0gY19pbnQgY19zaG9ydCBjX2xvbmcgY19sb25nX2xvbmcgY19zaWduZWRfY2hhciBjX3NpemVfdCBjX2ludDhfdCBjX2ludDE2X3QgY19pbnQzMl90IGNfaW50NjRfdCBjX2ludF9sZWFzdDhfdCBjX2ludF9sZWFzdDE2X3QgY19pbnRfbGVhc3QzMl90IGNfaW50X2xlYXN0NjRfdCBjX2ludF9mYXN0OF90IGNfaW50X2Zhc3QxNl90IGNfaW50X2Zhc3QzMl90IGNfaW50X2Zhc3Q2NF90IGNfaW50bWF4X3QgQ19pbnRwdHJfdCBjX2Zsb2F0IGNfZG91YmxlIGNfbG9uZ19kb3VibGUgY19mbG9hdF9jb21wbGV4IGNfZG91YmxlX2NvbXBsZXggY19sb25nX2RvdWJsZV9jb21wbGV4IGNfYm9vbCBjX2NoYXIgY19udWxsX3B0ciBjX251bGxfZnVucHRyIGNfbmV3X2xpbmUgY19jYXJyaWFnZV9yZXR1cm4gY19ob3Jpem9udGFsX3RhYiBjX3ZlcnRpY2FsX3RhYiBpc29fY19iaW5kaW5nIGNfbG9jIGNfZnVubG9jIGNfYXNzb2NpYXRlZCAgY19mX3BvaW50ZXIgY19wdHIgY19mdW5wdHIgaXNvX2ZvcnRyYW5fZW52IGNoYXJhY3Rlcl9zdG9yYWdlX3NpemUgZXJyb3JfdW5pdCBmaWxlX3N0b3JhZ2Vfc2l6ZSBpbnB1dF91bml0IGlvc3RhdF9lbmQgaW9zdGF0X2VvciBudW1lcmljX3N0b3JhZ2Vfc2l6ZSBvdXRwdXRfdW5pdCBjX2ZfcHJvY3BvaW50ZXIgaWVlZV9hcml0aG1ldGljIGllZWVfc3VwcG9ydF91bmRlcmZsb3dfY29udHJvbCBpZWVlX2dldF91bmRlcmZsb3dfbW9kZSBpZWVlX3NldF91bmRlcmZsb3dfbW9kZSBuZXd1bml0IGNvbnRpZ3VvdXMgcmVjdXJzaXZlIHBhZCBwb3NpdGlvbiBhY3Rpb24gZGVsaW0gcmVhZHdyaXRlIGVvciBhZHZhbmNlIG5tbCBpbnRlcmZhY2UgcHJvY2VkdXJlIG5hbWVsaXN0IGluY2x1ZGUgc2VxdWVuY2UgZWxlbWVudGFsIHB1cmUgaW50ZWdlciByZWFsIGNoYXJhY3RlciBjb21wbGV4IGxvZ2ljYWwgZGltZW5zaW9uIGFsbG9jYXRhYmxlfDEwIHBhcmFtZXRlciBleHRlcm5hbCBpbXBsaWNpdHwxMCBub25lIGRvdWJsZSBwcmVjaXNpb24gYXNzaWduIGludGVudCBvcHRpb25hbCBwb2ludGVyIHRhcmdldCBpbiBvdXQgY29tbW9uIGVxdWl2YWxlbmNlIGRhdGEiLGJ1aWx0X2luOiJhbG9nIGFsb2cxMCBhbWF4MCBhbWF4MSBhbWluMCBhbWluMSBhbW9kIGNhYnMgY2NvcyBjZXhwIGNsb2cgY3NpbiBjc3FydCBkYWJzIGRhY29zIGRhc2luIGRhdGFuIGRhdGFuMiBkY29zIGRjb3NoIGRkaW0gZGV4cCBkaW50IGRsb2cgZGxvZzEwIGRtYXgxIGRtaW4xIGRtb2QgZG5pbnQgZHNpZ24gZHNpbiBkc2luaCBkc3FydCBkdGFuIGR0YW5oIGZsb2F0IGlhYnMgaWRpbSBpZGludCBpZG5pbnQgaWZpeCBpc2lnbiBtYXgwIG1heDEgbWluMCBtaW4xIHNuZ2wgYWxnYW1hIGNkYWJzIGNkY29zIGNkZXhwIGNkbG9nIGNkc2luIGNkc3FydCBjcWFicyBjcWNvcyBjcWV4cCBjcWxvZyBjcXNpbiBjcXNxcnQgZGNtcGx4IGRjb25qZyBkZXJmIGRlcmZjIGRmbG9hdCBkZ2FtbWEgZGltYWcgZGxnYW1hIGlxaW50IHFhYnMgcWFjb3MgcWFzaW4gcWF0YW4gcWF0YW4yIHFjbXBseCBxY29uamcgcWNvcyBxY29zaCBxZGltIHFlcmYgcWVyZmMgcWV4cCBxZ2FtbWEgcWltYWcgcWxnYW1hIHFsb2cgcWxvZzEwIHFtYXgxIHFtaW4xIHFtb2QgcW5pbnQgcXNpZ24gcXNpbiBxc2luaCBxc3FydCBxdGFuIHF0YW5oIGFicyBhY29zIGFpbWFnIGFpbnQgYW5pbnQgYXNpbiBhdGFuIGF0YW4yIGNoYXIgY21wbHggY29uamcgY29zIGNvc2ggZXhwIGljaGFyIGluZGV4IGludCBsb2cgbG9nMTAgbWF4IG1pbiBuaW50IHNpZ24gc2luIHNpbmggc3FydCB0YW4gdGFuaCBwcmludCB3cml0ZSBkaW0gbGdlIGxndCBsbGUgbGx0IG1vZCBudWxsaWZ5IGFsbG9jYXRlIGRlYWxsb2NhdGUgYWRqdXN0bCBhZGp1c3RyIGFsbCBhbGxvY2F0ZWQgYW55IGFzc29jaWF0ZWQgYml0X3NpemUgYnRlc3QgY2VpbGluZyBjb3VudCBjc2hpZnQgZGF0ZV9hbmRfdGltZSBkaWdpdHMgZG90X3Byb2R1Y3QgZW9zaGlmdCBlcHNpbG9uIGV4cG9uZW50IGZsb29yIGZyYWN0aW9uIGh1Z2UgaWFuZCBpYmNsciBpYml0cyBpYnNldCBpZW9yIGlvciBpc2hmdCBpc2hmdGMgbGJvdW5kIGxlbl90cmltIG1hdG11bCBtYXhleHBvbmVudCBtYXhsb2MgbWF4dmFsIG1lcmdlIG1pbmV4cG9uZW50IG1pbmxvYyBtaW52YWwgbW9kdWxvIG12Yml0cyBuZWFyZXN0IHBhY2sgcHJlc2VudCBwcm9kdWN0IHJhZGl4IHJhbmRvbV9udW1iZXIgcmFuZG9tX3NlZWQgcmFuZ2UgcmVwZWF0IHJlc2hhcGUgcnJzcGFjaW5nIHNjYWxlIHNjYW4gc2VsZWN0ZWRfaW50X2tpbmQgc2VsZWN0ZWRfcmVhbF9raW5kIHNldF9leHBvbmVudCBzaGFwZSBzaXplIHNwYWNpbmcgc3ByZWFkIHN1bSBzeXN0ZW1fY2xvY2sgdGlueSB0cmFuc3Bvc2UgdHJpbSB1Ym91bmQgdW5wYWNrIHZlcmlmeSBhY2hhciBpYWNoYXIgdHJhbnNmZXIgZGJsZSBlbnRyeSBkcHJvZCBjcHVfdGltZSBjb21tYW5kX2FyZ3VtZW50X2NvdW50IGdldF9jb21tYW5kIGdldF9jb21tYW5kX2FyZ3VtZW50IGdldF9lbnZpcm9ubWVudF92YXJpYWJsZSBpc19pb3N0YXRfZW5kIGllZWVfYXJpdGhtZXRpYyBpZWVlX3N1cHBvcnRfdW5kZXJmbG93X2NvbnRyb2wgaWVlZV9nZXRfdW5kZXJmbG93X21vZGUgaWVlZV9zZXRfdW5kZXJmbG93X21vZGUgaXNfaW9zdGF0X2VvciBtb3ZlX2FsbG9jIG5ld19saW5lIHNlbGVjdGVkX2NoYXJfa2luZCBzYW1lX3R5cGVfYXMgZXh0ZW5kc190eXBlX29mYWNvc2ggYXNpbmggYXRhbmggYmVzc2VsX2owIGJlc3NlbF9qMSBiZXNzZWxfam4gYmVzc2VsX3kwIGJlc3NlbF95MSBiZXNzZWxfeW4gZXJmIGVyZmMgZXJmY19zY2FsZWQgZ2FtbWEgbG9nX2dhbW1hIGh5cG90IG5vcm0yIGF0b21pY19kZWZpbmUgYXRvbWljX3JlZiBleGVjdXRlX2NvbW1hbmRfbGluZSBsZWFkeiB0cmFpbHogc3RvcmFnZV9zaXplIG1lcmdlX2JpdHMgYmdlIGJndCBibGUgYmx0IGRzaGlmdGwgZHNoaWZ0ciBmaW5kbG9jIGlhbGwgaWFueSBpcGFyaXR5IGltYWdlX2luZGV4IGxjb2JvdW5kIHVjb2JvdW5kIG1hc2tsIG1hc2tyIG51bV9pbWFnZXMgcGFyaXR5IHBvcGNudCBwb3BwYXIgc2hpZnRhIHNoaWZ0bCBzaGlmdHIgdGhpc19pbWFnZSJ9O3JldHVybntjSTohMCxhbGlhc2VzOlsiZjkwIiwiZjk1Il0sazpuLGk6L1wvXCovLGM6W2UuaW5oZXJpdChlLkFTTSx7Y046InN0cmluZyIscjowfSksZS5pbmhlcml0KGUuUVNNLHtjTjoic3RyaW5nIixyOjB9KSx7Y046ImZ1bmN0aW9uIixiSzoic3Vicm91dGluZSBmdW5jdGlvbiBwcm9ncmFtIixpOiJbJHs9XFxuXSIsYzpbZS5VVE0sdF19LGUuQygiISIsIiQiLHtyOjB9KSx7Y046Im51bWJlciIsYjoiKD89XFxifFxcK3xcXC18XFwuKSg/PVxcLlxcZHxcXGQpKD86XFxkKyk/KD86XFwuP1xcZCopKD86W2RlXVsrLV0/XFxkKyk/XFxiXFwuPyIscjowfV19fSk7aGxqcy5yZWdpc3Rlckxhbmd1YWdlKCJhd2siLGZ1bmN0aW9uKGUpe3ZhciByPXtjTjoidmFyaWFibGUiLHY6W3tiOi9cJFtcd1xkI0BdW1x3XGRfXSovfSx7YjovXCRceyguKj8pfS99XX0sYj0iQkVHSU4gRU5EIGlmIGVsc2Ugd2hpbGUgZG8gZm9yIGluIGJyZWFrIGNvbnRpbnVlIGRlbGV0ZSBuZXh0IG5leHRmaWxlIGZ1bmN0aW9uIGZ1bmMgZXhpdHwxMCIsbj17Y046InN0cmluZyIsYzpbZS5CRV0sdjpbe2I6Lyh1fGIpP3I/JycnLyxlOi8nJycvLHI6MTB9LHtiOi8odXxiKT9yPyIiIi8sZTovIiIiLyxyOjEwfSx7YjovKHV8cnx1ciknLyxlOi8nLyxyOjEwfSx7YjovKHV8cnx1cikiLyxlOi8iLyxyOjEwfSx7YjovKGJ8YnIpJy8sZTovJy99LHtiOi8oYnxicikiLyxlOi8iL30sZS5BU00sZS5RU01dfTtyZXR1cm57azp7a2V5d29yZDpifSxjOltyLG4sZS5STSxlLkhDTSxlLk5NXX19KTtobGpzLnJlZ2lzdGVyTGFuZ3VhZ2UoIm1ha2VmaWxlIixmdW5jdGlvbihlKXt2YXIgaT17Y046InZhcmlhYmxlIix2Olt7YjoiXFwkXFwoIitlLlVJUisiXFwpIixjOltlLkJFXX0se2I6L1wkW0AlPD9cXlwrXCpdL31dfSxyPXtjTjoic3RyaW5nIixiOi8iLyxlOi8iLyxjOltlLkJFLGldfSxhPXtjTjoidmFyaWFibGUiLGI6L1wkXChbXHctXStccy8sZTovXCkvLGs6e2J1aWx0X2luOiJzdWJzdCBwYXRzdWJzdCBzdHJpcCBmaW5kc3RyaW5nIGZpbHRlciBmaWx0ZXItb3V0IHNvcnQgd29yZCB3b3JkbGlzdCBmaXJzdHdvcmQgbGFzdHdvcmQgZGlyIG5vdGRpciBzdWZmaXggYmFzZW5hbWUgYWRkc3VmZml4IGFkZHByZWZpeCBqb2luIHdpbGRjYXJkIHJlYWxwYXRoIGFic3BhdGggZXJyb3Igd2FybmluZyBzaGVsbCBvcmlnaW4gZmxhdm9yIGZvcmVhY2ggaWYgb3IgYW5kIGNhbGwgZXZhbCBmaWxlIHZhbHVlIn0sYzpbaV19LG49e2I6Il4iK2UuVUlSKyJcXHMqWzorP10/PSIsaToiXFxuIixyQjohMCxjOlt7YjoiXiIrZS5VSVIsZToiWzorP10/PSIsZUU6ITB9XX0sdD17Y046Im1ldGEiLGI6L15cLlBIT05ZOi8sZTovJC8sazp7Im1ldGEta2V5d29yZCI6Ii5QSE9OWSJ9LGw6L1tcLlx3XSsvfSxsPXtjTjoic2VjdGlvbiIsYjovXlteXHNdKzovLGU6LyQvLGM6W2ldfTtyZXR1cm57YWxpYXNlczpbIm1rIiwibWFrIl0sazoiZGVmaW5lIGVuZGVmIHVuZGVmaW5lIGlmZGVmIGlmbmRlZiBpZmVxIGlmbmVxIGVsc2UgZW5kaWYgaW5jbHVkZSAtaW5jbHVkZSBzaW5jbHVkZSBvdmVycmlkZSBleHBvcnQgdW5leHBvcnQgcHJpdmF0ZSB2cGF0aCIsbDovW1x3LV0rLyxjOltlLkhDTSxpLHIsYSxuLHQsbF19fSk7aGxqcy5yZWdpc3Rlckxhbmd1YWdlKCJqYXZhIixmdW5jdGlvbihlKXt2YXIgYT0iW8OALcq4YS16QS1aXyRdW8OALcq4YS16QS1aXyQwLTldKiIsdD1hKyIoPCIrYSsiKFxccyosXFxzKiIrYSsiKSo+KT8iLHI9ImZhbHNlIHN5bmNocm9uaXplZCBpbnQgYWJzdHJhY3QgZmxvYXQgcHJpdmF0ZSBjaGFyIGJvb2xlYW4gc3RhdGljIG51bGwgaWYgY29uc3QgZm9yIHRydWUgd2hpbGUgbG9uZyBzdHJpY3RmcCBmaW5hbGx5IHByb3RlY3RlZCBpbXBvcnQgbmF0aXZlIGZpbmFsIHZvaWQgZW51bSBlbHNlIGJyZWFrIHRyYW5zaWVudCBjYXRjaCBpbnN0YW5jZW9mIGJ5dGUgc3VwZXIgdm9sYXRpbGUgY2FzZSBhc3NlcnQgc2hvcnQgcGFja2FnZSBkZWZhdWx0IGRvdWJsZSBwdWJsaWMgdHJ5IHRoaXMgc3dpdGNoIGNvbnRpbnVlIHRocm93cyBwcm90ZWN0ZWQgcHVibGljIHByaXZhdGUgbW9kdWxlIHJlcXVpcmVzIGV4cG9ydHMgZG8iLHM9IlxcYigwW2JCXShbMDFdK1swMV9dK1swMV0rfFswMV0rKXwwW3hYXShbYS1mQS1GMC05XStbYS1mQS1GMC05X10rW2EtZkEtRjAtOV0rfFthLWZBLUYwLTldKyl8KChbXFxkXStbXFxkX10rW1xcZF0rfFtcXGRdKykoXFwuKFtcXGRdK1tcXGRfXStbXFxkXSt8W1xcZF0rKSk/fFxcLihbXFxkXStbXFxkX10rW1xcZF0rfFtcXGRdKykpKFtlRV1bLStdP1xcZCspPylbbExmRl0/IixjPXtjTjoibnVtYmVyIixiOnMscjowfTtyZXR1cm57YWxpYXNlczpbImpzcCJdLGs6cixpOi88XC98Iy8sYzpbZS5DKCIvXFwqXFwqIiwiXFwqLyIse3I6MCxjOlt7YjovXHcrQC8scjowfSx7Y046ImRvY3RhZyIsYjoiQFtBLVphLXpdKyJ9XX0pLGUuQ0xDTSxlLkNCQ00sZS5BU00sZS5RU00se2NOOiJjbGFzcyIsYks6ImNsYXNzIGludGVyZmFjZSIsZTovW3s7PV0vLGVFOiEwLGs6ImNsYXNzIGludGVyZmFjZSIsaTovWzoiXFtcXV0vLGM6W3tiSzoiZXh0ZW5kcyBpbXBsZW1lbnRzIn0sZS5VVE1dfSx7Yks6Im5ldyB0aHJvdyByZXR1cm4gZWxzZSIscjowfSx7Y046ImZ1bmN0aW9uIixiOiIoIit0KyJcXHMrKSsiK2UuVUlSKyJcXHMqXFwoIixyQjohMCxlOi9bezs9XS8sZUU6ITAsazpyLGM6W3tiOmUuVUlSKyJcXHMqXFwoIixyQjohMCxyOjAsYzpbZS5VVE1dfSx7Y046InBhcmFtcyIsYjovXCgvLGU6L1wpLyxrOnIscjowLGM6W2UuQVNNLGUuUVNNLGUuQ05NLGUuQ0JDTV19LGUuQ0xDTSxlLkNCQ01dfSxjLHtjTjoibWV0YSIsYjoiQFtBLVphLXpdKyJ9XX19KTtobGpzLnJlZ2lzdGVyTGFuZ3VhZ2UoInN0YW4iLGZ1bmN0aW9uKGUpe3JldHVybntjOltlLkhDTSxlLkNMQ00sZS5DQkNNLHtiOmUuVUlSLGw6ZS5VSVIsazp7bmFtZToiZm9yIGluIHdoaWxlIHJlcGVhdCB1bnRpbCBpZiB0aGVuIGVsc2UiLHN5bWJvbDoiYmVybm91bGxpIGJlcm5vdWxsaV9sb2dpdCBiaW5vbWlhbCBiaW5vbWlhbF9sb2dpdCBiZXRhX2Jpbm9taWFsIGh5cGVyZ2VvbWV0cmljIGNhdGVnb3JpY2FsIGNhdGVnb3JpY2FsX2xvZ2l0IG9yZGVyZWRfbG9naXN0aWMgbmVnX2Jpbm9taWFsIG5lZ19iaW5vbWlhbF8yIG5lZ19iaW5vbWlhbF8yX2xvZyBwb2lzc29uIHBvaXNzb25fbG9nIG11bHRpbm9taWFsIG5vcm1hbCBleHBfbW9kX25vcm1hbCBza2V3X25vcm1hbCBzdHVkZW50X3QgY2F1Y2h5IGRvdWJsZV9leHBvbmVudGlhbCBsb2dpc3RpYyBndW1iZWwgbG9nbm9ybWFsIGNoaV9zcXVhcmUgaW52X2NoaV9zcXVhcmUgc2NhbGVkX2ludl9jaGlfc3F1YXJlIGV4cG9uZW50aWFsIGludl9nYW1tYSB3ZWlidWxsIGZyZWNoZXQgcmF5bGVpZ2ggd2llbmVyIHBhcmV0byBwYXJldG9fdHlwZV8yIHZvbl9taXNlcyB1bmlmb3JtIG11bHRpX25vcm1hbCBtdWx0aV9ub3JtYWxfcHJlYyBtdWx0aV9ub3JtYWxfY2hvbGVza3kgbXVsdGlfZ3AgbXVsdGlfZ3BfY2hvbGVza3kgbXVsdGlfc3R1ZGVudF90IGdhdXNzaWFuX2RsbV9vYnMgZGlyaWNobGV0IGxral9jb3JyIGxral9jb3JyX2Nob2xlc2t5IHdpc2hhcnQgaW52X3dpc2hhcnQiLCJzZWxlY3Rvci10YWciOiJpbnQgcmVhbCB2ZWN0b3Igc2ltcGxleCB1bml0X3ZlY3RvciBvcmRlcmVkIHBvc2l0aXZlX29yZGVyZWQgcm93X3ZlY3RvciBtYXRyaXggY2hvbGVza3lfZmFjdG9yX2NvcnIgY2hvbGVza3lfZmFjdG9yX2NvdiBjb3JyX21hdHJpeCBjb3ZfbWF0cml4Iix0aXRsZToiZnVuY3Rpb25zIG1vZGVsIGRhdGEgcGFyYW1ldGVycyBxdWFudGl0aWVzIHRyYW5zZm9ybWVkIGdlbmVyYXRlZCIsbGl0ZXJhbDoidHJ1ZSBmYWxzZSJ9LHI6MH0se2NOOiJudW1iZXIiLGI6IjBbeFhdWzAtOWEtZkEtRl0rW0xpXT9cXGIiLHI6MH0se2NOOiJudW1iZXIiLGI6IjBbeFhdWzAtOWEtZkEtRl0rW0xpXT9cXGIiLHI6MH0se2NOOiJudW1iZXIiLGI6IlxcZCsoPzpbZUVdWytcXC1dP1xcZCopP0xcXGIiLHI6MH0se2NOOiJudW1iZXIiLGI6IlxcZCtcXC4oPyFcXGQpKD86aVxcYik/IixyOjB9LHtjTjoibnVtYmVyIixiOiJcXGQrKD86XFwuXFxkKik/KD86W2VFXVsrXFwtXT9cXGQqKT9pP1xcYiIscjowfSx7Y046Im51bWJlciIsYjoiXFwuXFxkKyg/OltlRV1bK1xcLV0/XFxkKik/aT9cXGIiLHI6MH1dfX0pO2hsanMucmVnaXN0ZXJMYW5ndWFnZSgiamF2YXNjcmlwdCIsZnVuY3Rpb24oZSl7dmFyIHI9IltBLVphLXokX11bMC05QS1aYS16JF9dKiIsdD17a2V5d29yZDoiaW4gb2YgaWYgZm9yIHdoaWxlIGZpbmFsbHkgdmFyIG5ldyBmdW5jdGlvbiBkbyByZXR1cm4gdm9pZCBlbHNlIGJyZWFrIGNhdGNoIGluc3RhbmNlb2Ygd2l0aCB0aHJvdyBjYXNlIGRlZmF1bHQgdHJ5IHRoaXMgc3dpdGNoIGNvbnRpbnVlIHR5cGVvZiBkZWxldGUgbGV0IHlpZWxkIGNvbnN0IGV4cG9ydCBzdXBlciBkZWJ1Z2dlciBhcyBhc3luYyBhd2FpdCBzdGF0aWMgaW1wb3J0IGZyb20gYXMiLGxpdGVyYWw6InRydWUgZmFsc2UgbnVsbCB1bmRlZmluZWQgTmFOIEluZmluaXR5IixidWlsdF9pbjoiZXZhbCBpc0Zpbml0ZSBpc05hTiBwYXJzZUZsb2F0IHBhcnNlSW50IGRlY29kZVVSSSBkZWNvZGVVUklDb21wb25lbnQgZW5jb2RlVVJJIGVuY29kZVVSSUNvbXBvbmVudCBlc2NhcGUgdW5lc2NhcGUgT2JqZWN0IEZ1bmN0aW9uIEJvb2xlYW4gRXJyb3IgRXZhbEVycm9yIEludGVybmFsRXJyb3IgUmFuZ2VFcnJvciBSZWZlcmVuY2VFcnJvciBTdG9wSXRlcmF0aW9uIFN5bnRheEVycm9yIFR5cGVFcnJvciBVUklFcnJvciBOdW1iZXIgTWF0aCBEYXRlIFN0cmluZyBSZWdFeHAgQXJyYXkgRmxvYXQzMkFycmF5IEZsb2F0NjRBcnJheSBJbnQxNkFycmF5IEludDMyQXJyYXkgSW50OEFycmF5IFVpbnQxNkFycmF5IFVpbnQzMkFycmF5IFVpbnQ4QXJyYXkgVWludDhDbGFtcGVkQXJyYXkgQXJyYXlCdWZmZXIgRGF0YVZpZXcgSlNPTiBJbnRsIGFyZ3VtZW50cyByZXF1aXJlIG1vZHVsZSBjb25zb2xlIHdpbmRvdyBkb2N1bWVudCBTeW1ib2wgU2V0IE1hcCBXZWFrU2V0IFdlYWtNYXAgUHJveHkgUmVmbGVjdCBQcm9taXNlIn0sYT17Y046Im51bWJlciIsdjpbe2I6IlxcYigwW2JCXVswMV0rKSJ9LHtiOiJcXGIoMFtvT11bMC03XSspIn0se2I6ZS5DTlJ9XSxyOjB9LG49e2NOOiJzdWJzdCIsYjoiXFwkXFx7IixlOiJcXH0iLGs6dCxjOltdfSxjPXtjTjoic3RyaW5nIixiOiJgIixlOiJgIixjOltlLkJFLG5dfTtuLmM9W2UuQVNNLGUuUVNNLGMsYSxlLlJNXTt2YXIgcz1uLmMuY29uY2F0KFtlLkNCQ00sZS5DTENNXSk7cmV0dXJue2FsaWFzZXM6WyJqcyIsImpzeCJdLGs6dCxjOlt7Y046Im1ldGEiLHI6MTAsYjovXlxzKlsnIl11c2UgKHN0cmljdHxhc20pWyciXS99LHtjTjoibWV0YSIsYjovXiMhLyxlOi8kL30sZS5BU00sZS5RU00sYyxlLkNMQ00sZS5DQkNNLGEse2I6L1t7LF1ccyovLHI6MCxjOlt7YjpyKyJcXHMqOiIsckI6ITAscjowLGM6W3tjTjoiYXR0ciIsYjpyLHI6MH1dfV19LHtiOiIoIitlLlJTUisifFxcYihjYXNlfHJldHVybnx0aHJvdylcXGIpXFxzKiIsazoicmV0dXJuIHRocm93IGNhc2UiLGM6W2UuQ0xDTSxlLkNCQ00sZS5STSx7Y046ImZ1bmN0aW9uIixiOiIoXFwoLio/XFwpfCIrcisiKVxccyo9PiIsckI6ITAsZToiXFxzKj0+IixjOlt7Y046InBhcmFtcyIsdjpbe2I6cn0se2I6L1woXHMqXCkvfSx7YjovXCgvLGU6L1wpLyxlQjohMCxlRTohMCxrOnQsYzpzfV19XX0se2I6LzwvLGU6LyhcL1x3K3xcdytcLyk+LyxzTDoieG1sIixjOlt7YjovPFx3K1xzKlwvPi8sc2tpcDohMH0se2I6LzxcdysvLGU6LyhcL1x3K3xcdytcLyk+Lyxza2lwOiEwLGM6W3tiOi88XHcrXHMqXC8+Lyxza2lwOiEwfSwic2VsZiJdfV19XSxyOjB9LHtjTjoiZnVuY3Rpb24iLGJLOiJmdW5jdGlvbiIsZTovXHsvLGVFOiEwLGM6W2UuaW5oZXJpdChlLlRNLHtiOnJ9KSx7Y046InBhcmFtcyIsYjovXCgvLGU6L1wpLyxlQjohMCxlRTohMCxjOnN9XSxpOi9cW3wlL30se2I6L1wkWyguXS99LGUuTUVUSE9EX0dVQVJELHtjTjoiY2xhc3MiLGJLOiJjbGFzcyIsZTovW3s7PV0vLGVFOiEwLGk6L1s6IlxbXF1dLyxjOlt7Yks6ImV4dGVuZHMifSxlLlVUTV19LHtiSzoiY29uc3RydWN0b3IiLGU6L1x7LyxlRTohMH1dLGk6LyMoPyEhKS99fSk7aGxqcy5yZWdpc3Rlckxhbmd1YWdlKCJ0ZXgiLGZ1bmN0aW9uKGMpe3ZhciBlPXtjTjoidGFnIixiOi9cXC8scjowLGM6W3tjTjoibmFtZSIsdjpbe2I6L1thLXpBLVrQsC3Rj9CQLdGPXStbKl0/L30se2I6L1teYS16QS1a0LAt0Y/QkC3RjzAtOV0vfV0sc3RhcnRzOntlVzohMCxyOjAsYzpbe2NOOiJzdHJpbmciLHY6W3tiOi9cWy8sZTovXF0vfSx7YjovXHsvLGU6L1x9L31dfSx7YjovXHMqPVxzKi8sZVc6ITAscjowLGM6W3tjTjoibnVtYmVyIixiOi8tP1xkKlwuP1xkKyhwdHxwY3xtbXxjbXxpbnxkZHxjY3xleHxlbSk/L31dfV19fV19O3JldHVybntjOltlLHtjTjoiZm9ybXVsYSIsYzpbZV0scjowLHY6W3tiOi9cJFwkLyxlOi9cJFwkL30se2I6L1wkLyxlOi9cJC99XX0sYy5DKCIlIiwiJCIse3I6MH0pXX19KTtobGpzLnJlZ2lzdGVyTGFuZ3VhZ2UoInhtbCIsZnVuY3Rpb24ocyl7dmFyIGU9IltBLVphLXowLTlcXC5fOi1dKyIsdD17ZVc6ITAsaTovPC8scjowLGM6W3tjTjoiYXR0ciIsYjplLHI6MH0se2I6Lz1ccyovLHI6MCxjOlt7Y046InN0cmluZyIsZW5kc1BhcmVudDohMCx2Olt7YjovIi8sZTovIi99LHtiOi8nLyxlOi8nL30se2I6L1teXHMiJz08PmBdKy99XX1dfV19O3JldHVybnthbGlhc2VzOlsiaHRtbCIsInhodG1sIiwicnNzIiwiYXRvbSIsInhqYiIsInhzZCIsInhzbCIsInBsaXN0Il0sY0k6ITAsYzpbe2NOOiJtZXRhIixiOiI8IURPQ1RZUEUiLGU6Ij4iLHI6MTAsYzpbe2I6IlxcWyIsZToiXFxdIn1dfSxzLkMoIjwhLS0iLCItLT4iLHtyOjEwfSkse2I6IjxcXCFcXFtDREFUQVxcWyIsZToiXFxdXFxdPiIscjoxMH0se2I6LzxcPyhwaHApPy8sZTovXD8+LyxzTDoicGhwIixjOlt7YjoiL1xcKiIsZToiXFwqLyIsc2tpcDohMH1dfSx7Y046InRhZyIsYjoiPHN0eWxlKD89XFxzfD58JCkiLGU6Ij4iLGs6e25hbWU6InN0eWxlIn0sYzpbdF0sc3RhcnRzOntlOiI8L3N0eWxlPiIsckU6ITAsc0w6WyJjc3MiLCJ4bWwiXX19LHtjTjoidGFnIixiOiI8c2NyaXB0KD89XFxzfD58JCkiLGU6Ij4iLGs6e25hbWU6InNjcmlwdCJ9LGM6W3RdLHN0YXJ0czp7ZToiPC9zY3JpcHQ+IixyRTohMCxzTDpbImFjdGlvbnNjcmlwdCIsImphdmFzY3JpcHQiLCJoYW5kbGViYXJzIiwieG1sIl19fSx7Y046Im1ldGEiLHY6W3tiOi88XD94bWwvLGU6L1w/Pi8scjoxMH0se2I6LzxcP1x3Ky8sZTovXD8+L31dfSx7Y046InRhZyIsYjoiPC8/IixlOiIvPz4iLGM6W3tjTjoibmFtZSIsYjovW15cLz48XHNdKy8scjowfSx0XX1dfX0pO2hsanMucmVnaXN0ZXJMYW5ndWFnZSgibWFya2Rvd24iLGZ1bmN0aW9uKGUpe3JldHVybnthbGlhc2VzOlsibWQiLCJta2Rvd24iLCJta2QiXSxjOlt7Y046InNlY3Rpb24iLHY6W3tiOiJeI3sxLDZ9IixlOiIkIn0se2I6Il4uKz9cXG5bPS1dezIsfSQifV19LHtiOiI8IixlOiI+IixzTDoieG1sIixyOjB9LHtjTjoiYnVsbGV0IixiOiJeKFsqKy1dfChcXGQrXFwuKSlcXHMrIn0se2NOOiJzdHJvbmciLGI6IlsqX117Mn0uKz9bKl9dezJ9In0se2NOOiJlbXBoYXNpcyIsdjpbe2I6IlxcKi4rP1xcKiJ9LHtiOiJfLis/XyIscjowfV19LHtjTjoicXVvdGUiLGI6Il4+XFxzKyIsZToiJCJ9LHtjTjoiY29kZSIsdjpbe2I6Il5gYGB3KnMqJCIsZToiXmBgYHMqJCJ9LHtiOiJgLis/YCJ9LHtiOiJeKCB7NH18CSkiLGU6IiQiLHI6MH1dfSx7YjoiXlstXFwqXXszLH0iLGU6IiQifSx7YjoiXFxbLis/XFxdW1xcKFxcW10uKj9bXFwpXFxdXSIsckI6ITAsYzpbe2NOOiJzdHJpbmciLGI6IlxcWyIsZToiXFxdIixlQjohMCxyRTohMCxyOjB9LHtjTjoibGluayIsYjoiXFxdXFwoIixlOiJcXCkiLGVCOiEwLGVFOiEwfSx7Y046InN5bWJvbCIsYjoiXFxdXFxbIixlOiJcXF0iLGVCOiEwLGVFOiEwfV0scjoxMH0se2I6L15cW1teXG5dK1xdOi8sckI6ITAsYzpbe2NOOiJzeW1ib2wiLGI6L1xbLyxlOi9cXS8sZUI6ITAsZUU6ITB9LHtjTjoibGluayIsYjovOlxzKi8sZTovJC8sZUI6ITB9XX1dfX0pO2hsanMucmVnaXN0ZXJMYW5ndWFnZSgianNvbiIsZnVuY3Rpb24oZSl7dmFyIGk9e2xpdGVyYWw6InRydWUgZmFsc2UgbnVsbCJ9LG49W2UuUVNNLGUuQ05NXSxyPXtlOiIsIixlVzohMCxlRTohMCxjOm4sazppfSx0PXtiOiJ7IixlOiJ9IixjOlt7Y046ImF0dHIiLGI6LyIvLGU6LyIvLGM6W2UuQkVdLGk6IlxcbiJ9LGUuaW5oZXJpdChyLHtiOi86L30pXSxpOiJcXFMifSxjPXtiOiJcXFsiLGU6IlxcXSIsYzpbZS5pbmhlcml0KHIpXSxpOiJcXFMifTtyZXR1cm4gbi5zcGxpY2Uobi5sZW5ndGgsMCx0LGMpLHtjOm4sazppLGk6IlxcUyJ9fSk7"></script>
@@ -1609,11 +250,6 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-#rmd-source-code {
-display: none;
-}
-</style>
 
 
 
@@ -1648,27 +284,6 @@ padding: 0;
 }
 </style>
 
-<style type="text/css">
-.kable-table {
-border: 1px solid #ccc;
-border-radius: 4px;
-overflow: auto;
-padding-left: 8px;
-padding-right: 8px;
-margin-bottom: 20px;
-max-height: 350px;
-}
-.kable-table table {
-margin-bottom: 0px;
-}
-.kable-table table>thead>tr>th {
-border: none;
-border-bottom: 2px solid #dddddd;
-}
-.kable-table table>thead {
-background-color: #fff;
-}
-</style>
 
 
 <!-- tabsets -->
@@ -1715,9 +330,6 @@ display: none;
 </style>
 
 <!-- code folding -->
-<style type="text/css">
-.code-folding-btn { margin-bottom: 4px; }
-</style>
 
 
 
@@ -1734,48 +346,1217 @@ display: none;
 
 <div id="header">
 
-<div class="btn-group pull-right float-right">
-<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
-<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
-<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
-<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
-<li role="separator" class="divider"></li>
-<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
-</ul>
-</div>
 
 
-
-<h1 class="title toc-ignore">Project Proposal</h1>
 
 </div>
 
 
-<!-- rnb-text-begin -->
-<p><a href="https://raw.githubusercontent.com/reisanar/datasets/master/disney_movies_total_gross.csv">Link
-to data set</a></p>
-<div id="section-1.-introduction" class="section level2">
-<h2>Section 1. Introduction</h2>
-<p>In this project I will be analyzing a set of Disney movie gross. In
-this data set it includes the name of the movies, genre, the total
-gross, and the inflation total gross.</p>
-</div>
-<div id="section-2.-data-analysis-plan" class="section level2">
-<h2>Section 2. Data Analysis Plan</h2>
-<p>For this data analysis I plan to find insights based on audience and
-the affects it has on the movie, the year that the movie as made, and
-the overall gross profits of the film. During the analysis I want to
-create graphs of the profits and what inflation has on it.</p>
-</div>
-<div id="section-3.-data" class="section level2">
-<h2>Section 3. Data</h2>
-<p>Some EDA tools I will include are ggplott2, dplyr, tidyr, and
-forecats. These will all be used to help my data in terms of shaping and
-performing calculations.</p>
-<!-- rnb-text-end -->
-</div>
+<table style="width:6%;">
+<colgroup>
+<col width="5%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>title: “Exploring Disney movies from 1937 to 2017 gross profits”
+output: html_notebook: number_sections: yes toc: yes toc_depth: 2
+toc_float: yes</td>
+</tr>
+<tr class="even">
+<td><strong>Analysis by: Lilee Yang</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>INTRODUCTION</strong></td>
+</tr>
+<tr class="even">
+<td>Disney has been one of the most well known companies in the world
+with its nostalgic movies. What started as a dream, today it is worth
+about 168.45 billion ! Taking a look at movies throughout the years
+there are questions that arise.</td>
+</tr>
+<tr class="odd">
+<td>- Which movies genres have the greatest profits in the years?</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Needed packages</strong></p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.4
+## ✔ forcats   1.0.0     ✔ stringr   1.5.0
+## ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+## ✔ purrr     1.0.2     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre class="r"><code>library(dplyr)
+library(ggplot2)</code></pre>
+<p><strong>Data set</strong></p>
+<p>For this analysis I am using a data set created by Dr. Aries
+Sanchez</p>
+<pre class="r"><code>disney_movies &lt;- read.csv(&quot;/cloud/project/disney_movie_data.csv&quot; , header = TRUE)
+disney_movies</code></pre>
+<pre><code>##                                  movie_title release_date               genre
+## 1            Snow White and the Seven Dwarfs Dec 21, 1937             Musical
+## 2                                  Pinocchio  Feb 9, 1940           Adventure
+## 3                                   Fantasia Nov 13, 1940             Musical
+## 4                          Song of the South Nov 12, 1946           Adventure
+## 5                                 Cinderella Feb 15, 1950               Drama
+## 6               20,000 Leagues Under the Sea Dec 23, 1954           Adventure
+## 7                         Lady and the Tramp Jun 22, 1955               Drama
+## 8                            Sleeping Beauty Jan 29, 1959               Drama
+## 9                             101 Dalmatians Jan 25, 1961              Comedy
+## 10               The Absent Minded Professor Mar 16, 1961              Comedy
+## 11                          Babes in Toyland Dec 14, 1961             Musical
+## 12                               Bon Voyage! May 17, 1962              Comedy
+## 13                    The Sword in the Stone Dec 25, 1963           Adventure
+## 14                           The Jungle Book Oct 18, 1967             Musical
+## 15                        Blackbeard&#39;s Ghost  Feb 8, 1968              Comedy
+## 16                            The Aristocats Apr 24, 1970             Musical
+## 17                              The Boatniks  Jul 1, 1970              Comedy
+## 18                  Bedknobs and Broomsticks  Oct 7, 1971             Musical
+## 19                   The Apple Dumpling Gang  Jul 1, 1975              Comedy
+## 20                             Freaky Friday Jan 21, 1977              Comedy
+## 21    The Many Adventures of Winnie the Pooh Mar 11, 1977                    
+## 22                              The Rescuers Jun 22, 1977           Adventure
+## 23                Herbie Goes to Monte Carlo Jun 24, 1977                    
+## 24                            The Black Hole Dec 21, 1979                    
+## 25                          Midnight Madness  Feb 8, 1980                    
+## 26             The Last Flight of Noah’s Ark Jun 25, 1980                    
+## 27                  The Devil and Max Devlin  Jan 1, 1981              Comedy
+## 28                                       Amy Mar 20, 1981               Drama
+## 29                     The Fox and the Hound Jul 10, 1981              Comedy
+## 30                                 Condorman  Aug 7, 1981              Action
+## 31                            Night Crossing  Feb 5, 1982               Drama
+## 32                                      Tron  Jul 9, 1982              Action
+## 33                                       Tex Nov 19, 1982               Drama
+## 34                                Trenchcoat Mar 11, 1983              Comedy
+## 35           Something Wicked This Way Comes Apr 29, 1983              Horror
+## 36                            Never Cry Wolf  Oct 7, 1983               Drama
+## 37                             Running Brave  Nov 4, 1983               Drama
+## 38                                    Splash  Mar 9, 1984              Comedy
+## 39                                   Country Sep 29, 1984               Drama
+## 40           Baby: Secret of the Lost Legend Mar 22, 1985           Adventure
+## 41                              Return to Oz Jun 21, 1985           Adventure
+## 42                        The Black Cauldron Jul 24, 1985           Adventure
+## 43                        My Science Project  Aug 9, 1985              Comedy
+## 44                 The Journey of Natty Gann Sep 27, 1985               Drama
+## 45                       One Magic Christmas Nov 22, 1985               Drama
+## 46             Down and Out in Beverly Hills Jan 31, 1986              Comedy
+## 47                                  Off Beat Apr 11, 1986              Comedy
+## 48                           Ruthless People Jun 27, 1986              Comedy
+## 49                 The Great Mouse Detective  Jul 2, 1986           Adventure
+## 50                   Flight of the Navigator Jul 30, 1986           Adventure
+## 51                                Tough Guys  Oct 3, 1986              Comedy
+## 52                        The Color of Money Oct 17, 1986               Drama
+## 53                        Outrageous Fortune Jan 30, 1987              Comedy
+## 54                                   Tin Men  Mar 6, 1987              Comedy
+## 55                       Ernest Goes to Camp May 22, 1987              Comedy
+## 56                          Benji the Hunted  Jun 5, 1987           Adventure
+## 57                 Adventures in Babysitting  Jul 3, 1987              Comedy
+## 58                                  Stakeout  Aug 5, 1987              Comedy
+## 59                         Can&#39;t Buy Me Love Aug 14, 1987     Romantic Comedy
+## 60                               Hello Again  Nov 6, 1987              Comedy
+## 61                          3 Men and a Baby Nov 25, 1987              Comedy
+## 62                      Good Morning Vietnam Dec 23, 1987              Comedy
+## 63                             Shoot to Kill Feb 12, 1988              Action
+## 64                                    D.O.A. Mar 18, 1988   Thriller/Suspense
+## 65                     Return to Snowy River Apr 15, 1988           Adventure
+## 66                              Big Business Jun 10, 1988              Comedy
+## 67                  Who Framed Roger Rabbit? Jun 22, 1988              Comedy
+## 68                                  Cocktail Jul 29, 1988               Drama
+## 69                                The Rescue  Aug 5, 1988              Action
+## 70                          Heartbreak Hotel Sep 30, 1988              Comedy
+## 71                           The Good Mother  Nov 4, 1988               Drama
+## 72                    Ernest Saves Christmas Nov 11, 1988              Comedy
+## 73                          Oliver &amp; Company Nov 18, 1988           Adventure
+## 74                                   Beaches Dec 21, 1988               Drama
+## 75                           Three Fugitives Jan 27, 1989              Comedy
+## 76                          New York Stories  Mar 1, 1989               Drama
+## 77                        Disorganized Crime Apr 14, 1989              Comedy
+## 78                        Dead Poets Society  Jun 2, 1989               Drama
+## 79                  Honey, I Shrunk the Kids Jun 23, 1989           Adventure
+## 80                            Turner &amp; Hooch Jul 28, 1989              Comedy
+## 81                                   Cheetah Aug 18, 1989           Adventure
+## 82                           An Innocent Man  Oct 6, 1989               Drama
+## 83                             Gross Anatomy Oct 20, 1989               Drama
+## 84                        The Little Mermaid Nov 15, 1989           Adventure
+## 85                                     Blaze Dec 13, 1989               Drama
+## 86                                    Stella  Feb 2, 1990               Drama
+## 87                        Where the Heart Is Feb 23, 1990              Comedy
+## 88                              Pretty Woman Mar 23, 1990     Romantic Comedy
+## 89                       Ernest Goes to Jail  Apr 6, 1990              Comedy
+## 90                           Spaced Invaders Apr 27, 1990              Comedy
+## 91                                Fire Birds May 24, 1990              Action
+## 92                                Dick Tracy Jun 15, 1990              Action
+## 93                           Betsy&#39;s Wedding Jun 22, 1990              Comedy
+## 94                             Arachnophobia Jul 18, 1990   Thriller/Suspense
+## 95    DuckTales: The Movie - Treasure of th…  Aug 3, 1990           Adventure
+## 96                   Taking Care of Business Aug 17, 1990              Comedy
+## 97                               Mr. Destiny Oct 12, 1990              Comedy
+## 98                   The Rescuers Down Under Nov 16, 1990           Adventure
+## 99                   3 Men and a Little Lady Nov 21, 1990              Comedy
+## 100                               Green Card Dec 25, 1990     Romantic Comedy
+## 101                               White Fang Jan 18, 1991           Adventure
+## 102                       Scenes from a Mall Feb 22, 1991              Comedy
+## 103                         Haakon Haakonsen  Mar 1, 1991           Adventure
+## 104                         The Marrying Man  Apr 5, 1991     Romantic Comedy
+## 105                                    Oscar Apr 26, 1991              Comedy
+## 106                             One Good Cop  May 3, 1991              Action
+## 107                          What About Bob? May 17, 1991              Comedy
+## 108              Wild Hearts Can&#39;t Be Broken May 24, 1991               Drama
+## 109                            The Rocketeer Jun 21, 1991              Action
+## 110                               The Doctor Jul 24, 1991               Drama
+## 111                                 Paradise Sep 18, 1991               Drama
+## 112                                 Deceived Sep 27, 1991   Thriller/Suspense
+## 113                     Ernest Scared Stupid Oct 11, 1991              Comedy
+## 114                           Billy Bathgate  Nov 1, 1991               Drama
+## 115                     Beauty and the Beast Nov 13, 1991             Musical
+## 116                      Father of the Bride Dec 20, 1991              Comedy
+## 117           The Hand That Rocks the Cradle Jan 10, 1992   Thriller/Suspense
+## 118                             Medicine Man  Feb 7, 1992               Drama
+## 119                  Blame it on the Bellboy  Mar 6, 1992              Comedy
+## 120                            Noises Off... Mar 20, 1992              Comedy
+## 121                            Straight Talk  Apr 3, 1992              Comedy
+## 122                                  Newsies  Apr 8, 1992             Musical
+## 123                              Passed Away Apr 24, 1992              Comedy
+## 124                               Encino Man May 22, 1992              Comedy
+## 125                               Sister Act May 29, 1992              Comedy
+## 126                  Honey I Blew Up the Kid Jul 17, 1992              Comedy
+## 127                      A Stranger Among Us Jul 17, 1992               Drama
+## 128                                 3 Ninjas  Aug 7, 1992              Action
+## 129             A Gun in Betty Lou&#39;s Handbag Aug 21, 1992              Comedy
+## 130                              Captain Ron Sep 18, 1992              Comedy
+## 131                                Sarafina! Sep 18, 1992               Drama
+## 132                           Innocent Blood Sep 25, 1992              Horror
+## 133                         The Mighty Ducks  Oct 2, 1992              Comedy
+## 134               1492: Conquest of Paradise  Oct 9, 1992           Adventure
+## 135                        Consenting Adults Oct 16, 1992               Drama
+## 136                                  Aladdin Nov 11, 1992              Comedy
+## 137              The Distinguished Gentleman  Dec 4, 1992              Comedy
+## 138               The Muppet Christmas Carol Dec 11, 1992              Comedy
+## 139                                    Alive Jan 15, 1993           Adventure
+## 140                            Aspen Extreme Jan 22, 1993     Romantic Comedy
+## 141   Homeward Bound: The Incredible Journey  Feb 3, 1993           Adventure
+## 142                        The Cemetery Club  Feb 3, 1993              Comedy
+## 143                               Swing Kids  Mar 5, 1993             Musical
+## 144                          A Far Off Place Mar 12, 1993           Adventure
+## 145                           Born Yesterday Mar 26, 1993     Romantic Comedy
+## 146              The Adventures of Huck Finn  Apr 2, 1993           Adventure
+## 147                           Bound by Honor Apr 16, 1993              Action
+## 148                            Indian Summer Apr 23, 1993              Comedy
+## 149                        Super Mario Bros. May 28, 1993              Action
+## 150                            Guilty as Sin  Jun 4, 1993   Thriller/Suspense
+## 151                          Life With Mikey  Jun 4, 1993              Comedy
+## 152            What&#39;s Love Got to Do With It  Jun 9, 1993               Drama
+## 153                               Son in Law  Jul 2, 1993              Comedy
+## 154                              Hocus Pocus Jul 16, 1993              Comedy
+## 155                         Another Stakeout Jul 23, 1993              Comedy
+## 156                      My Boyfriend&#39;s Back  Aug 6, 1993     Romantic Comedy
+## 157                              Father Hood Aug 27, 1993               Drama
+## 158                        The Joy Luck Club  Sep 8, 1993               Drama
+## 159                        Money for Nothing Sep 10, 1993              Comedy
+## 160                              The Program Sep 24, 1993              Action
+## 161                            Cool Runnings  Oct 1, 1993              Comedy
+## 162           The Nightmare Before Christmas Oct 13, 1993             Musical
+## 163                     The Three Musketeers Nov 12, 1993           Adventure
+## 164           Sister Act 2 Back in the Habit Dec 10, 1993              Comedy
+## 165                                Tombstone Dec 25, 1993             Western
+## 166                         The Air Up There  Jan 7, 1994              Comedy
+## 167                                Cabin Boy  Jan 7, 1994              Comedy
+## 168                                Iron Will Jan 14, 1994               Drama
+## 169                            Red Rock West Jan 28, 1994   Thriller/Suspense
+## 170                              Blank Check Feb 11, 1994              Comedy
+## 171                                    Angie  Mar 4, 1994              Comedy
+## 172                                  The Ref  Mar 9, 1994              Comedy
+## 173                     D2: The Mighty Ducks Mar 25, 1994              Comedy
+## 174                           Holy Matrimony  Apr 8, 1994              Comedy
+## 175     White Fang 2: Myth of the White Wolf Apr 15, 1994           Adventure
+## 176                              The Inkwell Apr 22, 1994              Comedy
+## 177                 When a Man Loves a Woman Apr 29, 1994               Drama
+## 178                       3 Ninjas Kick Back  May 6, 1994              Action
+## 179                          Renaissance Man  Jun 3, 1994              Comedy
+## 180                            The Lion King Jun 15, 1994           Adventure
+## 181                           I Love Trouble Jun 29, 1994     Romantic Comedy
+## 182                   Angels in the Outfield Jul 15, 1994              Comedy
+## 183                          In the Army Now Aug 12, 1994              Comedy
+## 184                           Color of Night Aug 19, 1994   Thriller/Suspense
+## 185                             Camp Nowhere Aug 26, 1994              Comedy
+## 186                                 It&#39;s Pat Aug 26, 1994              Comedy
+## 187                   A Simple Twist of Fate  Sep 2, 1994               Drama
+## 188                                Quiz Show Sep 14, 1994               Drama
+## 189                        Terminal Velocity Sep 23, 1994              Action
+## 190                                  Ed Wood Sep 30, 1994              Comedy
+## 191                       The Puppet Masters Oct 21, 1994              Horror
+## 192                Squanto: A Warrior&#39;s Tale Oct 28, 1994               Drama
+## 193                         The Santa Clause Nov 11, 1994              Comedy
+## 194                   A Low Down Dirty Shame Nov 23, 1994              Action
+## 195                          The Jungle Book Dec 25, 1994           Adventure
+## 196                               Houseguest  Jan 6, 1995              Comedy
+## 197                              Bad Company Jan 20, 1995   Thriller/Suspense
+## 198                           Miami Rhapsody Jan 27, 1995     Romantic Comedy
+## 199                           The Jerky Boys  Feb 3, 1995              Comedy
+## 200                            Heavy Weights Feb 17, 1995              Comedy
+## 201                         Man of the House  Mar 3, 1995              Comedy
+## 202                                Roommates  Mar 3, 1995              Comedy
+## 203                                Tall Tale Mar 24, 1995             Western
+## 204                A Pyromaniac&#39;s Love Story Mar 28, 1995     Romantic Comedy
+## 205                       Jefferson in Paris Mar 31, 1995               Drama
+## 206                              Funny Bones Mar 31, 1995              Comedy
+## 207                            A Goofy Movie  Apr 7, 1995              Comedy
+## 208                  While You Were Sleeping Apr 21, 1995     Romantic Comedy
+## 209                             Crimson Tide May 12, 1995              Action
+## 210                                 Mad Love May 26, 1995               Drama
+## 211                               Pocahontas Jun 10, 1995           Adventure
+## 212                              Judge Dredd Jun 30, 1995              Action
+## 213                     Operation Dumbo Drop Jul 28, 1995           Adventure
+## 214                          Dangerous Minds Aug 11, 1995               Drama
+## 215             A Kid in King Arthur&#39;s Court Aug 11, 1995           Adventure
+## 216                       The Tie That Binds  Sep 8, 1995   Thriller/Suspense
+## 217                          Unstrung Heroes Sep 15, 1995               Drama
+## 218                            The Big Green Sep 29, 1995              Comedy
+## 219                          Dead Presidents  Oct 4, 1995               Drama
+## 220                       The Scarlet Letter Oct 13, 1995               Drama
+## 221                            Feast of July Oct 13, 1995               Drama
+## 222                                   Powder Oct 27, 1995               Drama
+## 223                                Toy Story Nov 22, 1995           Adventure
+## 224              Father of the Bride Part II  Dec 8, 1995              Comedy
+## 225                                    Nixon Dec 20, 1995               Drama
+## 226                             Tom and Huck Dec 22, 1995           Adventure
+## 227                       Mr. Holland&#39;s Opus Dec 29, 1995               Drama
+## 228                             White Squall  Feb 2, 1996           Adventure
+## 229                   Muppet Treasure Island Feb 16, 1996           Adventure
+## 230                                Mr. Wrong Feb 16, 1996     Romantic Comedy
+## 231                         Before and After Feb 23, 1996               Drama
+## 232                      Up Close &amp; Personal  Mar 1, 1996               Drama
+## 233    Homeward Bound II: Lost in San Franc…  Mar 8, 1996           Adventure
+## 234                                 Two Much Mar 15, 1996     Romantic Comedy
+## 235                  Un indien dans la ville Mar 22, 1996              Comedy
+## 236                James and the Giant Peach Apr 12, 1996           Adventure
+## 237                             Celtic Pride Apr 19, 1996              Comedy
+## 238                               Last Dance  May 3, 1996               Drama
+## 239                                     Boys May 10, 1996               Drama
+## 240                                 Spy Hard May 24, 1996              Comedy
+## 241                                    Eddie May 31, 1996              Comedy
+## 242                                 The Rock  Jun 7, 1996              Action
+## 243              The Hunchback of Notre Dame Jun 21, 1996           Adventure
+## 244                               Phenomenon  Jul 5, 1996               Drama
+## 245                                   Kazaam Jul 17, 1996              Comedy
+## 246                                     Jack  Aug 9, 1996               Drama
+## 247                                First Kid Aug 30, 1996              Comedy
+## 248                      The Rich Man&#39;s Wife Sep 13, 1996   Thriller/Suspense
+## 249                     D3: The Mighty Ducks  Oct 4, 1996              Comedy
+## 250                            The Associate Oct 25, 1996              Comedy
+## 251                                   Ransom  Nov 8, 1996              Action
+## 252                          The War at Home Nov 20, 1996               Drama
+## 253                           101 Dalmatians Nov 27, 1996              Comedy
+## 254                      The Preacher&#39;s Wife Dec 13, 1996               Drama
+## 255                                    Evita Dec 25, 1996             Musical
+## 256                                    Metro Jan 17, 1997              Action
+## 257                              Prefontaine Jan 24, 1997               Drama
+## 258                        Shadow Conspiracy Jan 31, 1997   Thriller/Suspense
+## 259                            That Darn Cat Feb 14, 1997              Comedy
+## 260                          Jungle 2 Jungle  Mar 7, 1997              Comedy
+## 261                            The Sixth Man Mar 28, 1997              Comedy
+## 262                      Grosse Pointe Blank Apr 11, 1997        Black Comedy
+## 263   Romy and Michele&#39;s High School Reunion Apr 25, 1997              Comedy
+## 264                             Gone Fishin&#39; May 30, 1997              Comedy
+## 265                                  Con Air  Jun 6, 1997              Action
+## 266                                 Hercules Jun 13, 1997           Adventure
+## 267                     George Of The Jungle Jul 16, 1997              Comedy
+## 268                          Nothing To Lose Jul 18, 1997              Comedy
+## 269                                  Air Bud  Aug 1, 1997              Comedy
+## 270                                G.I. Jane Aug 22, 1997               Drama
+## 271                         A Thousand Acres Sep 19, 1997               Drama
+## 272                        Washington Square  Oct 5, 1997               Drama
+## 273                               Rocket Man Oct 10, 1997              Comedy
+## 274                              Playing God Oct 17, 1997   Thriller/Suspense
+## 275                                  Flubber Nov 26, 1997              Comedy
+## 276            An American Werewolf in Paris Dec 25, 1997              Horror
+## 277                                Mr. Magoo Dec 25, 1997              Comedy
+## 278                                   Kundun Dec 25, 1997               Drama
+## 279                              Deep Rising Jan 30, 1998              Action
+## 280                      Krippendorf&#39;s Tribe Feb 27, 1998              Comedy
+## 281   An Alan Smithee Film: Burn Hollywood … Feb 27, 1998              Comedy
+## 282                         Meet the Deedles Mar 27, 1998              Comedy
+## 283                              He Got Game  May 1, 1998               Drama
+## 284                      The Horse Whisperer May 15, 1998               Drama
+## 285                   Six Days, Seven Nights Jun 12, 1998     Romantic Comedy
+## 286                                    Mulan Jun 19, 1998           Adventure
+## 287                               Armageddon  Jul 1, 1998           Adventure
+## 288                      Jane Austen&#39;s Mafia Jul 24, 1998              Comedy
+## 289                          The Parent Trap Jul 29, 1998              Comedy
+## 290                                Firelight  Sep 4, 1998               Drama
+## 291                              Simon Birch Sep 11, 1998               Drama
+## 292                                 Holy Man  Oct 9, 1998              Comedy
+## 293                                  Beloved Oct 16, 1998               Drama
+## 294                             The Waterboy  Nov 6, 1998              Comedy
+## 295               I&#39;ll Be Home For Christmas Nov 13, 1998              Comedy
+## 296                             A Bug&#39;s Life Nov 20, 1998           Adventure
+## 297                       Enemy of the State Nov 20, 1998              Action
+## 298                                 Rushmore Dec 11, 1998        Black Comedy
+## 299                           A Civil Action Dec 25, 1998               Drama
+## 300                         Mighty Joe Young Dec 25, 1998           Adventure
+## 301                      My Favorite Martian Feb 12, 1999              Comedy
+## 302                         The Other Sister Feb 26, 1999     Romantic Comedy
+## 303                         Doug&#39;s 1st Movie Mar 26, 1999           Adventure
+## 304              Ten Things I Hate About You Mar 31, 1999     Romantic Comedy
+## 305                                Endurance May 14, 1999         Documentary
+## 306                                 Instinct  Jun 4, 1999               Drama
+## 307                                   Tarzan Jun 16, 1999           Adventure
+## 308                            Summer of Sam  Jul 2, 1999               Drama
+## 309                         Inspector Gadget Jul 23, 1999              Comedy
+## 310                          The Sixth Sense  Aug 6, 1999   Thriller/Suspense
+## 311                         The 13th Warrior Aug 27, 1999              Action
+## 312                   Breakfast of Champions Sep 17, 1999              Comedy
+## 313                                  Mumford Sep 24, 1999              Comedy
+## 314                          Mystery, Alaska  Oct 1, 1999              Comedy
+## 315                       The Straight Story Oct 15, 1999               Drama
+## 316                              The Insider  Nov 5, 1999               Drama
+## 317                              Toy Story 2 Nov 19, 1999           Adventure
+## 318                         Cradle Will Rock  Dec 8, 1999               Drama
+## 319               Deuce Bigalow: Male Gigolo Dec 10, 1999              Comedy
+## 320                         Bicentennial Man Dec 17, 1999               Drama
+## 321                      Play it to the Bone Dec 24, 1999              Comedy
+## 322                     Fantasia 2000 (IMAX)  Jan 1, 2000             Musical
+## 323                                  Gun Shy  Feb 4, 2000              Comedy
+## 324                         The Tigger Movie Feb 11, 2000           Adventure
+## 325                          Mission to Mars Mar 10, 2000           Adventure
+## 326                            High Fidelity Mar 31, 2000              Comedy
+## 327                        Keeping the Faith Apr 14, 2000     Romantic Comedy
+## 328                                 Dinosaur May 19, 2000           Adventure
+## 329                            Shanghai Noon May 26, 2000             Western
+## 330                       Gone in 60 Seconds  Jun 9, 2000              Action
+## 331       Fantasia 2000 (Theatrical Release) Jun 16, 2000             Musical
+## 332                                  The Kid  Jul 7, 2000              Comedy
+## 333                              Coyote Ugly  Aug 4, 2000               Drama
+## 334                                 The Crew Aug 25, 2000              Comedy
+## 335                                    Duets Sep 15, 2000               Drama
+## 336                      Remember the Titans Sep 29, 2000               Drama
+## 337                              Unbreakable Nov 22, 2000   Thriller/Suspense
+## 338                           102 Dalmatians Nov 22, 2000              Comedy
+## 339                 The Emperor&#39;s New Groove Dec 15, 2000           Adventure
+## 340               O Brother, Where Art Thou? Dec 22, 2000              Comedy
+## 341                              Double Take Jan 12, 2001              Action
+## 342                     Recess: School&#39;s Out Feb 16, 2001              Comedy
+## 343                            Just Visiting  Apr 6, 2001              Comedy
+## 344                             Pearl Harbor May 25, 2001              Action
+## 345                Atlantis: The Lost Empire  Jun 8, 2001           Adventure
+## 346                          crazy/beautiful Jun 29, 2001               Drama
+## 347                     The Princess Diaries  Aug 3, 2001              Comedy
+## 348                               Bubble Boy Aug 24, 2001              Comedy
+## 349                    Max Keeble&#39;s Big Move  Oct 5, 2001              Comedy
+## 350                             Corky Romano Oct 12, 2001              Comedy
+## 351                 High Heels and Low Lifes Oct 26, 2001              Comedy
+## 352                           Monsters, Inc.  Nov 2, 2001           Adventure
+## 353                                 Out Cold Nov 21, 2001              Comedy
+## 354                     The Royal Tenenbaums Dec 14, 2001        Black Comedy
+## 355              Beauty and the Beast (IMAX)  Jan 1, 2002             Musical
+## 356                                Snow Dogs Jan 18, 2002              Comedy
+## 357                The Count of Monte Cristo Jan 25, 2002               Drama
+## 358           Peter Pan: Return to Neverland Feb 15, 2002           Adventure
+## 359                            Reign of Fire Feb 19, 2002              Action
+## 360                            Sorority Boys Mar 22, 2002              Comedy
+## 361                               The Rookie Mar 29, 2002               Drama
+## 362                              Big Trouble  Apr 5, 2002              Comedy
+## 363            ESPN&#39;s Ultimate X - The Movie May 10, 2002         Documentary
+## 364                              Bad Company  Jun 7, 2002              Action
+## 365                            Lilo &amp; Stitch Jun 21, 2002           Adventure
+## 366                        The Country Bears Jul 26, 2002           Adventure
+## 367                                    Signs  Aug 2, 2002   Thriller/Suspense
+## 368            Sen to Chihiro no Kamikakushi Sep 20, 2002           Adventure
+## 369                       Sweet Home Alabama Sep 27, 2002              Comedy
+## 370                           Moonlight Mile Sep 27, 2002               Drama
+## 371                         Tuck Everlasting Oct 11, 2002               Drama
+## 372                       The Santa Clause 2  Nov 1, 2002              Comedy
+## 373                          Treasure Planet Nov 27, 2002           Adventure
+## 374                            The Hot Chick Dec 13, 2002              Comedy
+## 375                                25th Hour Dec 19, 2002               Drama
+## 376                              The Recruit Jan 31, 2003   Thriller/Suspense
+## 377                         Shanghai Knights  Feb 7, 2003           Adventure
+## 378                        The Jungle Book 2 Feb 14, 2003           Adventure
+## 379                  Bringing Down the House  Mar 7, 2003              Comedy
+## 380                       Piglet&#39;s Big Movie Mar 21, 2003              Comedy
+## 381                      Ghosts of the Abyss Apr 11, 2003         Documentary
+## 382                                    Holes Apr 18, 2003               Drama
+## 383                 The Lizzie McGuire Movie  May 2, 2003              Comedy
+## 384                             Finding Nemo May 30, 2003           Adventure
+## 385   Pirates of the Caribbean: The Curse o…  Jul 9, 2003           Adventure
+## 386                            Freaky Friday  Aug 6, 2003              Comedy
+## 387                               Open Range Aug 15, 2003             Western
+## 388                         Cold Creek Manor Sep 19, 2003   Thriller/Suspense
+## 389                     Under the Tuscan Sun Sep 26, 2003              Comedy
+## 390                          Veronica Guerin Oct 17, 2003               Drama
+## 391                             Brother Bear Oct 24, 2003           Adventure
+## 392                      The Haunted Mansion Nov 26, 2003              Comedy
+## 393                           Calendar Girls Dec 19, 2003              Comedy
+## 394                     Young Black Stallion Dec 25, 2003           Adventure
+## 395                 Teacher&#39;s Pet: The Movie Jan 16, 2004              Comedy
+## 396                                  Miracle  Feb 6, 2004               Drama
+## 397     Confessions of a Teenage Drama Queen Feb 20, 2004              Comedy
+## 398                                  Hidalgo  Mar 5, 2004             Western
+## 399                          The Ladykillers Mar 26, 2004              Comedy
+## 400                        Home on the Range  Apr 2, 2004              Comedy
+## 401                                The Alamo  Apr 9, 2004             Western
+## 402                            Raising Helen May 28, 2004              Comedy
+## 403              Around the World in 80 Days Jun 16, 2004           Adventure
+## 404                 America&#39;s Heart and Soul  Jul 2, 2004         Documentary
+## 405                              King Arthur  Jul 7, 2004           Adventure
+## 406                              The Village Jul 30, 2004   Thriller/Suspense
+## 407 The Princess Diaries 2: Royal Engagement Aug 11, 2004     Romantic Comedy
+## 408                                 Mr. 3000 Sep 17, 2004              Comedy
+## 409                            The Last Shot Sep 24, 2004              Comedy
+## 410                                Ladder 49  Oct 1, 2004              Action
+## 411                          The Incredibles  Nov 5, 2004           Adventure
+## 412                        National Treasure Nov 19, 2004           Adventure
+## 413       The Life Aquatic with Steve Zissou Dec 10, 2004              Comedy
+## 414                       Aliens of the Deep Jan 28, 2005         Documentary
+## 415                   Pooh&#39;s Heffalump Movie Feb 11, 2005           Adventure
+## 416                             The Pacifier  Mar 4, 2005              Comedy
+## 417                             Ice Princess Mar 18, 2005              Comedy
+## 418                          A Lot Like Love Apr 22, 2005              Comedy
+## 419     The Hitchhiker&#39;s Guide to the Galaxy Apr 29, 2005              Comedy
+## 420                     Hauru no ugoku shiro Jun 10, 2005           Adventure
+## 421                     Herbie: Fully Loaded Jun 22, 2005              Comedy
+## 422                               Dark Water  Jul 8, 2005   Thriller/Suspense
+## 423                                 Sky High Jul 29, 2005           Adventure
+## 424                                  Valiant Aug 19, 2005           Adventure
+## 425                               Flightplan Sep 23, 2005   Thriller/Suspense
+## 426            The Greatest Game Ever Played Sep 30, 2005               Drama
+## 427                                 Shopgirl Oct 21, 2005               Drama
+## 428                           Chicken Little  Nov 4, 2005           Adventure
+## 429   The Chronicles of Narnia: The Lion, t…  Dec 9, 2005           Adventure
+## 430                                 Casanova Dec 25, 2005               Drama
+## 431                               Glory Road Jan 13, 2006               Drama
+## 432                                Annapolis Jan 27, 2006               Drama
+## 433                              Roving Mars Jan 27, 2006         Documentary
+## 434                              Eight Below Feb 17, 2006           Adventure
+## 435                           The Shaggy Dog Mar 10, 2006              Comedy
+## 436                               Stay Alive Mar 24, 2006              Horror
+## 437                                 The Wild Apr 14, 2006           Adventure
+## 438                                 Stick It Apr 28, 2006              Comedy
+## 439                   Goal! The Dream Begins May 12, 2006               Drama
+## 440                                     Cars  Jun 9, 2006              Comedy
+## 441     Pirates of the Caribbean: Dead Man’…  Jul 7, 2006           Adventure
+## 442                                  Step Up Aug 11, 2006               Drama
+## 443                               Invincible Aug 25, 2006               Drama
+## 444                             The Guardian Sep 29, 2006              Action
+## 445                             The Prestige Oct 20, 2006   Thriller/Suspense
+## 446   Tim Burton&#39;s The Nightmare Before Chr… Oct 20, 2006             Musical
+## 447    The Santa Clause 3: The Escape Clause  Nov 3, 2006              Comedy
+## 448                                  Déjà Vu Nov 22, 2006   Thriller/Suspense
+## 449                               Apocalypto  Dec 8, 2006           Adventure
+## 450                                 Primeval Jan 12, 2007           Adventure
+## 451                     Bridge to Terabithia Feb 16, 2007               Drama
+## 452                                Wild Hogs  Mar 2, 2007              Comedy
+## 453                       Meet the Robinsons Mar 30, 2007           Adventure
+## 454                              The Lookout Mar 30, 2007               Drama
+## 455                                 The Hoax  Apr 6, 2007               Drama
+## 456                            The Invisible Apr 27, 2007   Thriller/Suspense
+## 457     Pirates of the Caribbean: At World’… May 24, 2007           Adventure
+## 458                              Ratatouille Jun 29, 2007              Comedy
+## 459                                 Underdog  Aug 3, 2007           Adventure
+## 460                            The Game Plan Sep 22, 2007              Comedy
+## 461                         Dan in Real Life Oct 20, 2007     Romantic Comedy
+## 462                                Enchanted Nov 21, 2007     Romantic Comedy
+## 463     National Treasure 2: Book of Secrets Dec 21, 2007           Adventure
+## 464   Hannah Montana/Miley Cyrus: Best of B…  Feb 1, 2008 Concert/Performance
+## 465                    Step Up 2 the Streets Feb 14, 2008               Drama
+## 466                        College Road Trip  Mar 7, 2008              Comedy
+## 467 The Chronicles of Narnia: Prince Caspian May 16, 2008           Adventure
+## 468                                   WALL-E Jun 27, 2008           Adventure
+## 469                               Swing Vote  Aug 1, 2008              Comedy
+## 470             Goal! 2: Living the Dream... Aug 29, 2008               Drama
+## 471                      Miracle at St. Anna Sep 26, 2008               Drama
+## 472                  Beverly Hills Chihuahua  Oct 3, 2008              Comedy
+## 473                            Morning Light Oct 17, 2008         Documentary
+## 474       High School Musical 3: Senior Year Oct 24, 2008             Musical
+## 475                                     Bolt Nov 21, 2008              Comedy
+## 476                          Bedtime Stories Dec 25, 2008              Comedy
+## 477              Confessions of a Shopaholic Feb 13, 2009     Romantic Comedy
+## 478   Jonas Brothers: The 3D Concert Experi… Feb 27, 2009 Concert/Performance
+## 479                   Race to Witch Mountain Mar 13, 2009           Adventure
+## 480                 Hannah Montana the Movie Apr 10, 2009               Drama
+## 481                                    Earth Apr 22, 2009         Documentary
+## 482                                       Up May 29, 2009           Adventure
+## 483                             The Proposal Jun 19, 2009     Romantic Comedy
+## 484                                  G-Force Jul 24, 2009           Adventure
+## 485                      Gake no ue no Ponyo Aug 14, 2009           Adventure
+## 486                    X Games 3D: The Movie Aug 21, 2009         Documentary
+## 487                        Walt and El Grupo Sep 10, 2009         Documentary
+## 488                               Surrogates Sep 25, 2009              Action
+## 489              Toy Story 3D Double Feature  Oct 2, 2009           Adventure
+## 490               Disney&#39;s A Christmas Carol  Nov 6, 2009               Drama
+## 491                The Princess and the Frog Nov 25, 2009           Adventure
+## 492                                 Old Dogs Nov 25, 2009              Comedy
+## 493                             When in Rome Jan 29, 2010     Romantic Comedy
+## 494                      Alice in Wonderland  Mar 5, 2010           Adventure
+## 495                   Waking Sleeping Beauty Mar 26, 2010         Documentary
+## 496                            The Last Song Mar 31, 2010               Drama
+## 497                                   Oceans Apr 22, 2010         Documentary
+## 498          Prince of Persia: Sands of Time May 28, 2010              Action
+## 499                              Toy Story 3 Jun 18, 2010           Adventure
+## 500                The Sorcerer&#39;s Apprentice Jul 14, 2010           Adventure
+## 501                               Step Up 3D  Aug 6, 2010               Drama
+## 502         Gedo Senki (Tales from Earthsea) Aug 13, 2010           Adventure
+## 503                                You Again Sep 24, 2010              Comedy
+## 504                              Secretariat  Oct 8, 2010               Drama
+## 505                                  Tangled Nov 24, 2010           Adventure
+## 506                             Tron: Legacy Dec 17, 2010           Adventure
+## 507                        Gnomeo and Juliet Feb 11, 2011              Comedy
+## 508                         I am Number Four Feb 18, 2011           Adventure
+## 509                          Mars Needs Moms Mar 11, 2011           Adventure
+## 510                             African Cats Apr 22, 2011         Documentary
+## 511                                 Zokkomon Apr 22, 2011           Adventure
+## 512                                     Prom Apr 29, 2011              Comedy
+## 513   Pirates of the Caribbean: On Stranger… May 20, 2011           Adventure
+## 514                                   Cars 2 Jun 24, 2011           Adventure
+## 515                          Winnie the Pooh Jul 15, 2011           Adventure
+## 516                                 The Help Aug 10, 2011               Drama
+## 517                             Fright Night Aug 19, 2011              Horror
+## 518                               Real Steel  Oct 7, 2011              Action
+## 519                              The Muppets Nov 23, 2011              Comedy
+## 520                                War Horse Dec 25, 2011               Drama
+## 521              The Secret World of Arietty Feb 17, 2012           Adventure
+## 522                              John Carter  Mar 9, 2012           Adventure
+## 523                               Chimpanzee Apr 20, 2012         Documentary
+## 524                             The Avengers  May 4, 2012              Action
+## 525                                    Brave Jun 22, 2012           Adventure
+## 526                           People Like Us Jun 29, 2012               Drama
+## 527            The Odd Life of Timothy Green Aug 15, 2012               Drama
+## 528                            Frankenweenie  Oct 5, 2012              Comedy
+## 529                           Wreck-It Ralph  Nov 2, 2012           Adventure
+## 530                                  Lincoln  Nov 9, 2012               Drama
+## 531                Oz the Great and Powerful  Mar 8, 2013           Adventure
+## 532                               Iron Man 3  May 3, 2013              Action
+## 533                      Monsters University Jun 21, 2013           Adventure
+## 534                          The Lone Ranger  Jul 2, 2013             Western
+## 535                            Disney Planes  Aug 9, 2013              Comedy
+## 536                         The Fifth Estate Oct 18, 2013               Drama
+## 537                     Thor: The Dark World  Nov 8, 2013           Adventure
+## 538                             Kaze Tachinu  Nov 8, 2013               Drama
+## 539                                   Frozen Nov 22, 2013           Adventure
+## 540                             Delivery Man Nov 22, 2013              Comedy
+## 541                         Saving Mr. Banks Dec 13, 2013               Drama
+## 542                           Need for Speed Mar 14, 2014              Action
+## 543                      Muppets Most Wanted Mar 21, 2014              Comedy
+## 544      Captain America: The Winter Soldier  Apr 4, 2014              Action
+## 545                                    Bears Apr 18, 2014         Documentary
+## 546                       Million Dollar Arm May 10, 2014               Drama
+## 547                               Maleficent May 30, 2014           Adventure
+## 548                  Planes: Fire and Rescue Jul 18, 2014           Adventure
+## 549                  Guardians of the Galaxy  Aug 1, 2014           Adventure
+## 550                 The Hundred-Foot Journey  Aug 8, 2014     Romantic Comedy
+## 551   Alexander and the Terrible, Horrible,… Oct 10, 2014              Comedy
+## 552                               Big Hero 6  Nov 7, 2014           Adventure
+## 553                           Into the Woods Dec 25, 2014             Musical
+## 554                            Strange Magic Jan 23, 2015           Adventure
+## 555                           McFarland, USA Feb 20, 2015               Drama
+## 556                               Cinderella Mar 13, 2015               Drama
+## 557                           Monkey Kingdom Apr 17, 2015         Documentary
+## 558                  Avengers: Age of Ultron  May 1, 2015              Action
+## 559                             Tomorrowland May 22, 2015           Adventure
+## 560                               Inside Out Jun 19, 2015           Adventure
+## 561                                  Ant-Man Jul 17, 2015              Action
+## 562                          Bridge of Spies Oct 16, 2015   Thriller/Suspense
+## 563                        The Good Dinosaur Nov 25, 2015           Adventure
+## 564     Star Wars Ep. VII: The Force Awakens Dec 18, 2015           Adventure
+## 565                         The Finest Hours Jan 29, 2016   Thriller/Suspense
+## 566                                 Zootopia  Mar 4, 2016           Adventure
+## 567                          The Jungle Book Apr 15, 2016           Adventure
+## 568                       A Beautiful Planet Apr 29, 2016         Documentary
+## 569               Captain America: Civil War  May 6, 2016              Action
+## 570          Alice Through the Looking Glass May 27, 2016           Adventure
+## 571                             Finding Dory Jun 17, 2016           Adventure
+## 572                                  The BFG  Jul 1, 2016           Adventure
+## 573                            Pete’s Dragon Aug 12, 2016           Adventure
+## 574                 The Light Between Oceans  Sep 2, 2016               Drama
+## 575                           Queen of Katwe Sep 23, 2016               Drama
+## 576                           Doctor Strange  Nov 4, 2016           Adventure
+## 577                                    Moana Nov 23, 2016           Adventure
+## 578             Rogue One: A Star Wars Story Dec 16, 2016           Adventure
+##     MPAA_rating     total_gross inflation_adjusted_gross
+## 1             G $184,925,485.00        $5,228,953,251.00
+## 2             G  $84,300,000.00        $2,188,229,052.00
+## 3             G  $83,320,000.00        $2,187,090,808.00
+## 4             G  $65,000,000.00        $1,078,510,579.00
+## 5             G  $85,000,000.00          $920,608,730.00
+## 6             G  $28,200,000.00          $528,279,994.00
+## 7             G  $93,600,000.00        $1,236,035,515.00
+## 8             G   $9,464,608.00           $21,505,832.00
+## 9             G $153,000,000.00        $1,362,870,985.00
+## 10            G  $25,381,407.00          $310,094,574.00
+## 11            G  $10,218,316.00          $124,841,160.00
+## 12    Not Rated   $9,230,769.00          $109,581,646.00
+## 13            G  $22,182,353.00          $153,870,834.00
+## 14    Not Rated $141,843,000.00          $789,612,346.00
+## 15            G  $21,540,050.00          $138,612,686.00
+## 16            G  $55,675,257.00          $255,161,499.00
+## 17            G  $18,607,492.00          $101,200,742.00
+## 18            G  $17,871,174.00           $91,305,448.00
+## 19            G  $31,916,500.00          $131,246,872.00
+## 20           PG  $25,942,000.00           $98,067,733.00
+## 21            G           $0.00                    $0.00
+## 22            G  $48,775,599.00          $159,743,914.00
+## 23            G  $28,000,000.00          $105,847,527.00
+## 24           PG  $35,841,901.00          $120,377,374.00
+## 25           PG   $2,900,000.00            $9,088,096.00
+## 26            G  $11,000,000.00           $34,472,116.00
+## 27           PG  $16,000,000.00           $48,517,980.00
+## 28           PG           $0.00                    $0.00
+## 29            G  $43,899,231.00          $133,118,889.00
+## 30           PG           $0.00                    $0.00
+## 31           PG   $4,500,000.00           $12,903,059.00
+## 32           PG  $26,918,576.00           $77,184,895.00
+## 33           PG   $7,199,408.00           $20,643,199.00
+## 34           PG   $4,304,286.00           $11,519,089.00
+## 35           PG   $5,656,087.00           $15,136,765.00
+## 36           PG  $27,668,764.00           $70,669,955.00
+## 37            G   $1,204,595.00            $3,223,725.00
+## 38           PG  $62,599,495.00          $157,057,661.00
+## 39           PG   $8,400,000.00           $21,075,000.00
+## 40            G  $14,276,095.00           $33,900,697.00
+## 41           PG  $10,618,813.00           $25,215,934.00
+## 42           PG  $21,288,692.00           $50,553,142.00
+## 43            G   $4,100,000.00            $9,736,051.00
+## 44           PG   $9,468,512.00           $22,302,956.00
+## 45            G  $13,229,514.00           $31,415,432.00
+## 46            R  $62,134,225.00          $141,183,693.00
+## 47           PG   $4,842,778.00           $11,003,932.00
+## 48            R  $71,624,879.00          $162,748,712.00
+## 49            G  $23,605,534.00           $53,637,367.00
+## 50           PG  $18,564,613.00           $42,183,197.00
+## 51           PG  $21,458,229.00           $48,758,184.00
+## 52            R  $52,293,000.00          $117,957,323.00
+## 53            R  $52,864,741.00          $113,976,921.00
+## 54            R  $25,411,386.00           $54,787,202.00
+## 55           PG  $23,509,382.00           $50,686,462.00
+## 56            G  $15,212,539.00           $32,798,382.00
+## 57           PG  $33,790,923.00           $72,853,569.00
+## 58            R  $65,673,233.00          $141,592,160.00
+## 59        PG-13  $31,623,833.00           $68,181,300.00
+## 60           PG  $20,419,446.00           $44,024,529.00
+## 61           PG $167,780,960.00          $353,334,607.00
+## 62            R $123,922,370.00          $254,414,837.00
+## 63            R  $29,300,000.00           $60,097,074.00
+## 64        PG-13  $12,706,478.00           $26,062,188.00
+## 65           PG  $13,687,027.00           $28,073,384.00
+## 66           PG  $40,150,487.00           $82,352,451.00
+## 67           PG $154,112,492.00          $316,250,084.00
+## 68            R  $78,222,753.00          $160,442,289.00
+## 69            G   $5,855,392.00           $12,009,960.00
+## 70        PG-13   $5,509,417.00           $11,300,331.00
+## 71            R   $4,764,606.00            $9,772,655.00
+## 72           PG  $28,202,109.00           $57,845,202.00
+## 73            G  $49,576,671.00          $102,254,492.00
+## 74        PG-13  $57,041,866.00          $120,381,757.00
+## 75        PG-13  $40,590,000.00           $85,757,817.00
+## 76           PG  $10,763,469.00           $22,740,861.00
+## 77            R   $7,210,149.00           $15,233,465.00
+## 78           PG  $95,860,116.00          $202,531,517.00
+## 79           PG $130,724,172.00          $276,191,669.00
+## 80           PG  $71,079,915.00          $150,176,361.00
+## 81            G   $7,882,250.00           $16,653,473.00
+## 82            R  $19,397,847.00           $40,983,414.00
+## 83        PG-13  $11,346,186.00           $23,972,012.00
+## 84            G $111,543,479.00          $223,726,012.00
+## 85            R  $19,049,727.00           $39,884,640.00
+## 86        PG-13  $20,062,347.00           $40,077,147.00
+## 87        PG-13   $1,106,475.00            $2,210,321.00
+## 88            R $178,406,268.00          $356,389,765.00
+## 89           PG  $25,029,569.00           $49,999,822.00
+## 90           PG  $15,000,000.00           $29,964,452.00
+## 91        PG-13  $14,760,451.00           $29,485,923.00
+## 92           PG $103,738,726.00          $207,231,621.00
+## 93            R  $19,740,070.00           $39,433,357.00
+## 94        PG-13  $53,208,180.00          $106,290,270.00
+## 95            G  $18,075,331.00           $36,107,823.00
+## 96            R  $20,005,435.00           $39,963,460.00
+## 97        PG-13  $15,379,253.00           $30,722,056.00
+## 98            G  $27,931,461.00           $55,796,728.00
+## 99           PG  $71,609,321.00          $143,108,869.00
+## 100       PG-13  $29,804,169.00           $59,679,131.00
+## 101          PG  $34,729,091.00           $69,540,672.00
+## 102           R   $9,563,393.00           $19,149,495.00
+## 103          PG  $15,024,232.00           $30,084,149.00
+## 104           R  $12,454,768.00           $24,939,118.00
+## 105          PG  $23,562,716.00           $47,181,395.00
+## 106           R  $11,276,846.00           $22,580,472.00
+## 107          PG  $63,710,000.00          $127,571,325.00
+## 108           G   $7,300,000.00           $14,617,333.00
+## 109          PG  $46,573,027.00           $93,256,673.00
+## 110       PG-13  $37,497,480.00           $75,084,021.00
+## 111       PG-13  $18,634,643.00           $37,313,540.00
+## 112       PG-13  $28,738,096.00           $57,544,453.00
+## 113          PG  $14,143,280.00           $28,320,147.00
+## 114           R  $15,565,363.00           $31,167,691.00
+## 115           G $218,951,625.00          $363,017,667.00
+## 116          PG  $89,325,780.00          $179,821,881.00
+## 117           R  $88,036,683.00          $178,831,137.00
+## 118       PG-13  $44,948,240.00           $91,304,495.00
+## 119       PG-13   $2,891,055.00            $5,872,667.00
+## 120       PG-13   $2,280,148.00            $4,631,720.00
+## 121          PG  $21,202,099.00           $43,068,356.00
+## 122          PG   $2,706,352.00            $5,497,481.00
+## 123       PG-13   $4,030,793.00            $8,187,848.00
+## 124          PG  $40,057,130.00           $81,369,058.00
+## 125          PG $139,605,150.00          $283,583,472.00
+## 126          PG  $58,662,452.00          $119,162,518.00
+## 127       PG-13  $12,282,994.00           $24,950,752.00
+## 128          PG  $29,028,000.00           $58,965,304.00
+## 129       PG-13   $3,591,460.00            $7,295,423.00
+## 130       PG-13  $22,518,097.00           $45,741,576.00
+## 131       PG-13   $7,306,242.00           $14,841,352.00
+## 132           R   $4,877,567.00            $9,907,922.00
+## 133          PG  $50,752,337.00          $103,120,810.00
+## 134       PG-13   $7,099,531.00           $14,421,454.00
+## 135           R  $21,591,728.00           $43,859,823.00
+## 136           G $217,350,219.00          $441,969,178.00
+## 137           R  $46,434,570.00           $94,349,900.00
+## 138           G  $27,281,507.00           $55,417,615.00
+## 139           R  $36,299,670.00           $73,914,543.00
+## 140       PG-13   $7,843,388.00           $15,970,955.00
+## 141           G  $41,833,324.00           $85,182,343.00
+## 142       PG-13   $5,583,621.00           $11,369,541.00
+## 143       PG-13   $5,632,086.00           $11,468,231.00
+## 144          PG  $12,890,752.00           $26,248,558.00
+## 145          PG  $17,760,754.00           $36,165,012.00
+## 146          PG  $24,103,594.00           $49,080,505.00
+## 147           R   $4,496,583.00            $9,156,084.00
+## 148           R  $14,717,851.00           $29,968,953.00
+## 149          PG  $20,844,907.00           $42,445,058.00
+## 150           R  $22,622,537.00           $46,064,723.00
+## 151          PG  $12,349,549.00           $25,146,538.00
+## 152           R  $39,100,956.00           $79,618,610.00
+## 153       PG-13  $25,989,889.00           $52,921,433.00
+## 154          PG  $39,360,491.00           $80,147,079.00
+## 155       PG-13  $20,107,504.00           $40,943,541.00
+## 156       PG-13   $3,218,882.00            $6,554,384.00
+## 157       PG-13   $3,268,203.00            $6,654,819.00
+## 158           R  $32,790,064.00           $66,768,171.00
+## 159           R   $1,044,824.00            $2,127,496.00
+## 160           R  $23,042,200.00           $46,919,256.00
+## 161          PG  $68,856,263.00          $140,392,731.00
+## 162          PG  $50,408,318.00          $100,026,637.00
+## 163          PG  $53,661,805.00          $109,310,377.00
+## 164          PG  $57,319,029.00          $116,965,668.00
+## 165           R  $56,505,065.00          $115,781,734.00
+## 166          PG  $20,782,439.00           $42,940,186.00
+## 167       PG-13   $3,469,493.00            $7,168,577.00
+## 168          PG  $20,623,071.00           $42,610,902.00
+## 169           R   $2,502,551.00            $5,170,709.00
+## 170          PG  $30,573,770.00           $63,170,804.00
+## 171           R   $9,252,349.00           $19,116,981.00
+## 172           R  $11,325,885.00           $23,401,275.00
+## 173          PG  $45,604,206.00           $94,226,333.00
+## 174       PG-13     $713,234.00            $1,473,665.00
+## 175          PG   $8,752,399.00           $18,083,994.00
+## 176           R   $8,864,699.00           $18,316,030.00
+## 177           R  $50,021,959.00          $103,354,194.00
+## 178          PG  $11,744,960.00           $24,267,154.00
+## 179       PG-13  $24,172,899.00           $49,945,474.00
+## 180           G $422,780,140.00          $761,640,898.00
+## 181          PG  $30,806,194.00           $63,651,027.00
+## 182          PG  $50,236,831.00          $103,798,152.00
+## 183          PG  $28,881,266.00           $59,673,787.00
+## 184           R  $19,750,470.00           $40,804,816.00
+## 185          PG  $10,442,641.00           $21,576,332.00
+## 186       PG-13      $60,822.00              $125,666.00
+## 187       PG-13   $3,404,935.00            $7,035,189.00
+## 188       PG-13  $24,787,282.00           $50,840,394.00
+## 189       PG-13  $16,478,900.00           $34,048,315.00
+## 190           R   $5,828,466.00           $12,042,634.00
+## 191           R   $8,579,626.00           $17,727,017.00
+## 192          PG   $3,319,344.00            $6,858,345.00
+## 193          PG $144,833,357.00          $298,369,717.00
+## 194           R  $29,317,886.00           $60,321,919.00
+## 195          PG  $44,342,956.00           $88,930,321.00
+## 196          PG  $26,325,256.00           $51,016,522.00
+## 197           R   $3,523,909.00            $6,829,092.00
+## 198       PG-13   $5,086,578.00            $9,857,435.00
+## 199           R   $7,555,256.00           $14,641,561.00
+## 200          PG  $17,671,310.00           $34,245,779.00
+## 201          PG  $40,029,009.00           $77,573,459.00
+## 202          PG  $12,076,989.00           $23,404,369.00
+## 203          PG   $8,247,627.00           $15,983,331.00
+## 204          PG     $468,240.00              $907,414.00
+## 205       PG-13   $2,461,628.00            $4,770,461.00
+## 206           R     $529,135.00            $1,025,425.00
+## 207           G  $35,336,439.00           $68,479,579.00
+## 208          PG  $81,057,016.00          $157,082,900.00
+## 209           R  $91,387,195.00          $177,102,077.00
+## 210       PG-13  $15,446,532.00           $29,934,306.00
+## 211           G $141,579,773.00          $274,370,957.00
+## 212           R  $34,687,912.00           $67,222,776.00
+## 213          PG  $24,670,346.00           $47,809,421.00
+## 214           R  $84,919,401.00          $164,552,293.00
+## 215          PG  $13,406,717.00           $25,981,285.00
+## 216           R   $5,762,795.00           $11,167,895.00
+## 217          PG   $7,929,000.00           $15,365,850.00
+## 218          PG  $17,736,619.00           $34,372,339.00
+## 219           R  $24,120,194.00           $46,741,467.00
+## 220           R  $10,359,006.00           $20,075,033.00
+## 221           R     $293,274.00              $568,342.00
+## 222       PG-13  $30,833,914.00           $59,727,216.00
+## 223           G $191,796,233.00          $370,409,631.00
+## 224          PG  $76,578,911.00          $147,658,438.00
+## 225           R  $13,668,249.00           $26,302,005.00
+## 226          PG  $23,837,227.00           $45,911,517.00
+## 227          PG  $82,582,604.00          $157,508,868.00
+## 228       PG-13  $10,229,300.00           $19,509,726.00
+## 229           G  $34,327,391.00           $65,470,567.00
+## 230       PG-13  $12,805,071.00           $24,422,334.00
+## 231       PG-13   $8,642,118.00           $16,482,589.00
+## 232       PG-13  $51,045,801.00           $97,356,578.00
+## 233           G  $32,709,423.00           $62,384,706.00
+## 234       PG-13   $1,078,555.00            $2,057,055.00
+## 235          PG   $1,029,731.00            $1,963,937.00
+## 236          PG  $28,921,264.00           $55,159,783.00
+## 237       PG-13   $9,240,378.00           $17,623,615.00
+## 238           R   $5,857,534.00           $11,171,714.00
+## 239       PG-13  $21,930,418.00           $41,826,566.00
+## 240       PG-13  $26,936,265.00           $51,373,912.00
+## 241       PG-13  $31,369,401.00           $59,828,966.00
+## 242           R $134,069,511.00          $255,702,705.00
+## 243           G $100,138,851.00          $190,988,799.00
+## 244          PG $104,636,382.00          $199,559,799.00
+## 245          PG  $18,880,508.00           $36,009,655.00
+## 246       PG-13  $58,617,334.00          $111,792,852.00
+## 247          PG  $26,465,920.00           $50,465,108.00
+## 248           R   $8,538,318.00           $16,284,619.00
+## 249          PG  $22,936,273.00           $43,713,554.00
+## 250       PG-13  $12,772,657.00           $24,333,094.00
+## 251           R $136,492,681.00          $259,807,820.00
+## 252           R      $34,368.00               $65,543.00
+## 253           G $136,189,294.00          $258,728,898.00
+## 254          PG  $48,102,795.00           $91,076,877.00
+## 255          PG  $50,047,179.00           $92,077,628.00
+## 256           R  $32,017,895.00           $58,804,106.00
+## 257       PG-13     $590,817.00            $1,085,093.00
+## 258           R   $2,154,540.00            $3,957,025.00
+## 259          PG  $18,301,828.00           $33,613,158.00
+## 260          PG  $59,925,026.00          $110,058,379.00
+## 261       PG-13  $14,765,099.00           $27,117,599.00
+## 262           R  $28,084,357.00           $51,579,764.00
+## 263           R  $29,235,353.00           $53,693,680.00
+## 264          PG  $19,745,922.00           $36,265,379.00
+## 265           R $101,117,573.00          $185,712,664.00
+## 266           G  $99,112,101.00          $182,029,412.00
+## 267          PG $105,263,257.00          $193,326,632.00
+## 268           R  $44,480,039.00           $81,692,095.00
+## 269          PG  $24,646,936.00           $45,266,588.00
+## 270           R  $48,169,156.00           $88,467,531.00
+## 271           R   $7,928,412.00           $14,561,324.00
+## 272          PG   $1,775,644.00            $3,257,546.00
+## 273          PG  $15,448,043.00           $28,371,890.00
+## 274           R   $4,166,918.00            $7,652,965.00
+## 275          PG  $92,993,801.00          $170,406,423.00
+## 276           R  $26,570,463.00           $48,546,161.00
+## 277          PG  $21,437,192.00           $39,145,784.00
+## 278       PG-13   $5,686,694.00           $10,236,836.00
+## 279           R  $11,203,026.00           $20,136,775.00
+## 280       PG-13   $7,571,115.00           $13,608,633.00
+## 281           R      $45,779.00               $82,277.00
+## 282          PG   $4,356,126.00            $7,829,877.00
+## 283           R  $21,567,853.00           $38,766,948.00
+## 284       PG-13  $75,383,563.00          $135,497,531.00
+## 285       PG-13  $74,339,294.00          $133,620,516.00
+## 286           G $120,620,254.00          $216,807,832.00
+## 287       PG-13 $201,578,182.00          $362,324,957.00
+## 288       PG-13  $19,843,795.00           $35,668,055.00
+## 289          PG  $66,308,518.00          $119,185,667.00
+## 290           R     $784,419.00            $1,409,943.00
+## 291          PG  $18,253,415.00           $32,809,442.00
+## 292          PG  $12,069,719.00           $21,694,605.00
+## 293           R  $22,852,487.00           $41,062,682.00
+## 294       PG-13 $161,491,646.00          $288,691,833.00
+## 295          PG  $12,214,338.00           $21,941,840.00
+## 296           G $162,798,565.00          $288,981,698.00
+## 297           R $111,549,836.00          $198,472,008.00
+## 298           R  $17,105,219.00           $28,392,518.00
+## 299       PG-13  $56,709,981.00           $94,139,530.00
+## 300          PG  $50,632,037.00           $87,906,042.00
+## 301          PG  $36,850,101.00           $61,150,849.00
+## 302       PG-13  $27,807,627.00           $46,145,331.00
+## 303           G  $19,421,271.00           $32,228,598.00
+## 304       PG-13  $38,177,966.00           $63,354,375.00
+## 305           G     $229,128.00              $380,218.00
+## 306           R  $34,105,207.00           $56,595,842.00
+## 307           G $171,091,819.00          $283,900,254.00
+## 308           R  $19,288,130.00           $32,007,656.00
+## 309          PG  $97,387,965.00          $161,610,341.00
+## 310       PG-13 $293,506,292.00          $485,424,724.00
+## 311           R  $32,698,899.00           $54,262,148.00
+## 312           R     $178,287.00              $295,851.00
+## 313           R   $4,559,569.00            $7,566,363.00
+## 314           R   $8,891,623.00           $14,755,189.00
+## 315           G   $6,197,866.00           $10,111,144.00
+## 316           R  $28,965,197.00           $47,794,214.00
+## 317           G $245,852,179.00          $404,450,426.00
+## 318           R   $2,899,970.00            $4,609,153.00
+## 319           R  $65,535,067.00          $106,921,374.00
+## 320          PG  $58,220,776.00           $94,838,225.00
+## 321           R   $8,427,204.00           $13,180,524.00
+## 322           G  $60,507,228.00           $94,852,354.00
+## 323           R   $1,638,202.00            $2,562,155.00
+## 324           G  $45,542,421.00           $71,228,678.00
+## 325          PG  $60,874,615.00           $95,208,344.00
+## 326           R  $27,277,055.00           $42,661,516.00
+## 327       PG-13  $37,036,404.00           $57,925,202.00
+## 328          PG $137,748,063.00          $215,438,985.00
+## 329       PG-13  $56,932,305.00           $89,042,541.00
+## 330       PG-13 $101,643,008.00          $158,970,411.00
+## 331           G   $9,103,630.00           $14,238,144.00
+## 332          PG  $69,688,384.00          $108,993,148.00
+## 333       PG-13  $60,786,269.00           $95,070,168.00
+## 334       PG-13  $13,019,253.00           $20,362,201.00
+## 335           R   $4,734,235.00            $7,404,372.00
+## 336          PG $115,654,751.00          $180,742,479.00
+## 337       PG-13  $94,999,143.00          $148,208,901.00
+## 338           G  $66,941,559.00          $104,055,039.00
+## 339           G  $89,296,573.00          $136,789,252.00
+## 340       PG-13  $45,506,619.00           $67,922,002.00
+## 341       PG-13  $29,823,162.00           $44,418,589.00
+## 342           G  $36,696,761.00           $54,656,124.00
+## 343       PG-13   $4,777,007.00            $7,114,869.00
+## 344       PG-13 $198,539,855.00          $295,705,112.00
+## 345          PG  $84,052,762.00          $125,188,122.00
+## 346       PG-13  $16,929,123.00           $25,214,223.00
+## 347           G $108,244,774.00          $161,218,928.00
+## 348       PG-13   $5,002,310.00            $7,450,434.00
+## 349          PG  $17,292,381.00           $25,749,730.00
+## 350       PG-13  $23,978,402.00           $35,705,805.00
+## 351           R     $226,792.00              $337,782.00
+## 352           G $289,423,425.00          $416,073,179.00
+## 353       PG-13  $13,906,394.00           $20,700,691.00
+## 354           R  $52,353,636.00           $76,758,193.00
+## 355           G  $25,487,028.00           $36,980,311.00
+## 356          PG  $81,150,692.00          $117,745,317.00
+## 357       PG-13  $54,228,104.00           $78,682,079.00
+## 358           G  $48,430,258.00           $70,269,715.00
+## 359       PG-13  $43,061,982.00           $62,480,631.00
+## 360           R  $10,198,766.00           $14,797,862.00
+## 361           G  $75,600,072.00          $109,691,666.00
+## 362       PG-13   $7,262,288.00           $10,537,188.00
+## 363          PG   $4,197,175.00            $6,089,874.00
+## 364       PG-13  $30,157,016.00           $43,756,218.00
+## 365          PG $145,771,527.00          $211,506,702.00
+## 366           G  $16,988,996.00           $24,650,121.00
+## 367       PG-13 $227,965,690.00          $330,754,439.00
+## 368          PG  $10,049,886.00           $14,338,992.00
+## 369       PG-13 $127,214,072.00          $184,521,151.00
+## 370       PG-13   $6,830,957.00            $9,909,094.00
+## 371          PG  $19,161,999.00           $27,789,959.00
+## 372           G $139,225,854.00          $201,959,095.00
+## 373          PG  $38,120,554.00           $55,189,145.00
+## 374       PG-13  $35,081,550.00           $50,624,654.00
+## 375           R  $13,084,595.00           $18,325,463.00
+## 376       PG-13  $52,784,696.00           $73,793,522.00
+## 377       PG-13  $60,470,220.00           $84,537,962.00
+## 378           G  $47,901,582.00           $66,966,883.00
+## 379       PG-13 $132,675,402.00          $185,481,530.00
+## 380           G  $23,103,423.00           $32,298,812.00
+## 381           G  $17,093,668.00           $23,803,108.00
+## 382          PG  $67,383,924.00           $94,203,395.00
+## 383          PG  $42,734,455.00           $59,743,191.00
+## 384           G $380,529,370.00          $518,148,559.00
+## 385       PG-13 $305,411,224.00          $426,967,926.00
+## 386          PG $110,222,438.00          $154,090,360.00
+## 387           R  $58,331,254.00           $81,547,672.00
+## 388           R  $21,384,035.00           $29,895,090.00
+## 389       PG-13  $43,601,508.00           $60,944,053.00
+## 390           R   $1,569,918.00            $2,194,759.00
+## 391           G  $85,336,277.00          $119,218,333.00
+## 392          PG  $75,817,994.00          $105,775,678.00
+## 393       PG-13  $31,011,616.00           $42,379,650.00
+## 394           G   $6,751,389.00            $9,254,344.00
+## 395          PG   $6,491,969.00            $8,812,764.00
+## 396          PG  $64,378,093.00           $87,392,478.00
+## 397          PG  $29,331,068.00           $39,816,568.00
+## 398       PG-13  $67,286,731.00           $91,340,921.00
+## 399           R  $39,692,139.00           $53,881,593.00
+## 400          PG  $50,026,353.00           $67,910,166.00
+## 401       PG-13  $22,406,362.00           $30,416,359.00
+## 402       PG-13  $37,485,528.00           $50,886,144.00
+## 403          PG  $24,004,159.00           $32,585,356.00
+## 404   Not Rated     $314,000.00              $426,246.00
+## 405       PG-13  $51,877,963.00           $70,423,706.00
+## 406       PG-13 $114,197,520.00          $155,021,748.00
+## 407           G  $95,149,435.00          $129,164,207.00
+## 408       PG-13  $21,800,302.00           $29,593,641.00
+## 409           R     $463,730.00              $629,502.00
+## 410       PG-13  $74,541,707.00          $101,161,045.00
+## 411          PG $261,441,092.00          $354,488,708.00
+## 412          PG $173,005,002.00          $234,069,353.00
+## 413           R  $24,006,726.00           $32,198,655.00
+## 414           G   $8,968,684.00           $11,740,942.00
+## 415           G  $18,098,433.00           $23,801,835.00
+## 416          PG $113,006,880.00          $148,619,029.00
+## 417           G  $24,381,334.00           $32,064,685.00
+## 418       PG-13  $21,835,784.00           $28,716,947.00
+## 419          PG  $51,019,112.00           $67,096,891.00
+## 420          PG   $4,710,455.00            $6,194,870.00
+## 421           G  $66,010,682.00           $86,812,798.00
+## 422       PG-13  $25,473,093.00           $33,500,491.00
+## 423          PG  $63,939,454.00           $84,088,854.00
+## 424           G  $19,478,106.00           $25,616,292.00
+## 425       PG-13  $89,706,988.00          $117,960,425.00
+## 426          PG  $15,331,289.00           $20,162,672.00
+## 427           R  $10,284,523.00           $13,519,621.00
+## 428           G $135,386,665.00          $177,954,661.00
+## 429          PG $291,710,957.00          $381,557,539.00
+## 430           R  $11,304,403.00           $14,574,087.00
+## 431          PG  $42,647,449.00           $54,888,236.00
+## 432       PG-13  $17,127,992.00           $22,044,113.00
+## 433           G  $10,407,978.00           $12,948,025.00
+## 434          PG  $81,612,565.00          $105,037,235.00
+## 435          PG  $61,123,569.00           $78,667,428.00
+## 436       PG-13  $23,086,480.00           $29,712,825.00
+## 437           G  $37,384,046.00           $48,114,115.00
+## 438       PG-13  $26,910,736.00           $34,634,731.00
+## 439          PG   $4,283,255.00            $5,512,647.00
+## 440           G $244,082,982.00          $314,140,384.00
+## 441       PG-13 $423,315,812.00          $544,817,142.00
+## 442       PG-13  $65,328,121.00           $84,078,780.00
+## 443          PG  $57,806,952.00           $74,398,864.00
+## 444       PG-13  $55,011,732.00           $70,801,353.00
+## 445       PG-13  $53,089,891.00           $68,289,913.00
+## 446          PG  $24,732,041.00           $30,737,517.00
+## 447           G  $84,500,122.00          $108,694,869.00
+## 448       PG-13  $64,038,616.00           $82,267,038.00
+## 449           R  $50,866,635.00           $64,959,548.00
+## 450           R  $10,597,734.00           $12,985,302.00
+## 451          PG  $82,234,139.00          $100,760,721.00
+## 452       PG-13 $168,213,584.00          $206,110,533.00
+## 453           G  $97,822,171.00          $119,860,589.00
+## 454           R   $4,600,585.00            $5,637,048.00
+## 455           R   $7,164,995.00            $8,779,196.00
+## 456       PG-13  $20,568,319.00           $25,202,168.00
+## 457       PG-13 $309,420,425.00          $379,129,960.00
+## 458           G $206,445,654.00          $252,955,933.00
+## 459          PG  $43,760,605.00           $53,619,462.00
+## 460          PG  $90,648,202.00          $111,010,758.00
+## 461       PG-13  $47,642,963.00           $58,350,234.00
+## 462          PG $127,706,877.00          $156,074,310.00
+## 463          PG $219,961,501.00          $267,003,525.00
+## 464           G  $65,281,781.00           $76,646,993.00
+## 465       PG-13  $58,017,783.00           $68,118,371.00
+## 466           G  $45,610,425.00           $53,550,960.00
+## 467          PG $141,621,490.00          $166,277,038.00
+## 468           G $223,808,164.00          $262,771,918.00
+## 469       PG-13  $16,289,867.00           $19,125,841.00
+## 470       PG-13     $225,067.00              $264,247.00
+## 471           R   $7,916,887.00            $9,295,171.00
+## 472          PG  $94,514,402.00          $110,932,022.00
+## 473          PG     $275,093.00              $322,979.00
+## 474           G  $90,559,416.00          $106,308,538.00
+## 475          PG $114,053,759.00          $133,702,498.00
+## 476          PG $110,101,975.00          $128,039,679.00
+## 477          PG  $44,277,350.00           $49,767,744.00
+## 478           G  $38,174,685.00           $38,174,685.00
+## 479          PG  $67,172,594.00           $75,501,997.00
+## 480           G  $79,576,189.00           $89,443,640.00
+## 481           G  $32,011,576.00           $35,981,010.00
+## 482          PG $293,004,164.00          $329,336,681.00
+## 483       PG-13 $163,958,031.00          $184,288,829.00
+## 484          PG $119,436,770.00          $134,246,932.00
+## 485           G  $15,090,399.00           $16,961,607.00
+## 486          PG   $1,391,434.00            $1,563,976.00
+## 487          PG      $20,521.00               $23,064.00
+## 488       PG-13  $38,577,772.00           $43,361,416.00
+## 489           G  $30,702,446.00           $34,509,545.00
+## 490          PG $137,855,863.00          $154,927,105.00
+## 491           G $104,400,899.00          $116,316,457.00
+## 492          PG  $49,492,060.00           $55,503,929.00
+## 493       PG-13  $32,680,633.00           $34,917,330.00
+## 494          PG $334,191,110.00          $357,063,499.00
+## 495          PG      $80,741.00               $86,264.00
+## 496          PG  $62,950,384.00           $67,258,772.00
+## 497           G  $19,422,319.00           $20,751,600.00
+## 498       PG-13  $90,759,676.00           $96,971,361.00
+## 499           G $415,004,880.00          $443,408,255.00
+## 500          PG  $63,150,991.00           $67,473,105.00
+## 501       PG-13  $42,400,223.00           $45,302,137.00
+## 502       PG-13      $48,658.00               $51,988.00
+## 503          PG  $25,702,053.00           $27,461,121.00
+## 504          PG  $59,699,513.00           $63,781,920.00
+## 505          PG $200,821,936.00          $214,388,548.00
+## 506          PG $172,062,763.00          $183,619,259.00
+## 507           G  $99,967,670.00          $106,270,797.00
+## 508       PG-13  $55,100,437.00           $58,574,607.00
+## 509          PG  $21,392,758.00           $22,741,603.00
+## 510           G  $15,428,747.00           $16,401,551.00
+## 511          PG       $2,815.00                $2,984.00
+## 512          PG  $10,130,219.00           $10,768,946.00
+## 513       PG-13 $241,063,875.00          $256,263,359.00
+## 514           G $191,450,875.00          $203,522,177.00
+## 515           G  $26,692,846.00           $28,375,869.00
+## 516       PG-13 $169,705,587.00          $180,404,976.00
+## 517           R  $18,298,649.00           $19,452,402.00
+## 518       PG-13  $85,463,309.00           $90,848,019.00
+## 519          PG  $88,625,922.00           $94,189,503.00
+## 520       PG-13  $79,883,359.00           $84,762,149.00
+## 521           G  $19,192,510.00           $20,325,733.00
+## 522       PG-13  $73,058,679.00           $77,372,445.00
+## 523           G  $28,965,459.00           $30,675,725.00
+## 524       PG-13 $623,279,547.00          $660,081,224.00
+## 525          PG $237,282,182.00          $251,292,441.00
+## 526       PG-13  $12,431,792.00           $13,165,822.00
+## 527          PG  $51,853,450.00           $54,914,942.00
+## 528          PG  $35,287,788.00           $37,363,513.00
+## 529          PG $189,412,677.00          $200,354,959.00
+## 530       PG-13 $182,207,973.00          $192,122,330.00
+## 531          PG $234,770,996.00          $243,434,130.00
+## 532       PG-13 $408,992,272.00          $424,084,233.00
+## 533           G $268,488,329.00          $278,395,641.00
+## 534       PG-13  $89,302,115.00           $92,597,388.00
+## 535          PG  $90,282,580.00           $93,614,037.00
+## 536           R   $3,254,172.00            $3,374,251.00
+## 537       PG-13 $206,362,140.00          $213,962,184.00
+## 538       PG-13   $5,201,879.00            $5,367,415.00
+## 539          PG $400,738,009.00          $414,997,174.00
+## 540       PG-13  $30,659,817.00           $31,787,136.00
+## 541       PG-13  $83,299,761.00           $86,249,969.00
+## 542       PG-13  $43,568,507.00           $44,955,015.00
+## 543          PG  $51,178,893.00           $52,807,594.00
+## 544       PG-13 $259,746,958.00          $268,013,076.00
+## 545           G  $17,780,194.00           $18,346,024.00
+## 546          PG  $36,447,959.00           $37,607,865.00
+## 547          PG $241,407,328.00          $249,089,809.00
+## 548          PG  $59,157,732.00           $61,040,349.00
+## 549       PG-13 $333,172,112.00          $343,771,168.00
+## 550          PG  $54,235,441.00           $55,961,409.00
+## 551          PG  $66,954,149.00           $69,055,550.00
+## 552          PG $222,527,828.00          $229,249,222.00
+## 553          PG $128,002,372.00          $130,894,237.00
+## 554          PG  $12,429,583.00           $12,429,583.00
+## 555          PG  $44,480,275.00           $44,480,275.00
+## 556          PG $201,151,353.00          $201,151,353.00
+## 557           G  $16,432,322.00           $16,432,322.00
+## 558       PG-13 $459,005,868.00          $459,005,868.00
+## 559          PG  $93,436,322.00           $93,436,322.00
+## 560          PG $356,461,711.00          $356,461,711.00
+## 561       PG-13 $180,202,163.00          $180,202,163.00
+## 562       PG-13  $72,313,754.00           $72,313,754.00
+## 563          PG $123,087,120.00          $123,087,120.00
+## 564       PG-13 $936,662,225.00          $936,662,225.00
+## 565          PG  $27,569,558.00           $27,569,558.00
+## 566          PG $341,268,248.00          $341,268,248.00
+## 567          PG $364,001,123.00          $364,001,123.00
+## 568           G   $7,895,708.00            $7,895,708.00
+## 569       PG-13 $408,084,349.00          $408,084,349.00
+## 570          PG  $77,042,381.00           $77,042,381.00
+## 571          PG $486,295,561.00          $486,295,561.00
+## 572          PG  $55,483,770.00           $55,483,770.00
+## 573          PG  $76,233,151.00           $76,233,151.00
+## 574       PG-13  $12,545,979.00           $12,545,979.00
+## 575          PG   $8,874,389.00            $8,874,389.00
+## 576       PG-13 $232,532,923.00          $232,532,923.00
+## 577          PG $246,082,029.00          $246,082,029.00
+## 578       PG-13 $529,483,936.00          $529,483,936.00</code></pre>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUHJvamVjdCBQcm9wb3NhbCIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKW0xpbmsgdG8gZGF0YSBzZXRdKGh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9yZWlzYW5hci9kYXRhc2V0cy9tYXN0ZXIvZGlzbmV5X21vdmllc190b3RhbF9ncm9zcy5jc3YpCgojIyBTZWN0aW9uIDEuIEludHJvZHVjdGlvbgoKSW4gdGhpcyBwcm9qZWN0IEkgd2lsbCBiZSBhbmFseXppbmcgYSBzZXQgb2YgRGlzbmV5IG1vdmllIGdyb3NzLiBJbiB0aGlzIGRhdGEgc2V0IGl0IGluY2x1ZGVzIHRoZSBuYW1lIG9mIHRoZSBtb3ZpZXMsIGdlbnJlLCB0aGUgdG90YWwgZ3Jvc3MsIGFuZCB0aGUgaW5mbGF0aW9uIHRvdGFsIGdyb3NzLgoKIyMgU2VjdGlvbiAyLiBEYXRhIEFuYWx5c2lzIFBsYW4KCgpGb3IgdGhpcyBkYXRhIGFuYWx5c2lzIEkgcGxhbiB0byBmaW5kIGluc2lnaHRzIGJhc2VkIG9uIGF1ZGllbmNlIGFuZCB0aGUgYWZmZWN0cyBpdCBoYXMgb24gdGhlIG1vdmllLCB0aGUgeWVhciB0aGF0IHRoZSBtb3ZpZSBhcyBtYWRlLCBhbmQgdGhlIG92ZXJhbGwgZ3Jvc3MgcHJvZml0cyBvZiB0aGUgZmlsbS4gRHVyaW5nIHRoZSBhbmFseXNpcyBJIHdhbnQgdG8gY3JlYXRlIGdyYXBocyBvZiB0aGUgcHJvZml0cyBhbmQgd2hhdCBpbmZsYXRpb24gaGFzIG9uIGl0LgoKIyMgU2VjdGlvbiAzLiBEYXRhCgpTb21lIEVEQSB0b29scyBJIHdpbGwgaW5jbHVkZSBhcmUgZ2dwbG90dDIsIGRwbHlyLCB0aWR5ciwgYW5kIGZvcmVjYXRzLiBUaGVzZSB3aWxsIGFsbCBiZSB1c2VkIHRvIGhlbHAgbXkgZGF0YSBpbiB0ZXJtcyBvZiBzaGFwaW5nIGFuZCBwZXJmb3JtaW5nIGNhbGN1bGF0aW9ucy4gCgo=</div>
 
 
 
@@ -1791,17 +1572,6 @@ $(document).ready(function () {
   bootstrapStylePandocTables();
 });
 
-$(document).ready(function () {
-  $('.knitsql-table').addClass('kable-table');
-  var container = $('.kable-table');
-  container.each(function() {
-
-    // move the caption out of the table
-    var table = $(this).children('table');
-    var caption = table.children('caption').detach();
-    caption.insertBefore($(this)).css('display', 'inherit');
-  });
-});
 
 </script>
 
@@ -1820,12 +1590,6 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
-<script>
-$(document).ready(function () {
-  window.initializeSourceEmbed("ideas.Rmd");
-  window.initializeCodeFolding("show" === "show");
-});
-</script>
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

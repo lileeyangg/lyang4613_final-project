@@ -1,20 +1,14 @@
 ---
-title: "Project Proposal"
-output: html_notebook
+title: "Ideas"
+output: Ideas
 ---
+**Project Planning**
 
-[Link to data set](https://raw.githubusercontent.com/reisanar/datasets/master/disney_movies_total_gross.csv)
-
-## Section 1. Introduction
 
 In this project I will be analyzing a set of Disney movie gross. In this data set it includes the name of the movies, genre, the total gross, and the inflation total gross.
 
-## Section 2. Data Analysis Plan
-
-
 For this data analysis I plan to find insights based on audience and the affects it has on the movie, the year that the movie as made, and the overall gross profits of the film. During the analysis I want to create graphs of the profits and what inflation has on it.
-
-## Section 3. Data
 
 Some EDA tools I will include are ggplott2, dplyr, tidyr, and forecats. These will all be used to help my data in terms of shaping and performing calculations. 
 
+[Link to data set](https://raw.githubusercontent.com/reisanar/datasets/master/disney_movies_total_gross.csv)

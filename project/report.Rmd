@@ -1,13 +1,41 @@
 ---
-title: "Final Report for Intro to Data Science"
-output: html_notebook
+title: "Exploring Disney movies from 1937 to 2017 gross profits"
+output: 
+    html_notebook:
+    number_sections: yes
+    toc: yes
+    toc_depth: 5
+    toc_float: yes
 ---
 
-This is where the final project report write-up goes. 
+**Analysis by: Lilee Yang**
 
 
-Before you submit, make sure everything runs as expected.
+## INTRODUCTION
 
-You can add sections as you see fit. Make sure you have a section called "Introduction" at the beginning and a section called "Conclusion" at the end. The rest is up to you!
+Disney has been one of the most well known companies in the world with its nostalgic movies. What started as a dream, today it is worth about 168.45 billion ! Lets go back in time and take a look at movies from 1937 to 2016 and their gross profits. 
 
-_Make use of your knowledge of Markdown to appropriately typeset this report!_
+- Which movies genres have the greatest profits in the years?
+
+-
+
+## Needed packages
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+```
+
+
+## Data set
+
+For this analysis I am using a data set created by Dr. Aries Sanchez
+
+```{r}
+
+disney_movies <- read.csv("/cloud/project/disney_movie_data.csv" , header = TRUE)
+disney_movies
+```
+
+
