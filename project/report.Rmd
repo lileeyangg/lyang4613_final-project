@@ -11,24 +11,26 @@ output:
 **Analysis by: Lilee Yang**
 
 
-## INTRODUCTION
+# INTRODUCTION
 
 Disney has been one of the most well known companies in the world with its nostalgic movies. What started as a dream, today it is worth about 168.45 billion ! Lets go back in time and take a look at movies from 1937 to 2016 and their gross profits. 
 
-- Which movies genres have the greatest profits in the years?
+°o° Which movies genres have the greatest profits in the years?
 
-- How has Disney movies progressed in popularity?
+°o° How has Disney movies progressed in popularity?
 
-- What factors play a large role in the rise of Disney?
-## Needed packages
+°o° What season is the best time for movies to come out?
+
+# Needed packages
 
 ```{r}
 library(tidyverse)
 library(dplyr)
 library(ggplot2)
+library(lubridate)
 ```
 
-## Data set
+# Data set
 
 For this analysis I am using a data set created by Dr. Sanchez-Aries. This data set displays the sequence of movies created by Disney with many variables and columns.
 
@@ -39,12 +41,20 @@ disney_movies
 ```
 
 
+# Data Exploration
 
-## Data Exploration
+As we dive into this data set, lets take a glance of what it is.
+```{r}
+summary(disney_movies)
+```
 
-Before answering our questions about this data set let's explore the possibilities in store. 
+## Univarient Exploration
 
-In this data set there are a variety of factors that influence the growth of Disney today. From the 578 movies, how many are from each genre?
+Before answering the questions about this data set let's explore the possibilities in store. A deconstruction of individual aspects of this data set will help us understand the capabilities in each component.
+
+### Genre 
+
+In this data set there are a variety of factors that influence the growth of Disney today. From the 578 movies, what is the distribution of movie from each genre?
 
 ```{r}
 disney_movies %>%
@@ -52,34 +62,24 @@ disney_movies %>%
   count() 
 ```
 
-From these statistics, we can see that Disney made mostly comedy and adventure movies. Some of these movies from the past have become classics most love for a lifetime. 
+The statistical breakdown reveals that Disney's cinematic portfolio has primarily comprised of comedy and adventure genres. This strategic emphasis on these genres has evidently contributed to the creation of enduring classics, cherished by audiences through generations. The resonance of these timeless movies display crafting narratives that captivate audiences and earning a lasting place in the realm of beloved cinematic experiences.
 
-lets compare the genres and the amount of gross profits they generated.
+## TOP MOVIES
+**TOP TOTAL GROSS**
 
-```{r}
-
-total_gross_by_genre <- disney_movies %>%
-  group_by(genre) %>%
-  summarise(total_gross_by_genre = sum(total_gross, na.rm = TRUE))
-
-print(total_gross_by_genre)
-
-```
-
-
-
-
-Lets take a look at the top ten movie gross.
+Examining the top ten movie gross offers an understanding for key cinematic productions that have significantly contributed to Disney's prominence. This exploration aims to distill insights into the films that have played a pivotal role in shaping and Disney's popularity within the industry.
 
 ```{r}
-
 top_ten_movies <-disney_movies %>%
   arrange(desc(total_gross)) %>%
     slice(1:10)
 print(top_ten_movies)
 
 ```
-how could this differ from the top 10 infliated total gross ?
+**TOP INFLATED GROSS (with 2016 rate)**
+
+Estimating the top 10 movies from an inflated rate can reflect how films that were previously made would compare in the year 2016. This could reveal alternative rankings and offer the evolving economics.
+
 ```{r}
 
 top_ten_inflated_movies <- disney_movies %>%
@@ -88,11 +88,51 @@ top_ten_inflated_movies <- disney_movies %>%
 
 print(top_ten_inflated_movies)
 ```
+The observation that some of the top movies are well loved classics that displays Disney's remarkable success with its early films. This popularity is an indication to the timeless appeal and cultural impact of these cinematic treasures. It reaffirms Disney's skills in creating  narratives that resonate across generations, marking a noteworthy achievement in cinematic history.
 
 
-Next analysis we are going to look at is compairing the years releast and the gross profits
 
-First thing we need to do is break down the data so we only get the year the movie is released.
+
+
+## Audience
+
+The Motion Picture Association of America (MPAA) rating system serves as a structure for evaluating and categorizing movies based on their content, catering to diverse audience sensitivities. This criterion significantly influences the cinematic production landscape within the industry.In our examination of major entities like Warner Brothers, A24, and 20th Century, a trend emerges where a proportion of their cinematic are tailored for adult audiences. Shifting our focus to Disney, a comprehensive analysis of their MPAA ratings offers valuable insights into the strategic choices governing the content produced by this renowned cinematic company.
+
+
+```{r}
+disney_movies %>%
+  group_by(MPAA_rating)%>%
+  count() 
+```
+At a glance the MPAA rating with the most movies is PG-13. Lets take a look at those specific movies in that category. These are the top 20 movies in the PG-13 category. From this data, it can be concluded that the "Pirates of The Caribbean" series has been one of the most popular Disney films.
+
+```{r}
+  filter(disney_movies, MPAA_rating == "PG-13") %>% 
+  arrange(desc(total_gross)) %>%
+  slice(1:20) %>%
+   ggplot() +
+  geom_point(aes(x = movie_title, y =total_gross, color=MPAA_rating))+
+  labs(
+    title = "PG-13 Movies Total Gross",
+    x = "MOVIE TITLE", 
+    y = "TOTAL GROSS") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  
+```
+
+
+
+
+
+
+
+### Multivarient Analysis
+
+
+#### Genre throughout the years
+
+
+To grasp the data visually in the evolution of Disney a graphical representation is ideal. By creating a visual we can see the progression in genres over the years and Disney's strategic shift of movies.
 
 ```{r}
 year_release <- disney_movies %>%
@@ -100,10 +140,7 @@ year_release <- disney_movies %>%
 
 year_release
 ```
-
-
 ```{r}
-
   ggplot(year_release) +
   geom_point(aes(x = year_release, y =genre, color=MPAA_rating))+
   labs(
@@ -111,31 +148,11 @@ year_release
     x = "Year", 
     y = "Genre")
 
-              
 ```
 
+## Audience shifts
 
-
-```{r}
-
-total_gross_by_genre <- disney_movies %>%
-  group_by(genre) %>%
-summarize(sum(total_gross))
-
-```
-
-
-
-```{r}
-
-ggplot(total_gross_by_genre) +
-  geom_histogram(aes(x = genre, y = sum(total_gross))) +
-  labs(title = "Total Gross by Genre", x = "Genre", y = "Total Gross")
-
-```
-
-
-
+The early classics are primary geared towards a younger audience, but as the years go by lets take a look at how it changes.
 
 ```{r}
   ggplot(year_release) +
@@ -146,4 +163,137 @@ ggplot(total_gross_by_genre) +
     y = "MPAA Rating")
 
 ```
+This observation highlights that during Disney's early years, the focus was on creating movies with widespread audience appeal. As time has advanced, Disney has shown a dynamic evolution, expanding its cinematic repertoire to include a diverse array of genres that effectively cater to audiences of all age groups that keep them appealing for adults as well.
+
+
+
+# DATA ANALYSIS
+
+After completing an extensive exploration, the previous asked questions can be answered from the data.
+
+## What movie genres generated the greatest gross profit?
+
+In the realm of cinematic preferences, individuals often gravitate towards specific genres that resonate with their personal preferences Whether it be the action-packed superhero narratives or the simple joy derived from lighthearted comedies, individual liking plays an essential role in shaping cinematic preferences.
+
+Examining the popularity trends across different genres throughout the years becomes instrumental in understanding Disney's fondness towards certain genres. The appeal of specific genres may serve as a  factor for Disney's continued production and preferences of their audience base.
+
+```{r}
+total_gross_by_genre <- disney_movies %>%
+  group_by(genre) %>%
+  summarise(total_gross_by_genre = sum(total_gross, na.rm = TRUE)) 
+
+print(total_gross_by_genre)
+
+```
+
+
+```{r}
+
+p <-ggplot(total_gross_by_genre, aes(x = genre, y = total_gross_by_genre)) +
+  geom_histogram(stat = "identity", fill = "skyblue") +
+  labs(title = "Total Gross by Genre", x = "Genre", y = "Total Gross(in Millions)")+
+theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(labels = scales::label_number_si(scale = 1e-6, suffix = "M"))
+
+
+```
+++From this analysis it can be concluded that adventure movies clearly generate the largest amount of gross profit overall. These adventure movies include films like "Starwars: The Force Awakens", "The Lion King", "Toy Story" and many more. The reason this could be is that kids love these type of hero going on an adventure through life as cartoons or films. This could be a reason why they have generated the largest profit and has been some of the well known films.
+
+
+
+## How has disney movies progressed in popularity?
+
+In Disney's remarkable success, we turn our to the evolving landscape of total gross over the years. The ascent in total gross often displays the popularity of a company in a growing affinity for their cinematic offerings. This analytical approach allows us to discern the years marked by  success as well as those where the company faced challenges, thereby providing a comprehensive overview of Disney's dynamic journey.
+
+
+```{r}
+
+ggplot(year_release, aes(x = year_release, y = total_gross)) +
+  geom_line() +
+  labs(title = "Disney's Growing Popularity Over Time",
+       x = "Release Year",
+       y = "Total Gross Revenue (in Billions)") +
+  theme_grey() +
+  scale_y_continuous(labels = scales::label_number_si(scale = 1e-9, suffix = "B"))
+```
+
+
+
+
+
+
+
+
+## What Seasons of the year is best for movies to come out ?
+
+The season of a movie's release may have considerable influence over its potential for popularity. For instance, the summer months, where children are on break, might offer a conducive environment for heightened profitability. However, it remains whether this factor sways the drive watch these films. An exploration of this aspect will provide insights into the fluctuation between release timing and audience engagement.
+
+```{r}
+seasonal_counts <- disney_movies %>%
+  mutate(season = case_when(
+    month(mdy(release_date)) %in% c(3, 4, 5) ~ "Spring",
+    month(mdy(release_date)) %in% c(6, 7, 8) ~ "Summer",
+    month(mdy(release_date)) %in% c(9, 10, 11) ~ "Fall",
+    TRUE ~ "Winter"
+  )) %>%
+  group_by(season) %>%
+  summarise(count = n())
+
+print(seasonal_counts)
+```
+
+
+```{r}
+seasonal_gross <- disney_movies %>%
+  mutate(season = case_when(
+    month(mdy(release_date)) %in% c(3, 4, 5) ~ "Spring",
+    month(mdy(release_date)) %in% c(6, 7, 8) ~ "Summer",
+    month(mdy(release_date)) %in% c(9, 10, 11) ~ "Fall",
+    TRUE ~ "Winter"
+  )) %>%
+  group_by(season) %>%
+  summarise(total_gross = sum(total_gross, na.rm = TRUE))
+
+
+ggplot(seasonal_gross, aes(x = season, y = total_gross, fill = season)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Total Gross of Disney Movies by Season",
+       x = "Season",
+       y = "Total Gross (In Billions) ") +
+    scale_y_continuous(labels = scales::label_number_si(scale = 1e-9, suffix = "B"))
+
+```
+
+Summer is one of the best times of the year for kids and this could be a reason for it to have the largest gross.
+
+
+
+
+
+
+
+# Conclusion
+
+![](https://d23.com/app/uploads/2016/09/1180-x-600-092916_wdw-45th-45-photos-gallery-780x440.jpg)
+
+Through a comprehensive exploration of the data set, it becomes evident that things change over time. Notably, the genre of a movie emerges as a significant factor influencing its overall financial performance. The analytically visualizations crafted during this investigation display  trends over the years, unveiling the evolution of cinematic diversity within the data set. The study of Disney cinematic has proven to offering valuable insights into the company's intricate dynamics that make it a what it is today. This analysis has cultivated a deeper understanding of the underlying patterns governing the flexibility between time, genre, and financial success in the realm of Disney movies.The acquired proficiency in utilizing analytically tools and methods from this course demonstrates versatility. These skills have provided insights for future explorations of diverse data sets, underscoring the enduring impact of this learning experience.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
