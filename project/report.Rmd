@@ -4,7 +4,7 @@ output:
     html_notebook:
     number_sections: yes
     toc: yes
-    toc_depth: 5
+    toc_depth: 2
     toc_float: yes
 ---
 
@@ -17,8 +17,9 @@ Disney has been one of the most well known companies in the world with its nosta
 
 - Which movies genres have the greatest profits in the years?
 
--
+- How has Disney movies progressed in popularity?
 
+- What factors play a large role in the rise of Disney?
 ## Needed packages
 
 ```{r}
@@ -27,15 +28,122 @@ library(dplyr)
 library(ggplot2)
 ```
 
-
 ## Data set
 
-For this analysis I am using a data set created by Dr. Aries Sanchez
+For this analysis I am using a data set created by Dr. Sanchez-Aries. This data set displays the sequence of movies created by Disney with many variables and columns.
 
 ```{r}
 
-disney_movies <- read.csv("/cloud/project/disney_movie_data.csv" , header = TRUE)
+disney_movies <- read.csv("/cloud/project/data/disneymovie_data.csv" , header = TRUE)
 disney_movies
 ```
 
+
+
+## Data Exploration
+
+Before answering our questions about this data set let's explore the possibilities in store. 
+
+In this data set there are a variety of factors that influence the growth of Disney today. From the 578 movies, how many are from each genre?
+
+```{r}
+disney_movies %>%
+  group_by(genre)%>%
+  count() 
+```
+
+From these statistics, we can see that Disney made mostly comedy and adventure movies. Some of these movies from the past have become classics most love for a lifetime. 
+
+lets compare the genres and the amount of gross profits they generated.
+
+```{r}
+
+total_gross_by_genre <- disney_movies %>%
+  group_by(genre) %>%
+  summarise(total_gross_by_genre = sum(total_gross, na.rm = TRUE))
+
+print(total_gross_by_genre)
+
+```
+
+
+
+
+Lets take a look at the top ten movie gross.
+
+```{r}
+
+top_ten_movies <-disney_movies %>%
+  arrange(desc(total_gross)) %>%
+    slice(1:10)
+print(top_ten_movies)
+
+```
+how could this differ from the top 10 infliated total gross ?
+```{r}
+
+top_ten_inflated_movies <- disney_movies %>%
+  arrange(desc(inflation_adjusted_gross)) %>%
+  slice(1:10)
+
+print(top_ten_inflated_movies)
+```
+
+
+Next analysis we are going to look at is compairing the years releast and the gross profits
+
+First thing we need to do is break down the data so we only get the year the movie is released.
+
+```{r}
+year_release <- disney_movies %>%
+  mutate(year_release = year(mdy(release_date)))
+
+year_release
+```
+
+
+```{r}
+
+  ggplot(year_release) +
+  geom_point(aes(x = year_release, y =genre, color=MPAA_rating))+
+  labs(
+    title = "Genres Throughout The Years",
+    x = "Year", 
+    y = "Genre")
+
+              
+```
+
+
+
+```{r}
+
+total_gross_by_genre <- disney_movies %>%
+  group_by(genre) %>%
+summarize(sum(total_gross))
+
+```
+
+
+
+```{r}
+
+ggplot(total_gross_by_genre) +
+  geom_histogram(aes(x = genre, y = sum(total_gross))) +
+  labs(title = "Total Gross by Genre", x = "Genre", y = "Total Gross")
+
+```
+
+
+
+
+```{r}
+  ggplot(year_release) +
+  geom_point(aes(x =year_release, y =MPAA_rating))+
+  labs(
+    title = "Audience of Disney",
+    x = "Year_released", 
+    y = "MPAA Rating")
+
+```
 
