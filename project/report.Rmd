@@ -2,9 +2,7 @@
 title: "Exploring Disney movies from 1937 to 2017 gross profits"
 output: 
     html_notebook:
-    number_sections: yes
     toc: yes
-    toc_depth: 2
     toc_float: yes
 ---
 
@@ -13,13 +11,17 @@ output:
 
 # INTRODUCTION
 
-Disney has been one of the most well known companies in the world with its nostalgic movies. What started as a dream, today it is worth about 168.45 billion ! Lets go back in time and take a look at movies from 1937 to 2016 and their gross profits. 
+![](https://hips.hearstapps.com/hmg-prod/images/disney-plus-disney-movies-index-1596644297.jpg?crop=1.00xw:1.00xh;0,0&resize=640:*)
+
+
+Disney has been one of the most well known companies in the world with its nostalgic movies. What started as a dream, today it is worth about 168.45 billion! Lets go back in time and take a look at movies from 1937 to 2016 and their gross profits. 
 
 °o° Which movies genres have the greatest profits in the years?
 
 °o° How has Disney movies progressed in popularity?
 
 °o° What season is the best time for movies to come out?
+
 
 # Needed packages
 
@@ -30,12 +32,12 @@ library(ggplot2)
 library(lubridate)
 ```
 
+
 # Data set
 
 For this analysis I am using a data set created by Dr. Sanchez-Aries. This data set displays the sequence of movies created by Disney with many variables and columns.
 
 ```{r}
-
 disney_movies <- read.csv("/cloud/project/data/disneymovie_data.csv" , header = TRUE)
 disney_movies
 ```
@@ -64,7 +66,9 @@ disney_movies %>%
 
 The statistical breakdown reveals that Disney's cinematic portfolio has primarily comprised of comedy and adventure genres. This strategic emphasis on these genres has evidently contributed to the creation of enduring classics, cherished by audiences through generations. The resonance of these timeless movies display crafting narratives that captivate audiences and earning a lasting place in the realm of beloved cinematic experiences.
 
+
 ## TOP MOVIES
+
 **TOP TOTAL GROSS**
 
 Examining the top ten movie gross offers an understanding for key cinematic productions that have significantly contributed to Disney's prominence. This exploration aims to distill insights into the films that have played a pivotal role in shaping and Disney's popularity within the industry.
@@ -88,6 +92,8 @@ top_ten_inflated_movies <- disney_movies %>%
 
 print(top_ten_inflated_movies)
 ```
+
+
 The observation that some of the top movies are well loved classics that displays Disney's remarkable success with its early films. This popularity is an indication to the timeless appeal and cultural impact of these cinematic treasures. It reaffirms Disney's skills in creating  narratives that resonate across generations, marking a noteworthy achievement in cinematic history.
 
 
@@ -123,13 +129,10 @@ At a glance the MPAA rating with the most movies is PG-13. Lets take a look at t
 
 
 
+## Multivarient Exploration
+In the subsequent phase of our exploration, we will take a look on a multifaceted level to uncover deeper layers and extract additional insights.
 
-
-
-### Multivarient Analysis
-
-
-#### Genre throughout the years
+### Genre throughout the years
 
 
 To grasp the data visually in the evolution of Disney a graphical representation is ideal. By creating a visual we can see the progression in genres over the years and Disney's strategic shift of movies.
@@ -169,7 +172,7 @@ This observation highlights that during Disney's early years, the focus was on c
 
 # DATA ANALYSIS
 
-After completing an extensive exploration, the previous asked questions can be answered from the data.
+After completing an exploration of movies, the previous asked questions can be answered from the data.
 
 ## What movie genres generated the greatest gross profit?
 
@@ -189,7 +192,7 @@ print(total_gross_by_genre)
 
 ```{r}
 
-p <-ggplot(total_gross_by_genre, aes(x = genre, y = total_gross_by_genre)) +
+ggplot(total_gross_by_genre, aes(x = genre, y = total_gross_by_genre)) +
   geom_histogram(stat = "identity", fill = "skyblue") +
   labs(title = "Total Gross by Genre", x = "Genre", y = "Total Gross(in Millions)")+
 theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -197,8 +200,7 @@ theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
 
 
 ```
-++From this analysis it can be concluded that adventure movies clearly generate the largest amount of gross profit overall. These adventure movies include films like "Starwars: The Force Awakens", "The Lion King", "Toy Story" and many more. The reason this could be is that kids love these type of hero going on an adventure through life as cartoons or films. This could be a reason why they have generated the largest profit and has been some of the well known films.
-
+The analysis indicates that adventure movies stand out as the primary contributors to the highest overall gross profit. Noteworthy titles such as "Star Wars: The Force Awakens," "The Lion King," and "Toy Story" display this trend. This profit generation can potentially contribute to the widespread appeal of narratives featuring heroes embarking on adventures through life, associated well with younger audiences in both animated and cinematic forms. This factor likely contributes significantly to the profitability and recognition of these films.
 
 
 ## How has disney movies progressed in popularity?
@@ -265,9 +267,6 @@ ggplot(seasonal_gross, aes(x = season, y = total_gross, fill = season)) +
 ```
 
 Summer is one of the best times of the year for kids and this could be a reason for it to have the largest gross.
-
-
-
 
 
 
