@@ -43,6 +43,7 @@ disney_movies
 ```
 
 
+
 # Data Exploration
 
 As we dive into this data set, lets take a glance of what it is.
@@ -50,9 +51,11 @@ As we dive into this data set, lets take a glance of what it is.
 summary(disney_movies)
 ```
 
+
 ## Univarient Exploration
 
 Before answering the questions about this data set let's explore the possibilities in store. A deconstruction of individual aspects of this data set will help us understand the capabilities in each component.
+
 
 ### Genre 
 
@@ -97,9 +100,6 @@ print(top_ten_inflated_movies)
 The observation that some of the top movies are well loved classics that displays Disney's remarkable success with its early films. This popularity is an indication to the timeless appeal and cultural impact of these cinematic treasures. It reaffirms Disney's skills in creating  narratives that resonate across generations, marking a noteworthy achievement in cinematic history.
 
 
-
-
-
 ## Audience
 
 The Motion Picture Association of America (MPAA) rating system serves as a structure for evaluating and categorizing movies based on their content, catering to diverse audience sensitivities. This criterion significantly influences the cinematic production landscape within the industry.In our examination of major entities like Warner Brothers, A24, and 20th Century, a trend emerges where a proportion of their cinematic are tailored for adult audiences. Shifting our focus to Disney, a comprehensive analysis of their MPAA ratings offers valuable insights into the strategic choices governing the content produced by this renowned cinematic company.
@@ -117,23 +117,23 @@ At a glance the MPAA rating with the most movies is PG-13. Lets take a look at t
   arrange(desc(total_gross)) %>%
   slice(1:20) %>%
    ggplot() +
-  geom_point(aes(x = movie_title, y =total_gross, color=MPAA_rating))+
+  geom_point(aes(x = movie_title, y =total_gross))+
   labs(
     title = "PG-13 Movies Total Gross",
     x = "MOVIE TITLE", 
-    y = "TOTAL GROSS") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+    y = "TOTAL GROSS (In Millions)") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+  scale_y_continuous(labels = scales::label_number_si(scale = 1e-6, suffix = "M"))
   
 ```
 
 
 
-
 ## Multivarient Exploration
+
 In the subsequent phase of our exploration, we will take a look on a multifaceted level to uncover deeper layers and extract additional insights.
 
 ### Genre throughout the years
-
 
 To grasp the data visually in the evolution of Disney a graphical representation is ideal. By creating a visual we can see the progression in genres over the years and Disney's strategic shift of movies.
 
@@ -221,11 +221,6 @@ ggplot(year_release, aes(x = year_release, y = total_gross)) +
 
 
 
-
-
-
-
-
 ## What Seasons of the year is best for movies to come out ?
 
 The season of a movie's release may have considerable influence over its potential for popularity. For instance, the summer months, where children are on break, might offer a conducive environment for heightened profitability. However, it remains whether this factor sways the drive watch these films. An exploration of this aspect will provide insights into the fluctuation between release timing and audience engagement.
@@ -268,6 +263,27 @@ ggplot(seasonal_gross, aes(x = season, y = total_gross, fill = season)) +
 
 Summer is one of the best times of the year for kids and this could be a reason for it to have the largest gross.
 
+
+This perspective can also be extended to the types of movies made during each season. Notably, the Fall season exhibits a prevalence of horror movies, possibly influenced by the  relevance to Halloween. In contrast, both Spring and Winter showcase a higher occurrence of comedy, while Summer emerges as the season with the greatest concentration of adventure films.
+
+```{r}
+disney_movies %>%
+  mutate(season = case_when(
+    month(mdy(release_date)) %in% c(3, 4, 5) ~ "Spring",
+    month(mdy(release_date)) %in% c(6, 7, 8) ~ "Summer",
+    month(mdy(release_date)) %in% c(9, 10, 11) ~ "Fall",
+    TRUE ~ "Winter"
+  ))
+ggplot(disney_movies, aes(x = season, fill = genre)) +
+  geom_bar(position = "stack") +
+  labs(title = "Genre Distribution by Season",
+       x = "Season",
+       y = "Count",
+       fill = "Genre") +
+  theme_minimal()
+
+ 
+```
 
 
 
